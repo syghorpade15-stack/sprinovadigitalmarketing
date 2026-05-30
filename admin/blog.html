@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog Manager — SPrinova Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050b14;--bg2:#080f1c;--bg3:#0c1526;
+  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);--border2:rgba(0,224,255,0.2);
+  --cyan:#00e0ff;--cyan-d:#00b8d4;
+  --amber:#f5a623;--amber-l:#ffc754;
+  --red:#ff4d4f;
+  --white:#f0f8ff;--muted:rgba(200,220,255,0.5);--muted2:rgba(200,220,255,0.3);
+  --fd:'Bricolage Grotesque',sans-serif;--fb:'Nunito',sans-serif;
+  --glow-cyan:0 0 20px rgba(0,224,255,0.4);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--white);font-family:var(--fb);min-height:100vh;
+  background-image:
+    linear-gradient(rgba(0,224,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,224,255,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;border-bottom:1px solid var(--border);
+  background:rgba(5,11,20,0.9);backdrop-filter:blur(20px);
+  position:sticky;top:0;z-index:100;
+}
+.nav-logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--cyan);text-decoration:none}
+.nav-logo span{color:var(--white)}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-link{
+  padding:0.45rem 0.9rem;border-radius:8px;font-size:0.85rem;font-weight:600;
+  color:var(--muted);text-decoration:none;transition:all .2s;
+}
+.nav-link:hover,.nav-link.active{background:var(--surface2);color:var(--cyan)}
+.nav-link.active{border:1px solid var(--border2)}
+.logout-btn{
+  padding:0.45rem 0.9rem;border-radius:8px;font-size:0.85rem;font-weight:600;
+  background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;
+  transition:all .2s;font-family:var(--fb);
+}
+.logout-btn:hover{border-color:var(--red);color:var(--red)}
+.user-badge{font-size:0.78rem;color:var(--muted2);margin-right:0.5rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+.page-header{margin-bottom:2rem}
+h1{font-family:var(--fd);font-size:2rem;font-weight:800;margin-bottom:0.4rem}
+.page-subtitle{color:var(--muted);font-size:0.875rem}
+.card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  padding:1.8rem;margin-bottom:2rem;
+}
+.card-title{font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:1.3rem;color:var(--amber-l)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-row.single{grid-template-columns:1fr}
+.form-row.three{grid-template-columns:2fr 1fr 1fr}
+.field{margin-bottom:1rem}
+label{display:block;font-size:0.78rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:.04em;text-transform:uppercase}
+input[type=text],textarea,select{
+  width:100%;padding:0.7rem 0.9rem;background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;color:var(--white);
+  font-family:var(--fb);font-size:0.9rem;outline:none;transition:border-color .2s;
+}
+input[type=text]:focus,textarea:focus,select:focus{border-color:var(--amber-l);box-shadow:0 0 0 3px rgba(245,166,35,0.08)}
+textarea{min-height:200px;resize:vertical}
+textarea.excerpt{min-height:80px}
+select option{background:var(--bg2)}
+.toggle-row{display:flex;align-items:center;gap:0.7rem}
+.toggle{width:40px;height:22px;appearance:none;background:var(--border);border-radius:50px;position:relative;cursor:pointer;transition:background .2s}
+.toggle:checked{background:var(--amber)}
+.toggle::before{content:'';position:absolute;width:16px;height:16px;background:white;border-radius:50%;top:3px;left:3px;transition:transform .2s}
+.toggle:checked::before{transform:translateX(18px)}
+.form-actions{display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem}
+.btn{
+  padding:0.7rem 1.4rem;border-radius:10px;font-family:var(--fd);font-size:0.9rem;
+  font-weight:700;cursor:pointer;transition:all .25s;border:1px solid;
+}
+.btn-primary{background:transparent;border-color:var(--amber-l);color:var(--amber-l);position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--amber);transform:translateX(-100%);transition:transform .25s;z-index:-1}
+.btn-primary:hover{color:var(--bg);box-shadow:var(--glow-amber)}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--muted)}
+.btn-ghost:hover{border-color:var(--border2);color:var(--white)}
+.status-msg{font-size:0.82rem;padding:0.5rem 0.8rem;border-radius:8px;display:none}
+.status-success{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);color:var(--amber-l)}
+.status-error{background:rgba(255,77,79,0.08);border:1px solid rgba(255,77,79,0.2);color:#ff4d4f}
+
+/* Post list */
+.post-list{display:flex;flex-direction:column;gap:0.8rem}
+.post-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:1.2rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .2s;
+}
+.post-item:hover{border-color:rgba(245,166,35,0.3)}
+.post-body{flex:1;min-width:0}
+.post-title{font-family:var(--fd);font-weight:700;font-size:0.98rem;margin-bottom:0.3rem;color:var(--white)}
+.post-excerpt{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0.5rem;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.post-meta{display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap}
+.badge{font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:50px;font-weight:700;letter-spacing:.04em}
+.badge-cat{background:rgba(245,166,35,0.12);color:var(--amber-l);border:1px solid rgba(245,166,35,0.2)}
+.badge-pub{background:rgba(0,200,100,0.12);color:#4ade80;border:1px solid rgba(0,200,100,0.2)}
+.badge-draft{background:rgba(200,200,255,0.08);color:var(--muted);border:1px solid var(--border)}
+.post-date{font-size:0.72rem;color:var(--muted2)}
+.post-author{font-size:0.72rem;color:var(--muted2)}
+.post-actions{display:flex;flex-direction:column;gap:0.4rem}
+.action-btn{
+  padding:0.35rem 0.7rem;border-radius:8px;font-size:0.75rem;font-weight:600;cursor:pointer;
+  border:1px solid;font-family:var(--fd);transition:all .2s;
+}
+.action-edit{background:transparent;border-color:rgba(245,166,35,0.3);color:var(--amber-l)}
+.action-edit:hover{background:rgba(245,166,35,0.08)}
+.action-delete{background:transparent;border-color:rgba(255,77,79,0.3);color:var(--red)}
+.action-delete:hover{background:rgba(255,77,79,0.08)}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty-icon{font-size:3rem;margin-bottom:0.8rem}
+.loading{text-align:center;padding:2rem;color:var(--muted);font-size:0.9rem}
+.spinner{
+  display:inline-block;width:24px;height:24px;border:2px solid rgba(245,166,35,0.2);
+  border-top-color:var(--amber-l);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:0.5rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){
+  .form-row,.form-row.three{grid-template-columns:1fr}
+  nav{padding:0.8rem 1rem}
+  .nav-links{gap:0.4rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">SP<span>rinova</span></a>
+  <div class="nav-links">
+    <span class="user-badge" id="user-email"></span>
+    <a href="/admin/faq.html" class="nav-link">FAQ</a>
+    <a href="/admin/blog.html" class="nav-link active">Blog Posts</a>
+    <button class="logout-btn" id="logout-btn">Sign Out</button>
+  </div>
+</nav>
+
+<main>
+  <div id="auth-loading" class="loading"><div class="spinner"></div><div>Verifying access…</div></div>
+
+  <div id="admin-content" style="display:none">
+    <div class="page-header">
+      <h1>Blog Manager</h1>
+      <p class="page-subtitle">Create and publish blog posts for the SPrinova website</p>
+    </div>
+
+    <!-- Form -->
+    <div class="card">
+      <div class="card-title" id="form-title">Write New Post</div>
+      <input type="hidden" id="edit-id"/>
+      <div class="form-row single">
+        <div class="field">
+          <label for="post-title">Title</label>
+          <input type="text" id="post-title" placeholder="10 Digital Marketing Trends for 2026"/>
+        </div>
+      </div>
+      <div class="form-row three">
+        <div class="field">
+          <label for="post-author">Author</label>
+          <input type="text" id="post-author" placeholder="Jane Smith"/>
+        </div>
+        <div class="field">
+          <label for="post-category">Category</label>
+          <select id="post-category">
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="SEO">SEO</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Design">Design</option>
+            <option value="App Development">App Development</option>
+            <option value="Case Study">Case Study</option>
+            <option value="News">News</option>
+          </select>
+        </div>
+        <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+          <div class="toggle-row" style="padding-bottom:0.7rem">
+            <input type="checkbox" class="toggle" id="post-published"/>
+            <label for="post-published" style="text-transform:none;font-size:0.875rem;color:var(--muted)">Publish immediately</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="field">
+          <label for="post-excerpt">Excerpt <span style="color:var(--muted2);text-transform:none;font-size:0.72rem">(short summary shown in listings)</span></label>
+          <textarea class="excerpt" id="post-excerpt" placeholder="A brief summary of this post…"></textarea>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="field">
+          <label for="post-content">Content</label>
+          <textarea id="post-content" placeholder="Write your full blog post here…"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="save-btn">Publish Post</button>
+        <button class="btn btn-ghost" id="cancel-btn" style="display:none">Cancel Edit</button>
+        <span class="status-msg" id="form-status"></span>
+      </div>
+    </div>
+
+    <!-- Post List -->
+    <div class="card">
+      <div class="card-title">All Posts</div>
+      <div id="post-list">
+        <div class="loading"><div class="spinner"></div><div>Loading…</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module">
+import { getUser, logout, handleAuthCallback } from 'https://esm.sh/@netlify/identity@1';
+
+let postsCache = [];
+
+async function authHeaders() {
+  const user = await getUser();
+  const tok = user?.token?.access_token;
+  return tok ? { 'Authorization': `Bearer ${tok}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+}
+
+async function initPage() {
+  try { await handleAuthCallback(); } catch {}
+  const user = await getUser();
+  if (!user) { window.location.href = '/admin/login.html'; return; }
+  const roles = user.app_metadata?.roles ?? [];
+  if (!roles.includes('admin')) { window.location.href = '/admin/login.html'; return; }
+  document.getElementById('user-email').textContent = user.email;
+  document.getElementById('auth-loading').style.display = 'none';
+  document.getElementById('admin-content').style.display = 'block';
+  loadPosts();
+}
+
+async function loadPosts() {
+  try {
+    const res = await fetch('/api/blog', { headers: await authHeaders() });
+    postsCache = await res.json();
+    renderPosts(postsCache);
+  } catch {
+    document.getElementById('post-list').innerHTML = '<div class="loading" style="color:#ff4d4f">Failed to load posts.</div>';
+  }
+}
+
+function renderPosts(posts) {
+  const el = document.getElementById('post-list');
+  if (!posts.length) {
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">✍️</div><p>No posts yet. Write your first one above!</p></div>`;
+    return;
+  }
+  el.innerHTML = `<div class="post-list">${posts.map(p => `
+    <div class="post-item">
+      <div class="post-body">
+        <div class="post-title">${esc(p.title)}</div>
+        ${p.excerpt ? `<div class="post-excerpt">${esc(p.excerpt)}</div>` : ''}
+        <div class="post-meta">
+          <span class="badge badge-cat">${esc(p.category || 'General')}</span>
+          <span class="badge ${p.published ? 'badge-pub' : 'badge-draft'}">${p.published ? 'Published' : 'Draft'}</span>
+          <span class="post-author">by ${esc(p.author)}</span>
+          <span class="post-date">${fmtDate(p.created_at)}</span>
+        </div>
+      </div>
+      <div class="post-actions">
+        <button class="action-btn action-edit" onclick="editPost(${p.id})">Edit</button>
+        <button class="action-btn action-delete" onclick="deletePost(${p.id})">Delete</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+window.editPost = function(id) {
+  const p = postsCache.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('edit-id').value = id;
+  document.getElementById('post-title').value = p.title;
+  document.getElementById('post-author').value = p.author;
+  document.getElementById('post-category').value = p.category || 'Digital Marketing';
+  document.getElementById('post-excerpt').value = p.excerpt || '';
+  document.getElementById('post-content').value = p.content;
+  document.getElementById('post-published').checked = !!p.published;
+  document.getElementById('form-title').textContent = 'Edit Post';
+  document.getElementById('save-btn').textContent = 'Update Post';
+  document.getElementById('cancel-btn').style.display = '';
+  document.getElementById('post-title').scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+window.deletePost = async function(id) {
+  if (!confirm('Delete this post? This cannot be undone.')) return;
+  try {
+    await fetch(`/api/blog?id=${id}`, { method: 'DELETE', headers: await authHeaders() });
+    postsCache = postsCache.filter(p => p.id !== id);
+    renderPosts(postsCache);
+  } catch { alert('Failed to delete post.'); }
+};
+
+document.getElementById('cancel-btn').addEventListener('click', resetForm);
+
+document.getElementById('save-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('save-btn');
+  const statusEl = document.getElementById('form-status');
+  const title = document.getElementById('post-title').value.trim();
+  const author = document.getElementById('post-author').value.trim();
+  const category = document.getElementById('post-category').value;
+  const excerpt = document.getElementById('post-excerpt').value.trim();
+  const content = document.getElementById('post-content').value.trim();
+  const published = document.getElementById('post-published').checked;
+  const editId = document.getElementById('edit-id').value;
+
+  if (!title || !content || !author) { showStatus(statusEl, 'Title, author and content are required.', false); return; }
+
+  btn.disabled = true;
+  hideStatus(statusEl);
+
+  try {
+    if (editId) {
+      const res = await fetch(`/api/blog?id=${editId}`, {
+        method: 'PUT', headers: await authHeaders(),
+        body: JSON.stringify({ title, author, category, excerpt, content, published }),
+      });
+      const updated = await res.json();
+      postsCache = postsCache.map(p => p.id === updated.id ? updated : p);
+    } else {
+      const res = await fetch('/api/blog', {
+        method: 'POST', headers: await authHeaders(),
+        body: JSON.stringify({ title, author, category, excerpt, content, published }),
+      });
+      const created = await res.json();
+      postsCache.push(created);
+    }
+    renderPosts(postsCache);
+    resetForm();
+    showStatus(statusEl, editId ? 'Post updated!' : 'Post saved!', true);
+  } catch {
+    showStatus(statusEl, 'Failed to save post.', false);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('logout-btn').addEventListener('click', async () => {
+  await logout();
+  window.location.href = '/admin/login.html';
+});
+
+function resetForm() {
+  ['edit-id','post-title','post-author','post-excerpt','post-content'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('post-category').value = 'Digital Marketing';
+  document.getElementById('post-published').checked = false;
+  document.getElementById('form-title').textContent = 'Write New Post';
+  document.getElementById('save-btn').textContent = 'Publish Post';
+  document.getElementById('cancel-btn').style.display = 'none';
+}
+
+function showStatus(el, msg, ok) {
+  el.textContent = msg;
+  el.className = 'status-msg ' + (ok ? 'status-success' : 'status-error');
+  el.style.display = 'inline-block';
+  if (ok) setTimeout(() => { el.style.display = 'none'; }, 3000);
+}
+function hideStatus(el) { el.style.display = 'none'; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fmtDate(d) { if (!d) return ''; try { return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); } catch { return ''; } }
+
+initPage();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/admin/faq"
+  to = "/admin/faq.html"
+  status = 200
+  conditions = { Role = ["admin"] }
+
+[[redirects]]
+  from = "/admin/faq"
+  to = "/admin/login.html"
+  status = 302
+
+[[redirects]]
+  from = "/admin/blog"
+  to = "/admin/blog.html"
+  status = 200
+  conditions = { Role = ["admin"] }
+
+[[redirects]]
+  from = "/admin/blog"
+  to = "/admin/login.html"
+  status = 302
+
+[[redirects]]
+  from = "/admin/faq.html"
+  to = "/admin/faq.html"
+  status = 200
+  conditions = { Role = ["admin"] }
+
+[[redirects]]
+  from = "/admin/faq.html"
+  to = "/admin/login.html"
+  status = 302
+
+[[redirects]]
+  from = "/admin/blog.html"
+  to = "/admin/blog.html"
+  status = 200
+  conditions = { Role = ["admin"] }
+
+[[redirects]]
+  from = "/admin/blog.html"
+  to = "/admin/login.html"
+  status = 302
