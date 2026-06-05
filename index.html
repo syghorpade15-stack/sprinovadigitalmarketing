@@ -731,6 +731,42 @@ footer{background:#02060e;border-top:1px solid var(--border);padding:2.5rem 2rem
 }
 .sm-cta:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,224,255,0.6)}
 
+/* ═══ FAQ ═══════════════════════════════════════════ */
+#faq{background:var(--bg3)}
+.faq-header{text-align:center;margin-bottom:3rem}
+.faq-header .section-sub{margin:0 auto}
+.faq-header .section-label{display:flex;justify-content:center}
+.faq-grid{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:0.8rem}
+.faq-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;transition:border-color .3s;backdrop-filter:blur(8px);
+}
+.faq-item.open{border-color:var(--border2);box-shadow:0 0 20px rgba(0,224,255,0.05)}
+.faq-q{
+  padding:1.3rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;gap:1rem;
+}
+.faq-q:hover .faq-q-text{color:var(--cyan)}
+.faq-q-text{font-family:var(--fd);font-weight:700;font-size:0.95rem;color:var(--white);line-height:1.4;transition:color .2s}
+.faq-chevron{
+  width:28px;height:28px;border-radius:6px;flex-shrink:0;
+  background:var(--cyan-g);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cyan);font-size:0.68rem;transition:transform .3s;
+}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:600px}
+.faq-a-inner{padding:0.2rem 1.5rem 1.3rem;color:var(--muted);font-size:0.88rem;line-height:1.85;border-top:1px solid var(--border)}
+.faq-cat-badge{
+  display:inline-flex;align-items:center;margin-bottom:0.5rem;
+  background:var(--amber-g);border:1px solid rgba(245,166,35,0.2);
+  color:var(--amber-l);border-radius:4px;padding:0.18rem 0.65rem;
+  font-size:0.67rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;
+}
+.faq-empty{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:0.9rem}
+.faq-loading{text-align:center;padding:2rem;color:var(--muted);font-size:0.88rem;animation:pulse 1.5s ease-in-out infinite}
+
 /* ═══ RESPONSIVE ════════════════════════════════════ */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;text-align:center}
@@ -862,6 +898,7 @@ footer{background:#02060e;border-top:1px solid var(--border);padding:2.5rem 2rem
     <li><a href="#app-development">App Dev</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#blog">Blog & Media</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1235,6 +1272,7 @@ footer{background:#02060e;border-top:1px solid var(--border);padding:2.5rem 2rem
       <button class="blog-tab" onclick="filterBlog('promo',this)">📢 Promotions</button>
     </div>
     <div class="blog-grid" id="blogGrid">
+      <div id="dynamicBlogPosts"></div>
       <!-- Blog post 1 -->
       <div class="blog-card reveal d1" data-type="blog">
         <div class="blog-img" style="background:linear-gradient(135deg,#eef3ff,#dde8ff)"><span style="font-size:4rem">🔍</span></div>
@@ -1378,6 +1416,20 @@ footer{background:#02060e;border-top:1px solid var(--border);padding:2.5rem 2rem
         </ul>
         <a href="#contact" class="btn-primary" style="display:block;text-align:center">Talk to Us →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-header reveal">
+      <p class="section-label">Common Questions</p>
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <p class="section-sub">Everything you need to know about our services, pricing, and how we work with clients.</p>
+    </div>
+    <div class="faq-grid" id="faqGrid">
+      <div class="faq-loading" id="faqLoading">Loading FAQs…</div>
     </div>
   </div>
 </section>
@@ -1697,6 +1749,87 @@ document.querySelectorAll('.svc-card[data-service]').forEach(card => {
     openSvcModal(this.dataset.service);
   });
 });
+
+  // ─── DYNAMIC BLOG POSTS ───
+(async function loadBlogPosts() {
+  try {
+    const res = await fetch('/api/blog');
+    if (!res.ok) return;
+    const posts = await res.json();
+    if (!Array.isArray(posts) || !posts.length) return;
+    const container = document.getElementById('dynamicBlogPosts');
+    const catIcons = {
+      'SEO': '🔍', 'Social Media': '📱', 'Google Ads': '🔎', 'LinkedIn': '💼',
+      'App Development': '📲', 'Design': '🎨', 'Digital Marketing': '📈',
+      'Case Study': '📊', 'News': '📰', 'General': '📝'
+    };
+    posts.forEach((post, i) => {
+      const icon = catIcons[post.category] || '📝';
+      const d = new Date(post.created_at);
+      const dateStr = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+      const delayClass = ['d1','d2','d3','d4','d5','d6'][i % 6];
+      const excerpt = post.excerpt || (post.content ? post.content.replace(/<[^>]+>/g,'').slice(0, 130) + '…' : '');
+      const card = document.createElement('div');
+      card.className = `blog-card reveal ${delayClass}`;
+      card.dataset.type = 'blog';
+      card.innerHTML = `
+        <div class="blog-img" style="background:linear-gradient(135deg,rgba(0,224,255,0.07),rgba(124,58,237,0.07))">
+          <span style="font-size:4rem">${icon}</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">${post.category || 'Blog'}</span>
+            <span class="blog-date">${dateStr}</span>
+          </div>
+          <div class="blog-title">${post.title}</div>
+          <div class="blog-excerpt">${excerpt}</div>
+          <span class="blog-read">Read Article →</span>
+        </div>`;
+      container.appendChild(card);
+      io.observe(card);
+    });
+  } catch (_) { /* fail silently — static fallback cards remain visible */ }
+})();
+
+// ─── DYNAMIC FAQ ───
+(async function loadFAQs() {
+  const grid = document.getElementById('faqGrid');
+  try {
+    const res = await fetch('/api/faqs');
+    if (!res.ok) { grid.innerHTML = ''; return; }
+    const faqs = await res.json();
+    grid.innerHTML = '';
+    if (!Array.isArray(faqs) || !faqs.length) {
+      grid.innerHTML = '<div class="faq-empty">No FAQs published yet — check back soon.</div>';
+      return;
+    }
+    faqs.forEach(faq => {
+      const item = document.createElement('div');
+      item.className = 'faq-item reveal';
+      const catBadge = (faq.category && faq.category !== 'General')
+        ? `<span class="faq-cat-badge">${faq.category}</span><br>`
+        : '';
+      item.innerHTML = `
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <span class="faq-q-text">${faq.question}</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">${catBadge}${faq.answer}</div>
+        </div>`;
+      grid.appendChild(item);
+      io.observe(item);
+    });
+  } catch (_) {
+    grid.innerHTML = '<div class="faq-empty">FAQs could not be loaded.</div>';
+  }
+})();
+
+function toggleFaq(item) {
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
 </script>
 </body>
 </html>
