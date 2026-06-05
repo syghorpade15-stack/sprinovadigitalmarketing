@@ -3,395 +3,640 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>FAQ Manager — SPrinova Admin</title>
+<title>Admin Dashboard — SPrinova</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#050b14;--bg2:#080f1c;--bg3:#0c1526;
-  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);
-  --border:rgba(255,255,255,0.08);--border2:rgba(0,224,255,0.2);
-  --cyan:#00e0ff;--cyan-d:#00b8d4;
-  --amber:#f5a623;--amber-l:#ffc754;
-  --red:#ff4d4f;
-  --white:#f0f8ff;--muted:rgba(200,220,255,0.5);--muted2:rgba(200,220,255,0.3);
+  --bg:#050b14;--bg2:#080f1c;--bg3:#0c1526;--bg4:#101d30;
+  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);--surface3:rgba(255,255,255,0.10);
+  --border:rgba(255,255,255,0.08);--border2:rgba(0,224,255,0.2);--border3:rgba(0,224,255,0.35);
+  --cyan:#00e0ff;--cyan-d:#00b8d4;--cyan-glow:rgba(0,224,255,0.15);
+  --amber:#f5a623;--green:#00ff9d;--red:#ff5b5b;--purple:#b47eff;
+  --white:#f0f8ff;--muted:rgba(200,220,255,0.55);--muted2:rgba(200,220,255,0.3);
   --fd:'Bricolage Grotesque',sans-serif;--fb:'Nunito',sans-serif;
-  --glow-cyan:0 0 20px rgba(0,224,255,0.4);
-  --glow-amber:0 0 20px rgba(245,166,35,0.4);
+  --radius:12px;--radius-lg:18px;
 }
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--white);font-family:var(--fb);min-height:100vh;
-  background-image:
-    linear-gradient(rgba(0,224,255,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,224,255,0.03) 1px,transparent 1px);
-  background-size:60px 60px;
-}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);min-height:100vh;
+  background-image:linear-gradient(rgba(0,224,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,224,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;}
 
-/* NAV */
-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2rem;border-bottom:1px solid var(--border);
-  background:rgba(5,11,20,0.9);backdrop-filter:blur(20px);
-  position:sticky;top:0;z-index:100;
-}
-.nav-logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--cyan);text-decoration:none}
-.nav-logo span{color:var(--white)}
-.nav-links{display:flex;gap:1rem;align-items:center}
-.nav-link{
-  padding:0.45rem 0.9rem;border-radius:8px;font-size:0.85rem;font-weight:600;
-  color:var(--muted);text-decoration:none;transition:all .2s;
-}
-.nav-link:hover,.nav-link.active{background:var(--surface2);color:var(--cyan)}
-.nav-link.active{border:1px solid var(--border2)}
-.logout-btn{
-  padding:0.45rem 0.9rem;border-radius:8px;font-size:0.85rem;font-weight:600;
-  background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;
-  transition:all .2s;font-family:var(--fb);
-}
-.logout-btn:hover{border-color:var(--red);color:var(--red)}
-.user-badge{font-size:0.78rem;color:var(--muted2);margin-right:0.5rem}
+/* ── Layout ── */
+.shell{display:flex;min-height:100vh}
 
-/* MAIN LAYOUT */
-main{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
-.page-header{margin-bottom:2rem}
-h1{font-family:var(--fd);font-size:2rem;font-weight:800;margin-bottom:0.4rem}
-.page-subtitle{color:var(--muted);font-size:0.875rem}
-
-/* FORM CARD */
-.card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
-  padding:1.8rem;margin-bottom:2rem;
+/* ── Sidebar ── */
+nav.sidebar{
+  width:240px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border2);
+  display:flex;flex-direction:column;padding:1.5rem 1rem;position:sticky;top:0;height:100vh;
 }
-.card-title{font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:1.3rem;color:var(--cyan)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.form-row.single{grid-template-columns:1fr}
+.nav-logo{font-family:var(--fd);font-weight:800;font-size:1.3rem;color:var(--cyan);
+  padding:0 0.5rem 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.5rem;}
+.nav-section{font-size:0.7rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em;
+  padding:0 0.5rem;margin:1rem 0 0.4rem;}
+.nav-btn{
+  display:flex;align-items:center;gap:0.6rem;width:100%;padding:0.6rem 0.8rem;
+  background:none;border:none;border-radius:var(--radius);color:var(--muted);
+  font-family:var(--fb);font-size:0.9rem;cursor:pointer;text-align:left;transition:all .2s;
+}
+.nav-btn:hover{background:var(--surface2);color:var(--white)}
+.nav-btn.active{background:rgba(0,224,255,0.1);color:var(--cyan);border:1px solid var(--border2)}
+.nav-btn .icon{font-size:1rem;width:20px;text-align:center}
+.nav-spacer{flex:1}
+.nav-logout{
+  display:flex;align-items:center;gap:0.6rem;width:100%;padding:0.6rem 0.8rem;
+  background:none;border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--muted);font-family:var(--fb);font-size:0.85rem;cursor:pointer;transition:all .2s;
+}
+.nav-logout:hover{border-color:var(--red);color:var(--red)}
+
+/* ── Main ── */
+main{flex:1;padding:2rem 2.5rem;overflow-y:auto}
+
+/* ── Tab panels ── */
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ── Page header ── */
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;flex-wrap:wrap;gap:1rem}
+.page-title{font-family:var(--fd);font-weight:800;font-size:1.8rem;color:var(--white)}
+.page-title span{color:var(--cyan)}
+
+/* ── Stats row ── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:2rem}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem}
+.stat-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.stat-val{font-family:var(--fd);font-size:1.8rem;font-weight:800;color:var(--cyan)}
+
+/* ── Form card ── */
+.form-card{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:1.6rem;margin-bottom:2rem}
+.form-card h2{font-family:var(--fd);font-weight:700;font-size:1.1rem;color:var(--cyan);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.5rem}
 .field{margin-bottom:1rem}
-label{display:block;font-size:0.78rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:.04em;text-transform:uppercase}
-input[type=text],textarea,select{
-  width:100%;padding:0.7rem 0.9rem;background:var(--surface);
-  border:1px solid var(--border);border-radius:10px;color:var(--white);
-  font-family:var(--fb);font-size:0.9rem;outline:none;transition:border-color .2s;
+.field label{display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:0.35rem}
+.field input,.field textarea,.field select{
+  width:100%;padding:0.7rem 0.9rem;background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;color:var(--white);font-family:var(--fb);font-size:0.92rem;outline:none;transition:border-color .2s;
+  resize:vertical;
 }
-input[type=text]:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,224,255,0.08)}
-textarea{min-height:100px;resize:vertical}
-select option{background:var(--bg2)}
-.toggle-row{display:flex;align-items:center;gap:0.7rem}
-.toggle{width:40px;height:22px;appearance:none;background:var(--border);border-radius:50px;position:relative;cursor:pointer;transition:background .2s}
-.toggle:checked{background:var(--cyan)}
-.toggle::before{content:'';position:absolute;width:16px;height:16px;background:white;border-radius:50%;top:3px;left:3px;transition:transform .2s}
-.toggle:checked::before{transform:translateX(18px)}
-.form-actions{display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-glow)}
+.field textarea{min-height:100px}
+.field select option{background:var(--bg3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+
+/* ── Buttons ── */
 .btn{
-  padding:0.7rem 1.4rem;border-radius:10px;font-family:var(--fd);font-size:0.9rem;
-  font-weight:700;cursor:pointer;transition:all .25s;border:1px solid;
+  padding:0.65rem 1.3rem;background:transparent;border:1px solid var(--cyan);
+  border-radius:10px;color:var(--cyan);font-family:var(--fd);font-size:0.9rem;font-weight:700;
+  cursor:pointer;transition:all .22s;position:relative;overflow:hidden;
 }
-.btn-primary{background:transparent;border-color:var(--cyan);color:var(--cyan);position:relative;overflow:hidden}
-.btn-primary::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:translateX(-100%);transition:transform .25s;z-index:-1}
-.btn-primary:hover{color:var(--bg);box-shadow:var(--glow-cyan)}
-.btn-primary:hover::before{transform:translateX(0)}
-.btn-primary:disabled{opacity:0.4;cursor:not-allowed}
-.btn-ghost{background:transparent;border-color:var(--border);color:var(--muted)}
-.btn-ghost:hover{border-color:var(--border2);color:var(--white)}
-.status-msg{font-size:0.82rem;padding:0.5rem 0.8rem;border-radius:8px;display:none}
-.status-success{background:rgba(0,224,255,0.08);border:1px solid rgba(0,224,255,0.2);color:var(--cyan)}
-.status-error{background:rgba(255,77,79,0.08);border:1px solid rgba(255,77,79,0.2);color:#ff4d4f}
+.btn::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:translateX(-101%);transition:transform .22s;z-index:-1}
+.btn:hover{color:var(--bg);box-shadow:0 0 20px rgba(0,224,255,0.3)}
+.btn:hover::before{transform:translateX(0)}
+.btn.red{border-color:var(--red);color:var(--red)}
+.btn.red::before{background:var(--red)}
+.btn.red:hover{color:#fff}
+.btn.green{border-color:var(--green);color:var(--green)}
+.btn.green::before{background:var(--green)}
+.btn.green:hover{color:var(--bg)}
+.btn.amber{border-color:var(--amber);color:var(--amber)}
+.btn.amber::before{background:var(--amber)}
+.btn.amber:hover{color:var(--bg)}
+.btn-row{display:flex;gap:0.7rem;flex-wrap:wrap;margin-top:0.3rem}
 
-/* FAQ LIST */
-.faq-list{display:flex;flex-direction:column;gap:0.8rem}
-.faq-item{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:1.2rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .2s;
+/* ── Toast ── */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;padding:0.8rem 1.3rem;border-radius:10px;
+  font-size:0.88rem;font-weight:600;z-index:9999;opacity:0;transform:translateY(10px);
+  transition:all .3s;pointer-events:none;
 }
-.faq-item:hover{border-color:var(--border2)}
-.faq-body{flex:1;min-width:0}
-.faq-q{font-family:var(--fd);font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;color:var(--white)}
-.faq-a{font-size:0.83rem;color:var(--muted);line-height:1.65;white-space:pre-wrap}
-.faq-meta{display:flex;gap:0.6rem;margin-top:0.6rem;align-items:center;flex-wrap:wrap}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:rgba(0,255,157,0.15);border:1px solid var(--green);color:var(--green)}
+.toast.error{background:rgba(255,91,91,0.12);border:1px solid var(--red);color:var(--red)}
+
+/* ── Items list ── */
+.list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem}
+.search-input{
+  padding:0.5rem 0.9rem;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--white);font-family:var(--fb);font-size:0.85rem;outline:none;
+  width:220px;transition:border-color .2s;
+}
+.search-input:focus{border-color:var(--cyan)}
+
+.item-card{
+  background:var(--bg4);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1rem 1.2rem;margin-bottom:0.7rem;transition:border-color .2s;
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.item-card:hover{border-color:var(--border2)}
+.item-body{flex:1;min-width:0}
+.item-title{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.25rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-meta{font-size:0.78rem;color:var(--muted);display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center}
+.item-preview{font-size:0.82rem;color:var(--muted);margin-top:0.3rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item-actions{display:flex;gap:0.5rem;flex-shrink:0}
+.icon-btn{
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);border-radius:8px;background:none;cursor:pointer;
+  font-size:0.85rem;transition:all .2s;color:var(--muted);
+}
+.icon-btn:hover.edit{border-color:var(--amber);color:var(--amber);background:rgba(245,166,35,0.08)}
+.icon-btn:hover.del{border-color:var(--red);color:var(--red);background:rgba(255,91,91,0.08)}
+
 .badge{
-  font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:50px;font-weight:700;letter-spacing:.04em;
+  display:inline-flex;align-items:center;padding:0.15rem 0.55rem;border-radius:20px;
+  font-size:0.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
 }
-.badge-cat{background:rgba(0,224,255,0.12);color:var(--cyan);border:1px solid rgba(0,224,255,0.2)}
-.badge-pub{background:rgba(0,200,100,0.12);color:#4ade80;border:1px solid rgba(0,200,100,0.2)}
-.badge-draft{background:rgba(245,166,35,0.12);color:var(--amber-l);border:1px solid rgba(245,166,35,0.2)}
-.faq-actions{display:flex;flex-direction:column;gap:0.4rem}
-.action-btn{
-  padding:0.35rem 0.7rem;border-radius:8px;font-size:0.75rem;font-weight:600;cursor:pointer;
-  border:1px solid;font-family:var(--fd);transition:all .2s;
-}
-.action-edit{background:transparent;border-color:var(--border2);color:var(--cyan)}
-.action-edit:hover{background:rgba(0,224,255,0.08)}
-.action-delete{background:transparent;border-color:rgba(255,77,79,0.3);color:var(--red)}
-.action-delete:hover{background:rgba(255,77,79,0.08)}
-.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted)}
-.empty-icon{font-size:3rem;margin-bottom:0.8rem}
+.badge.published{background:rgba(0,255,157,0.1);color:var(--green);border:1px solid rgba(0,255,157,0.25)}
+.badge.draft{background:rgba(200,220,255,0.06);color:var(--muted);border:1px solid var(--border)}
+.badge.cat{background:rgba(0,224,255,0.1);color:var(--cyan);border:1px solid var(--border2)}
 
-/* Loading */
-.loading{text-align:center;padding:2rem;color:var(--muted);font-size:0.9rem}
-.spinner{
-  display:inline-block;width:24px;height:24px;border:2px solid var(--border2);
-  border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:0.5rem;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:3rem;color:var(--muted);font-size:0.9rem}
+.empty-state .emo{font-size:2.5rem;margin-bottom:0.8rem}
 
-@media(max-width:600px){
-  .form-row{grid-template-columns:1fr}
-  nav{padding:0.8rem 1rem}
-  .nav-links{gap:0.4rem}
+/* ── Modal overlay ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(5,11,20,0.85);backdrop-filter:blur(4px);
+  z-index:1000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;
 }
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-lg);
+  padding:1.8rem;width:90%;max-width:560px;max-height:85vh;overflow-y:auto;
+  transform:scale(.95);transition:transform .25s;
+}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal h2{font-family:var(--fd);font-size:1.2rem;font-weight:800;color:var(--cyan);margin-bottom:1.2rem}
+
+/* ── Confirm dialog ── */
+.confirm-box{
+  background:var(--bg3);border:1px solid rgba(255,91,91,0.35);border-radius:var(--radius);
+  padding:1.5rem;width:320px;text-align:center;
+}
+.confirm-box h3{font-family:var(--fd);font-size:1rem;color:var(--white);margin-bottom:0.5rem}
+.confirm-box p{font-size:0.85rem;color:var(--muted);margin-bottom:1.2rem}
+.confirm-box .btn-row{justify-content:center}
+
+/* ── RTE-like extras ── */
+.char-count{font-size:0.72rem;color:var(--muted2);text-align:right;margin-top:0.2rem}
 </style>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-logo">SP<span>rinova</span></a>
-  <div class="nav-links">
-    <span class="user-badge" id="user-email"></span>
-    <a href="/admin/faq.html" class="nav-link active">FAQ</a>
-    <a href="/admin/blog.html" class="nav-link">Blog Posts</a>
-    <button class="logout-btn" id="logout-btn">Sign Out</button>
+<div class="shell">
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar">
+    <div class="nav-logo">⚡ SPrinova</div>
+
+    <div class="nav-section">Content</div>
+    <button class="nav-btn active" data-tab="blog" onclick="switchTab('blog',this)">
+      <span class="icon">📝</span> Blog Posts
+    </button>
+    <button class="nav-btn" data-tab="faq" onclick="switchTab('faq',this)">
+      <span class="icon">❓</span> FAQ
+    </button>
+
+    <div class="nav-section">Overview</div>
+    <button class="nav-btn" data-tab="dash" onclick="switchTab('dash',this)">
+      <span class="icon">📊</span> Dashboard
+    </button>
+
+    <div class="nav-spacer"></div>
+    <button class="nav-logout" onclick="logout()">🚪 Log out</button>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <!-- ═══ DASHBOARD ═══ -->
+    <div class="tab-panel" id="tab-dash">
+      <div class="page-header">
+        <h1 class="page-title">Dashboard <span>Overview</span></h1>
+      </div>
+      <div class="stats-row" id="stats-row"></div>
+      <div style="color:var(--muted);font-size:0.9rem;margin-top:1rem">
+        Use the sidebar to manage your Blog Posts and FAQs. Changes are saved instantly and reflected on the public pages.
+      </div>
+    </div>
+
+    <!-- ═══ BLOG POSTS ═══ -->
+    <div class="tab-panel active" id="tab-blog">
+      <div class="page-header">
+        <h1 class="page-title">Blog <span>Posts</span></h1>
+        <button class="btn" onclick="openBlogModal()">+ New Post</button>
+      </div>
+
+      <!-- Form -->
+      <div class="list-header">
+        <span style="font-size:0.85rem;color:var(--muted)" id="blog-count-label"></span>
+        <input class="search-input" type="text" placeholder="Search posts…" oninput="renderBlogList(this.value)" id="blog-search"/>
+      </div>
+      <div id="blog-list"></div>
+    </div>
+
+    <!-- ═══ FAQ ═══ -->
+    <div class="tab-panel" id="tab-faq">
+      <div class="page-header">
+        <h1 class="page-title">FAQ <span>Manager</span></h1>
+        <button class="btn" onclick="openFaqModal()">+ New FAQ</button>
+      </div>
+
+      <div class="list-header">
+        <span style="font-size:0.85rem;color:var(--muted)" id="faq-count-label"></span>
+        <input class="search-input" type="text" placeholder="Search FAQs…" oninput="renderFaqList(this.value)" id="faq-search"/>
+      </div>
+      <div id="faq-list"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════ BLOG MODAL ══════════ -->
+<div class="modal-overlay" id="blog-modal-overlay">
+  <div class="modal">
+    <h2 id="blog-modal-title">📝 New Blog Post</h2>
+    <input type="hidden" id="blog-edit-id"/>
+    <div class="field">
+      <label>Title *</label>
+      <input type="text" id="b-title" placeholder="Post title…" maxlength="120"/>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label>Category</label>
+        <input type="text" id="b-cat" placeholder="e.g. Technology"/>
+      </div>
+      <div class="field">
+        <label>Author</label>
+        <input type="text" id="b-author" placeholder="Author name"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Cover Image URL (optional)</label>
+      <input type="url" id="b-image" placeholder="https://…"/>
+    </div>
+    <div class="field">
+      <label>Excerpt (shown in listing)</label>
+      <textarea id="b-excerpt" rows="2" maxlength="280" placeholder="Short description…" oninput="countChars(this,'b-exc-count',280)"></textarea>
+      <div class="char-count"><span id="b-exc-count">0</span>/280</div>
+    </div>
+    <div class="field">
+      <label>Full Content *</label>
+      <textarea id="b-content" rows="8" placeholder="Write your post here… (HTML supported)" oninput="countChars(this,'b-con-count',20000)"></textarea>
+      <div class="char-count"><span id="b-con-count">0</span>/20 000</div>
+    </div>
+    <div class="field">
+      <label>Status</label>
+      <select id="b-status">
+        <option value="published">Published</option>
+        <option value="draft">Draft</option>
+      </select>
+    </div>
+    <div class="btn-row">
+      <button class="btn green" onclick="saveBlog()">Save Post</button>
+      <button class="btn red" onclick="closeBlogModal()">Cancel</button>
+    </div>
   </div>
-</nav>
+</div>
 
-<main>
-  <div id="auth-loading" class="loading"><div class="spinner"></div><div>Verifying access…</div></div>
-
-  <div id="admin-content" style="display:none">
-    <div class="page-header">
-      <h1>FAQ Manager</h1>
-      <p class="page-subtitle">Create and manage frequently asked questions shown on the website</p>
+<!-- ══════════ FAQ MODAL ══════════ -->
+<div class="modal-overlay" id="faq-modal-overlay">
+  <div class="modal">
+    <h2 id="faq-modal-title">❓ New FAQ</h2>
+    <input type="hidden" id="faq-edit-id"/>
+    <div class="field">
+      <label>Question *</label>
+      <input type="text" id="f-question" placeholder="What question does this answer?" maxlength="200"/>
     </div>
-
-    <!-- Add / Edit Form -->
-    <div class="card">
-      <div class="card-title" id="form-title">Add New FAQ</div>
-      <input type="hidden" id="edit-id"/>
-      <div class="form-row">
-        <div class="field">
-          <label for="faq-question">Question</label>
-          <input type="text" id="faq-question" placeholder="What is SPrinova?"/>
-        </div>
-        <div class="field">
-          <label for="faq-category">Category</label>
-          <select id="faq-category">
-            <option value="General">General</option>
-            <option value="Services">Services</option>
-            <option value="Pricing">Pricing</option>
-            <option value="Technical">Technical</option>
-            <option value="Support">Support</option>
-          </select>
-        </div>
+    <div class="field">
+      <label>Answer *</label>
+      <textarea id="f-answer" rows="5" placeholder="Provide a clear, helpful answer…" maxlength="2000" oninput="countChars(this,'f-ans-count',2000)"></textarea>
+      <div class="char-count"><span id="f-ans-count">0</span>/2000</div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label>Category</label>
+        <input type="text" id="f-cat" placeholder="e.g. General"/>
       </div>
-      <div class="form-row single">
-        <div class="field">
-          <label for="faq-answer">Answer</label>
-          <textarea id="faq-answer" placeholder="Provide a clear, helpful answer…"></textarea>
-        </div>
-      </div>
-      <div class="toggle-row" style="margin-bottom:1.2rem">
-        <input type="checkbox" class="toggle" id="faq-published" checked/>
-        <label for="faq-published" style="text-transform:none;font-size:0.875rem;color:var(--muted)">Published (visible to visitors)</label>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary" id="save-btn">Save FAQ</button>
-        <button class="btn btn-ghost" id="cancel-btn" style="display:none">Cancel Edit</button>
-        <span class="status-msg" id="form-status"></span>
+      <div class="field">
+        <label>Order (for sorting)</label>
+        <input type="number" id="f-order" placeholder="1" min="1"/>
       </div>
     </div>
-
-    <!-- FAQ List -->
-    <div class="card">
-      <div class="card-title">All FAQs</div>
-      <div id="faq-list">
-        <div class="loading"><div class="spinner"></div><div>Loading…</div></div>
-      </div>
+    <div class="field">
+      <label>Status</label>
+      <select id="f-status">
+        <option value="published">Published</option>
+        <option value="draft">Draft</option>
+      </select>
+    </div>
+    <div class="btn-row">
+      <button class="btn green" onclick="saveFaq()">Save FAQ</button>
+      <button class="btn red" onclick="closeFaqModal()">Cancel</button>
     </div>
   </div>
-</main>
+</div>
 
-<script type="module">
-import { getUser, logout, handleAuthCallback, AuthError } from 'https://esm.sh/@netlify/identity@1';
+<!-- ══════════ CONFIRM MODAL ══════════ -->
+<div class="modal-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <h3>🗑️ Delete Item?</h3>
+    <p id="confirm-msg">This action cannot be undone.</p>
+    <div class="btn-row">
+      <button class="btn red" id="confirm-yes">Delete</button>
+      <button class="btn" onclick="closeConfirm()">Cancel</button>
+    </div>
+  </div>
+</div>
 
-let token = null;
+<!-- ══════════ Toast ══════════ -->
+<div class="toast" id="toast"></div>
 
-async function init() {
-  try { await handleAuthCallback(); } catch {}
+<script>
+/* ═══════════════════════════════════════════
+   DATA LAYER — localStorage keys:
+     sprinova_blogs  → array of blog objects
+     sprinova_faqs   → array of faq objects
+   ═══════════════════════════════════════════ */
+const BLOG_KEY = 'sprinova_blogs';
+const FAQ_KEY  = 'sprinova_faqs';
 
-  const user = await getUser();
-  if (!user) { window.location.href = '/admin/login.html'; return; }
-  const roles = user.app_metadata?.roles ?? [];
-  if (!roles.includes('admin')) { window.location.href = '/admin/login.html'; return; }
+function loadBlogs(){ return JSON.parse(localStorage.getItem(BLOG_KEY)||'[]'); }
+function saveBlogs(arr){ localStorage.setItem(BLOG_KEY, JSON.stringify(arr)); }
+function loadFaqs(){ return JSON.parse(localStorage.getItem(FAQ_KEY)||'[]'); }
+function saveFaqs(arr){ localStorage.setItem(FAQ_KEY, JSON.stringify(arr)); }
 
-  token = user.token?.access_token;
-  document.getElementById('user-email').textContent = user.email;
-  document.getElementById('auth-loading').style.display = 'none';
-  document.getElementById('admin-content').style.display = 'block';
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 
-  loadFAQs();
+/* ═══════════════ UI Helpers ═══════════════ */
+function $(id){ return document.getElementById(id); }
+function countChars(el, countId, max){
+  $(countId).textContent = el.value.length;
+}
+function toast(msg, type='success'){
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(()=>{ t.className='toast'; }, 3000);
 }
 
-async function authHeaders() {
-  const user = await getUser();
-  token = user?.token?.access_token;
-  return token ? { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  $(`tab-${name}`).classList.add('active');
+  btn.classList.add('active');
+  if(name==='dash') renderDash();
+}
+function logout(){
+  if(confirm('Log out?')) window.location.href = '/admin-login.html';
+}
+function fmtDate(iso){
+  return new Date(iso).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+}
+function slugify(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+/* ═══════════════ DASHBOARD ═══════════════ */
+function renderDash(){
+  const blogs = loadBlogs();
+  const faqs  = loadFaqs();
+  const pubBlogs = blogs.filter(b=>b.status==='published').length;
+  const pubFaqs  = faqs.filter(f=>f.status==='published').length;
+  $('stats-row').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Total Posts</div><div class="stat-val">${blogs.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Published Posts</div><div class="stat-val">${pubBlogs}</div></div>
+    <div class="stat-card"><div class="stat-label">Draft Posts</div><div class="stat-val">${blogs.length-pubBlogs}</div></div>
+    <div class="stat-card"><div class="stat-label">Total FAQs</div><div class="stat-val">${faqs.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Published FAQs</div><div class="stat-val">${pubFaqs}</div></div>
+  `;
 }
 
-async function loadFAQs() {
-  const listEl = document.getElementById('faq-list');
-  try {
-    const res = await fetch('/api/faqs', { headers: await authHeaders() });
-    const faqs = await res.json();
-    renderFAQs(faqs);
-  } catch {
-    listEl.innerHTML = '<div class="loading" style="color:#ff4d4f">Failed to load FAQs.</div>';
-  }
-}
+/* ═══════════════ BLOG LIST ═══════════════ */
+function renderBlogList(q=''){
+  const blogs = loadBlogs();
+  const query = q.toLowerCase();
+  const filtered = blogs.filter(b=>
+    b.title.toLowerCase().includes(query)||
+    (b.category||'').toLowerCase().includes(query)||
+    (b.author||'').toLowerCase().includes(query)
+  );
+  $('blog-count-label').textContent = `${filtered.length} post${filtered.length!==1?'s':''}`;
 
-function renderFAQs(faqs) {
-  const listEl = document.getElementById('faq-list');
-  if (!faqs.length) {
-    listEl.innerHTML = `<div class="empty-state"><div class="empty-icon">❓</div><p>No FAQs yet. Create your first one above!</p></div>`;
+  if(!filtered.length){
+    $('blog-list').innerHTML = `<div class="empty-state"><div class="emo">✍️</div>No posts yet — create your first one!</div>`;
     return;
   }
-  listEl.innerHTML = `<div class="faq-list">${faqs.map(f => `
-    <div class="faq-item" data-id="${f.id}">
-      <div class="faq-body">
-        <div class="faq-q">${esc(f.question)}</div>
-        <div class="faq-a">${esc(f.answer)}</div>
-        <div class="faq-meta">
-          <span class="badge badge-cat">${esc(f.category || 'General')}</span>
-          <span class="badge ${f.published ? 'badge-pub' : 'badge-draft'}">${f.published ? 'Published' : 'Draft'}</span>
+
+  $('blog-list').innerHTML = filtered.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).map(b=>`
+    <div class="item-card">
+      <div class="item-body">
+        <div class="item-title">${escHtml(b.title)}</div>
+        <div class="item-meta">
+          <span class="badge ${b.status}">${b.status}</span>
+          ${b.category?`<span class="badge cat">${escHtml(b.category)}</span>`:''}
+          ${b.author?`<span>✍ ${escHtml(b.author)}</span>`:''}
+          <span>🗓 ${fmtDate(b.createdAt)}</span>
         </div>
+        ${b.excerpt?`<div class="item-preview">${escHtml(b.excerpt)}</div>`:''}
       </div>
-      <div class="faq-actions">
-        <button class="action-btn action-edit" onclick="editFAQ(${f.id})">Edit</button>
-        <button class="action-btn action-delete" onclick="deleteFAQ(${f.id})">Delete</button>
+      <div class="item-actions">
+        <button class="icon-btn edit" title="Edit" onclick="editBlog('${b.id}')">✏️</button>
+        <button class="icon-btn del" title="Delete" onclick="confirmDelete('blog','${b.id}','${escHtml(b.title).replace(/'/g,"\\'")}')">🗑️</button>
       </div>
-    </div>`).join('')}</div>`;
+    </div>
+  `).join('');
 }
 
-let faqsCache = [];
+function escHtml(s){ const d=document.createElement('div');d.textContent=s||'';return d.innerHTML; }
 
-async function loadAndCache() {
-  const res = await fetch('/api/faqs', { headers: await authHeaders() });
-  faqsCache = await res.json();
-  renderFAQs(faqsCache);
+/* ─── Blog Modal ─── */
+function openBlogModal(prefill=null){
+  $('blog-modal-title').textContent = prefill ? '✏️ Edit Blog Post' : '📝 New Blog Post';
+  $('blog-edit-id').value = prefill ? prefill.id : '';
+  $('b-title').value   = prefill?.title   || '';
+  $('b-cat').value     = prefill?.category|| '';
+  $('b-author').value  = prefill?.author  || '';
+  $('b-image').value   = prefill?.image   || '';
+  $('b-excerpt').value = prefill?.excerpt || '';
+  $('b-content').value = prefill?.content || '';
+  $('b-status').value  = prefill?.status  || 'published';
+  $('b-exc-count').textContent = ($('b-excerpt').value||'').length;
+  $('b-con-count').textContent = ($('b-content').value||'').length;
+  $('blog-modal-overlay').classList.add('open');
+  setTimeout(()=>$('b-title').focus(),100);
 }
+function closeBlogModal(){ $('blog-modal-overlay').classList.remove('open'); }
+function editBlog(id){
+  const b = loadBlogs().find(x=>x.id===id);
+  if(b) openBlogModal(b);
+}
+function saveBlog(){
+  const title   = $('b-title').value.trim();
+  const content = $('b-content').value.trim();
+  if(!title)   { toast('Title is required.','error'); return; }
+  if(!content) { toast('Content is required.','error'); return; }
 
-window.editFAQ = function(id) {
-  const f = faqsCache.find(x => x.id === id);
-  if (!f) return;
-  document.getElementById('edit-id').value = id;
-  document.getElementById('faq-question').value = f.question;
-  document.getElementById('faq-answer').value = f.answer;
-  document.getElementById('faq-category').value = f.category || 'General';
-  document.getElementById('faq-published').checked = !!f.published;
-  document.getElementById('form-title').textContent = 'Edit FAQ';
-  document.getElementById('save-btn').textContent = 'Update FAQ';
-  document.getElementById('cancel-btn').style.display = '';
-  document.getElementById('faq-question').scrollIntoView({ behavior: 'smooth', block: 'center' });
-};
+  const blogs = loadBlogs();
+  const editId = $('blog-edit-id').value;
+  const now = new Date().toISOString();
 
-window.deleteFAQ = async function(id) {
-  if (!confirm('Delete this FAQ? This cannot be undone.')) return;
-  try {
-    await fetch(`/api/faqs?id=${id}`, { method: 'DELETE', headers: await authHeaders() });
-    faqsCache = faqsCache.filter(f => f.id !== id);
-    renderFAQs(faqsCache);
-  } catch { alert('Failed to delete FAQ.'); }
-};
-
-document.getElementById('cancel-btn').addEventListener('click', resetForm);
-
-document.getElementById('save-btn').addEventListener('click', async () => {
-  const btn = document.getElementById('save-btn');
-  const statusEl = document.getElementById('form-status');
-  const question = document.getElementById('faq-question').value.trim();
-  const answer = document.getElementById('faq-answer').value.trim();
-  const category = document.getElementById('faq-category').value;
-  const published = document.getElementById('faq-published').checked;
-  const editId = document.getElementById('edit-id').value;
-
-  if (!question || !answer) { showStatus(statusEl, 'Question and answer are required.', false); return; }
-
-  btn.disabled = true;
-  hideStatus(statusEl);
-
-  try {
-    if (editId) {
-      const res = await fetch(`/api/faqs?id=${editId}`, {
-        method: 'PUT', headers: await authHeaders(),
-        body: JSON.stringify({ question, answer, category, published }),
-      });
-      const updated = await res.json();
-      faqsCache = faqsCache.map(f => f.id === updated.id ? updated : f);
-    } else {
-      const res = await fetch('/api/faqs', {
-        method: 'POST', headers: await authHeaders(),
-        body: JSON.stringify({ question, answer, category, published }),
-      });
-      const created = await res.json();
-      faqsCache.push(created);
-    }
-    renderFAQs(faqsCache);
-    resetForm();
-    showStatus(statusEl, editId ? 'FAQ updated!' : 'FAQ created!', true);
-  } catch {
-    showStatus(statusEl, 'Failed to save FAQ.', false);
-  } finally {
-    btn.disabled = false;
+  if(editId){
+    const i = blogs.findIndex(x=>x.id===editId);
+    blogs[i] = {...blogs[i],
+      title, content,
+      category: $('b-cat').value.trim(),
+      author:   $('b-author').value.trim(),
+      image:    $('b-image').value.trim(),
+      excerpt:  $('b-excerpt').value.trim(),
+      status:   $('b-status').value,
+      updatedAt: now,
+    };
+    toast('Post updated ✓');
+  } else {
+    blogs.push({
+      id: uid(), title, content,
+      category: $('b-cat').value.trim(),
+      author:   $('b-author').value.trim(),
+      image:    $('b-image').value.trim(),
+      excerpt:  $('b-excerpt').value.trim(),
+      status:   $('b-status').value,
+      createdAt: now, updatedAt: now,
+      slug: slugify(title),
+    });
+    toast('Post created ✓');
   }
+  saveBlogs(blogs);
+  closeBlogModal();
+  renderBlogList($('blog-search').value);
+}
+
+/* ═══════════════ FAQ LIST ═══════════════ */
+function renderFaqList(q=''){
+  const faqs  = loadFaqs();
+  const query = q.toLowerCase();
+  const filtered = faqs.filter(f=>
+    f.question.toLowerCase().includes(query)||
+    (f.category||'').toLowerCase().includes(query)||
+    f.answer.toLowerCase().includes(query)
+  );
+  $('faq-count-label').textContent = `${filtered.length} FAQ${filtered.length!==1?'s':''}`;
+
+  if(!filtered.length){
+    $('faq-list').innerHTML = `<div class="empty-state"><div class="emo">🙋</div>No FAQs yet — add the first one!</div>`;
+    return;
+  }
+
+  $('faq-list').innerHTML = filtered.sort((a,b)=>(a.order||99)-(b.order||99)).map(f=>`
+    <div class="item-card">
+      <div class="item-body">
+        <div class="item-title">${escHtml(f.question)}</div>
+        <div class="item-meta">
+          <span class="badge ${f.status}">${f.status}</span>
+          ${f.category?`<span class="badge cat">${escHtml(f.category)}</span>`:''}
+          ${f.order?`<span>Order: ${f.order}</span>`:''}
+        </div>
+        <div class="item-preview">${escHtml(f.answer)}</div>
+      </div>
+      <div class="item-actions">
+        <button class="icon-btn edit" title="Edit" onclick="editFaq('${f.id}')">✏️</button>
+        <button class="icon-btn del" title="Delete" onclick="confirmDelete('faq','${f.id}','${escHtml(f.question).replace(/'/g,"\\'")}')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ─── FAQ Modal ─── */
+function openFaqModal(prefill=null){
+  $('faq-modal-title').textContent = prefill ? '✏️ Edit FAQ' : '❓ New FAQ';
+  $('faq-edit-id').value   = prefill ? prefill.id : '';
+  $('f-question').value    = prefill?.question || '';
+  $('f-answer').value      = prefill?.answer   || '';
+  $('f-cat').value         = prefill?.category || '';
+  $('f-order').value       = prefill?.order    || '';
+  $('f-status').value      = prefill?.status   || 'published';
+  $('f-ans-count').textContent = ($('f-answer').value||'').length;
+  $('faq-modal-overlay').classList.add('open');
+  setTimeout(()=>$('f-question').focus(),100);
+}
+function closeFaqModal(){ $('faq-modal-overlay').classList.remove('open'); }
+function editFaq(id){
+  const f = loadFaqs().find(x=>x.id===id);
+  if(f) openFaqModal(f);
+}
+function saveFaq(){
+  const question = $('f-question').value.trim();
+  const answer   = $('f-answer').value.trim();
+  if(!question) { toast('Question is required.','error'); return; }
+  if(!answer)   { toast('Answer is required.','error'); return; }
+
+  const faqs   = loadFaqs();
+  const editId = $('faq-edit-id').value;
+  const now    = new Date().toISOString();
+
+  if(editId){
+    const i = faqs.findIndex(x=>x.id===editId);
+    faqs[i] = {...faqs[i],
+      question, answer,
+      category: $('f-cat').value.trim(),
+      order: parseInt($('f-order').value)||0,
+      status: $('f-status').value,
+      updatedAt: now,
+    };
+    toast('FAQ updated ✓');
+  } else {
+    faqs.push({
+      id: uid(), question, answer,
+      category: $('f-cat').value.trim(),
+      order: parseInt($('f-order').value)||0,
+      status: $('f-status').value,
+      createdAt: now, updatedAt: now,
+    });
+    toast('FAQ created ✓');
+  }
+  saveFaqs(faqs);
+  closeFaqModal();
+  renderFaqList($('faq-search').value);
+}
+
+/* ═══════════════ DELETE ═══════════════ */
+let _delType, _delId;
+function confirmDelete(type, id, label){
+  _delType = type; _delId = id;
+  $('confirm-msg').textContent = `Delete "${label}"? This cannot be undone.`;
+  $('confirm-overlay').classList.add('open');
+  $('confirm-yes').onclick = doDelete;
+}
+function doDelete(){
+  if(_delType==='blog'){
+    saveBlogs(loadBlogs().filter(b=>b.id!==_delId));
+    renderBlogList($('blog-search').value);
+    toast('Post deleted');
+  } else {
+    saveFaqs(loadFaqs().filter(f=>f.id!==_delId));
+    renderFaqList($('faq-search').value);
+    toast('FAQ deleted');
+  }
+  closeConfirm();
+}
+function closeConfirm(){ $('confirm-overlay').classList.remove('open'); }
+
+/* ═══════════════ Close modals on overlay click ═══════════════ */
+$('blog-modal-overlay').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeBlogModal(); });
+$('faq-modal-overlay').addEventListener('click',  e=>{ if(e.target===e.currentTarget) closeFaqModal(); });
+$('confirm-overlay').addEventListener('click',    e=>{ if(e.target===e.currentTarget) closeConfirm(); });
+
+/* ═══════════════ Keyboard esc ═══════════════ */
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeBlogModal(); closeFaqModal(); closeConfirm(); }
 });
 
-document.getElementById('logout-btn').addEventListener('click', async () => {
-  await logout();
-  window.location.href = '/admin/login.html';
-});
-
-function resetForm() {
-  document.getElementById('edit-id').value = '';
-  document.getElementById('faq-question').value = '';
-  document.getElementById('faq-answer').value = '';
-  document.getElementById('faq-category').value = 'General';
-  document.getElementById('faq-published').checked = true;
-  document.getElementById('form-title').textContent = 'Add New FAQ';
-  document.getElementById('save-btn').textContent = 'Save FAQ';
-  document.getElementById('cancel-btn').style.display = 'none';
-}
-
-function showStatus(el, msg, ok) {
-  el.textContent = msg;
-  el.className = 'status-msg ' + (ok ? 'status-success' : 'status-error');
-  el.style.display = 'inline-block';
-  if (ok) setTimeout(() => { el.style.display = 'none'; }, 3000);
-}
-function hideStatus(el) { el.style.display = 'none'; }
-function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-// override load to use cache
-async function loadFAQsInit() {
-  const listEl = document.getElementById('faq-list');
-  try {
-    const res = await fetch('/api/faqs', { headers: await authHeaders() });
-    faqsCache = await res.json();
-    renderFAQs(faqsCache);
-  } catch {
-    listEl.innerHTML = '<div class="loading" style="color:#ff4d4f">Failed to load FAQs.</div>';
-  }
-}
-// Replace original loadFAQs call after init
-async function initPage() {
-  try { await handleAuthCallback(); } catch {}
-  const user = await getUser();
-  if (!user) { window.location.href = '/admin/login.html'; return; }
-  const roles = user.app_metadata?.roles ?? [];
-  if (!roles.includes('admin')) { window.location.href = '/admin/login.html'; return; }
-  token = user.token?.access_token;
-  document.getElementById('user-email').textContent = user.email;
-  document.getElementById('auth-loading').style.display = 'none';
-  document.getElementById('admin-content').style.display = 'block';
-  loadFAQsInit();
-}
-initPage();
+/* ═══════════════ INIT ═══════════════ */
+renderBlogList();
+renderFaqList();
+renderDash();
 </script>
 </body>
 </html>
