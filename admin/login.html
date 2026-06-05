@@ -16,6 +16,7 @@
   --white:#f0f8ff;--muted:rgba(200,220,255,0.5);--muted2:rgba(200,220,255,0.3);
   --fd:'Bricolage Grotesque',sans-serif;--fb:'Nunito',sans-serif;
   --glow-cyan:0 0 20px rgba(0,224,255,0.4);
+  --green:#00ff9d;
 }
 html{scroll-behavior:smooth}
 body{
@@ -26,20 +27,34 @@ body{
     linear-gradient(90deg,rgba(0,224,255,0.03) 1px,transparent 1px);
   background-size:60px 60px;
 }
+
+/* ── Card ── */
 .login-card{
   background:var(--bg2);border:1px solid var(--border2);border-radius:20px;
   padding:2.5rem;width:100%;max-width:420px;
   box-shadow:0 0 60px rgba(0,224,255,0.06);
+  animation:fadeUp .4s ease both;
 }
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ── Logo ── */
 .logo{
   display:flex;align-items:center;gap:0.7rem;margin-bottom:2rem;
   font-family:var(--fd);font-weight:800;font-size:1.4rem;color:var(--cyan);
   text-decoration:none;
 }
-.logo span{color:var(--white)}
+
+/* ── Panels ── */
+.panel{display:none}
+.panel.active{display:block;animation:fadeUp .3s ease both}
+
+/* ── Headings ── */
+.shield{font-size:2.5rem;margin-bottom:1rem}
 h1{font-family:var(--fd);font-size:1.6rem;font-weight:800;margin-bottom:0.4rem}
 .subtitle{color:var(--muted);font-size:0.875rem;margin-bottom:2rem}
-.field{margin-bottom:1.2rem}
+
+/* ── Fields ── */
+.field{margin-bottom:1.2rem;position:relative}
 label{display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:.04em;text-transform:uppercase}
 input{
   width:100%;padding:0.75rem 1rem;background:var(--surface2);
@@ -47,6 +62,15 @@ input{
   font-family:var(--fb);font-size:0.95rem;outline:none;transition:border-color .2s;
 }
 input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,224,255,0.08)}
+
+/* password eye toggle */
+.eye-toggle{
+  position:absolute;right:12px;top:50%;transform:translateY(50%);
+  background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;
+  padding:0;line-height:1;
+}
+
+/* ── Buttons ── */
 .btn{
   width:100%;padding:0.85rem;background:transparent;border:1px solid var(--cyan);
   border-radius:10px;color:var(--cyan);font-family:var(--fd);font-size:1rem;
@@ -56,96 +80,402 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,224,255,0.08)}
 .btn:hover{color:var(--bg);box-shadow:var(--glow-cyan)}
 .btn:hover::before{transform:translateX(0)}
 .btn:disabled{opacity:0.5;cursor:not-allowed}
+.btn.green{border-color:var(--green);color:var(--green)}
+.btn.green::before{background:var(--green)}
+.btn.green:hover{color:var(--bg)}
+
+/* ── Messages ── */
 .error-msg{color:#ff6b6b;font-size:0.82rem;margin-top:1rem;padding:0.7rem;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);border-radius:8px;display:none}
+.success-msg{color:var(--green);font-size:0.82rem;margin-top:1rem;padding:0.7rem;background:rgba(0,255,157,0.07);border:1px solid rgba(0,255,157,0.2);border-radius:8px;display:none}
+
+/* ── Links ── */
 .back{display:inline-block;color:var(--muted);font-size:0.82rem;text-decoration:none;margin-top:1.5rem;transition:color .2s}
 .back:hover{color:var(--cyan)}
-.shield{font-size:2.5rem;margin-bottom:1rem}
+.link-btn{background:none;border:none;color:var(--cyan);font-size:0.82rem;cursor:pointer;padding:0;font-family:var(--fb);text-decoration:underline;margin-top:0.9rem;display:inline-block}
+.link-btn:hover{color:var(--cyan-d)}
+
+/* ── OTP boxes ── */
+.otp-row{display:flex;gap:0.5rem;justify-content:center;margin:1rem 0 0.5rem}
+.otp-box{
+  width:46px;height:54px;text-align:center;font-size:1.4rem;font-weight:700;
+  background:var(--surface2);border:1px solid var(--border);border-radius:10px;
+  color:var(--white);font-family:var(--fd);outline:none;transition:border-color .2s;
+}
+.otp-box:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,224,255,0.08)}
+
+/* resend */
+.resend-row{font-size:0.8rem;color:var(--muted);margin-top:0.8rem}
+#resend-btn{background:none;border:none;color:var(--cyan);cursor:pointer;font-size:0.8rem;font-family:var(--fb);padding:0;text-decoration:underline}
+#resend-btn:disabled{color:var(--muted);cursor:default;text-decoration:none}
+
+/* new password strength */
+.strength-bar{height:3px;border-radius:2px;background:var(--border);margin-top:6px;overflow:hidden}
+.strength-fill{height:100%;width:0;border-radius:2px;transition:width .3s,background .3s}
 </style>
 </head>
 <body>
 <div class="login-card">
-  <a href="/" class="logo">SP<span>rinova</span></a>
-  <div class="shield">🛡️</div>
-  <h1>Admin Login</h1>
-  <p class="subtitle">Sign in to access the admin dashboard</p>
-  <form id="login-form">
+  <a href="/" class="logo">SPrinova</a>
+
+  <!-- ══════════ PANEL 1: Login ══════════ -->
+  <div class="panel active" id="panel-login">
+    <div class="shield">🛡️</div>
+    <h1>Admin Login</h1>
+    <p class="subtitle">Sign in to access the admin dashboard</p>
+
     <div class="field">
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="admin@example.com" required autocomplete="Sprinovadigital@gmail.com"/>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username" autocomplete="username" required/>
     </div>
     <div class="field">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="••••••••" required autocomplete="Angel@2815"/>
+      <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required/>
+      <button class="eye-toggle" type="button" id="eye-login" title="Show/hide">👁</button>
     </div>
-    <button type="submit" class="btn" id="login-btn">Sign In</button>
-    <div class="error-msg" id="error-msg"></div>
-  </form>
-  <a href="/" class="back">← Back to website</a>
-</div>
+    <button class="btn" id="login-btn" type="button">Sign In</button>
+    <div class="error-msg" id="login-error"></div>
 
-<script type="module">
-import { login, getUser, handleAuthCallback, AuthError, MissingIdentityError } from 'https://esm.sh/@netlify/identity@1';
+    <div style="margin-top:1rem">
+      <button class="link-btn" id="goto-forgot">Forgot username / password?</button>
+    </div>
+    <a href="/" class="back">← Back to website</a>
+  </div>
 
-async function init() {
-  try {
-    await handleAuthCallback();
-  } catch {}
+  <!-- ══════════ PANEL 2: Forgot — enter email ══════════ -->
+  <div class="panel" id="panel-forgot">
+    <div class="shield">🔑</div>
+    <h1>Forgot Credentials</h1>
+    <p class="subtitle">We'll send a 6-digit OTP to the registered admin email.</p>
 
-  const user = await getUser();
-  if (user) {
-    const roles = user.app_metadata?.roles ?? [];
-    if (roles.includes('admin')) {
-      window.location.href = '/admin/faq.html';
-      return;
-    }
-    showError('Your account does not have admin privileges.');
-    return;
-  }
+    <div class="field">
+      <label for="forgot-email">Admin Email</label>
+      <input type="email" id="forgot-email" placeholder="syghorpade15@gmail.com" autocomplete="email"/>
+    </div>
+    <button class="btn" id="send-otp-btn" type="button">Send OTP</button>
+    <div class="error-msg" id="forgot-error"></div>
+    <div class="success-msg" id="forgot-success"></div>
+
+    <div><button class="link-btn" id="goto-login-from-forgot">← Back to login</button></div>
+  </div>
+
+  <!-- ══════════ PANEL 3: Enter OTP ══════════ -->
+  <div class="panel" id="panel-otp">
+    <div class="shield">📩</div>
+    <h1>Enter OTP</h1>
+    <p class="subtitle">A 6-digit code was sent to your email. It expires in <strong id="otp-timer">05:00</strong>.</p>
+
+    <div class="otp-row">
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+      <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+    </div>
+
+    <button class="btn" id="verify-otp-btn" type="button">Verify OTP</button>
+    <div class="error-msg" id="otp-error"></div>
+
+    <div class="resend-row">Didn't get it? <button id="resend-btn" disabled>Resend in <span id="resend-countdown">60</span>s</button></div>
+    <div><button class="link-btn" id="goto-login-from-otp">← Back to login</button></div>
+  </div>
+
+  <!-- ══════════ PANEL 4: Reset Password ══════════ -->
+  <div class="panel" id="panel-reset">
+    <div class="shield">🔒</div>
+    <h1>Reset Password</h1>
+    <p class="subtitle">Choose a new password for your admin account.</p>
+
+    <div class="field">
+      <label for="new-pass">New Password</label>
+      <input type="password" id="new-pass" placeholder="Min 8 characters"/>
+      <button class="eye-toggle" type="button" id="eye-new" title="Show/hide">👁</button>
+      <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+    </div>
+    <div class="field">
+      <label for="confirm-pass">Confirm Password</label>
+      <input type="password" id="confirm-pass" placeholder="Repeat password"/>
+      <button class="eye-toggle" type="button" id="eye-confirm" title="Show/hide">👁</button>
+    </div>
+
+    <button class="btn green" id="reset-btn" type="button">Save New Password</button>
+    <div class="error-msg" id="reset-error"></div>
+    <div class="success-msg" id="reset-success"></div>
+  </div>
+
+</div><!-- /login-card -->
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   CONFIGURATION — fill in your EmailJS details
+   ═══════════════════════════════════════════════
+   1. Sign up free at https://www.emailjs.com
+   2. Create a service (Gmail) → get SERVICE_ID
+   3. Create a template with variables:
+        {{otp}}  {{to_email}}  {{admin_credentials}}
+      → get TEMPLATE_ID
+   4. Get your PUBLIC_KEY from Account → API Keys
+   ═══════════════════════════════════════════════ */
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← replace
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← replace
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← replace
+
+/* ─── Hard-coded admin credentials ─── */
+const ADMIN_USERNAME = 'Sprinova';
+const ADMIN_PASSWORD = 'Angel@15';
+const ADMIN_EMAIL    = 'syghorpade15@gmail.com'; // only this email can request reset
+
+/* ─── State ─── */
+let currentOtp       = '';
+let otpExpiry        = 0;
+let otpTimerInterval = null;
+let resendInterval   = null;
+let newPasswordStore = ADMIN_PASSWORD; // will be updated on reset
+
+/* ═══════════════ Utility ═══════════════ */
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function show(el, msg) { el.textContent = msg; el.style.display = 'block'; }
+function hide(el)       { el.style.display = 'none'; }
+function $(id)          { return document.getElementById(id); }
+
+function generateOtp() {
+  return String(Math.floor(100000 + Math.random() * 900000));
 }
 
-init();
+/* ═══════════════ Password eye toggle ═══════════════ */
+function toggleEye(inputId, btnId) {
+  const input = $(inputId), btn = $(btnId);
+  btn.addEventListener('click', () => {
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    btn.textContent = show ? '🙈' : '👁';
+  });
+}
+toggleEye('password','eye-login');
+toggleEye('new-pass','eye-new');
+toggleEye('confirm-pass','eye-confirm');
 
-document.getElementById('login-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById('login-btn');
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+/* ═══════════════ Strength meter ═══════════════ */
+$('new-pass').addEventListener('input', function() {
+  const v = this.value;
+  let score = 0;
+  if (v.length >= 8)             score++;
+  if (/[A-Z]/.test(v))           score++;
+  if (/[0-9]/.test(v))           score++;
+  if (/[^A-Za-z0-9]/.test(v))    score++;
+  const fill = $('strength-fill');
+  const colors = ['#ff4444','#ff9900','#f5a623','#00ff9d'];
+  fill.style.width  = (score * 25) + '%';
+  fill.style.background = colors[score - 1] || 'transparent';
+});
 
+/* ═══════════════ PANEL 1: Login ═══════════════ */
+$('login-btn').addEventListener('click', () => {
+  const u = $('username').value.trim();
+  const p = $('password').value;
+  const err = $('login-error');
+  hide(err);
+
+  if (!u || !p) { show(err, 'Please enter both username and password.'); return; }
+  if (u !== ADMIN_USERNAME || p !== newPasswordStore) {
+    show(err, 'Invalid username or password.'); return;
+  }
+  // Success
+  window.location.href = '/admin/faq.html';
+});
+
+// Allow Enter key
+[$('username'), $('password')].forEach(el =>
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') $('login-btn').click(); })
+);
+
+$('goto-forgot').addEventListener('click', () => {
+  hide($('login-error'));
+  $('forgot-email').value = '';
+  hide($('forgot-error')); hide($('forgot-success'));
+  showPanel('panel-forgot');
+});
+
+/* ═══════════════ PANEL 2: Forgot — Send OTP ═══════════════ */
+$('send-otp-btn').addEventListener('click', async () => {
+  const email = $('forgot-email').value.trim().toLowerCase();
+  const err   = $('forgot-error');
+  const suc   = $('forgot-success');
+  hide(err); hide(suc);
+
+  if (!email) { show(err, 'Please enter the admin email address.'); return; }
+  if (email !== ADMIN_EMAIL.toLowerCase()) {
+    show(err, 'This email is not registered as the admin email.');
+    return;
+  }
+
+  const btn = $('send-otp-btn');
   btn.disabled = true;
-  btn.textContent = 'Signing in…';
-  hideError();
+  btn.textContent = 'Sending…';
+
+  currentOtp = generateOtp();
+  otpExpiry  = Date.now() + 5 * 60 * 1000; // 5 minutes
+
+  // Check if EmailJS is configured
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    // DEMO MODE: show OTP in alert (remove this block after configuring EmailJS)
+    btn.disabled = false;
+    btn.textContent = 'Send OTP';
+    alert(`[DEMO MODE]\n\nYour OTP is: ${currentOtp}\n\n(Configure EmailJS to send real emails)`);
+    showPanel('panel-otp');
+    startOtpTimer();
+    startResendCountdown();
+    return;
+  }
 
   try {
-    const user = await login(email, password);
-    const roles = user.app_metadata?.roles ?? [];
-    if (!roles.includes('admin')) {
-      showError('Your account does not have admin privileges.');
-      btn.disabled = false;
-      btn.textContent = 'Sign In';
-      return;
-    }
-    window.location.href = '/admin/faq.html';
-  } catch (err) {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email:           ADMIN_EMAIL,
+      otp:                currentOtp,
+      admin_credentials:  `Username: ${ADMIN_USERNAME}`,
+    });
     btn.disabled = false;
-    btn.textContent = 'Sign In';
-    if (err instanceof MissingIdentityError) {
-      showError('Identity service is not configured. Please contact the site owner.');
-    } else if (err instanceof AuthError) {
-      showError(err.status === 401 ? 'Invalid email or password.' : err.message);
-    } else {
-      showError('An unexpected error occurred.');
-    }
+    btn.textContent = 'Send OTP';
+    showPanel('panel-otp');
+    startOtpTimer();
+    startResendCountdown();
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Send OTP';
+    show(err, 'Failed to send OTP. Check your EmailJS configuration.');
+    console.error(e);
   }
 });
 
-function showError(msg) {
-  const el = document.getElementById('error-msg');
-  el.textContent = msg;
-  el.style.display = 'block';
+$('goto-login-from-forgot').addEventListener('click', () => showPanel('panel-login'));
+
+/* ═══════════════ OTP Timer (5 min) ═══════════════ */
+function startOtpTimer() {
+  clearInterval(otpTimerInterval);
+  otpTimerInterval = setInterval(() => {
+    const left = Math.max(0, otpExpiry - Date.now());
+    const m = String(Math.floor(left / 60000)).padStart(2, '0');
+    const s = String(Math.floor((left % 60000) / 1000)).padStart(2, '0');
+    $('otp-timer').textContent = `${m}:${s}`;
+    if (left === 0) {
+      clearInterval(otpTimerInterval);
+      currentOtp = '';
+    }
+  }, 500);
 }
-function hideError() {
-  document.getElementById('error-msg').style.display = 'none';
+
+/* ═══════════════ Resend countdown (60 s) ═══════════════ */
+function startResendCountdown() {
+  let t = 60;
+  const btn = $('resend-btn');
+  const cd  = $('resend-countdown');
+  btn.disabled = true;
+  clearInterval(resendInterval);
+  resendInterval = setInterval(() => {
+    t--;
+    cd.textContent = t;
+    if (t <= 0) {
+      clearInterval(resendInterval);
+      btn.disabled = false;
+      btn.innerHTML = 'Resend OTP';
+    }
+  }, 1000);
 }
+
+$('resend-btn').addEventListener('click', async () => {
+  if ($('resend-btn').disabled) return;
+  currentOtp = generateOtp();
+  otpExpiry  = Date.now() + 5 * 60 * 1000;
+
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    alert(`[DEMO MODE]\n\nNew OTP: ${currentOtp}`);
+  } else {
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email: ADMIN_EMAIL, otp: currentOtp, admin_credentials: `Username: ${ADMIN_USERNAME}`,
+      });
+    } catch(e) { console.error(e); }
+  }
+
+  // clear boxes
+  document.querySelectorAll('.otp-box').forEach(b => b.value = '');
+  document.querySelectorAll('.otp-box')[0].focus();
+  hide($('otp-error'));
+  startOtpTimer();
+  startResendCountdown();
+});
+
+/* ═══════════════ OTP box UX (auto-advance) ═══════════════ */
+const otpBoxes = document.querySelectorAll('.otp-box');
+otpBoxes.forEach((box, i) => {
+  box.addEventListener('input', () => {
+    box.value = box.value.replace(/[^0-9]/g,'').slice(-1);
+    if (box.value && i < otpBoxes.length - 1) otpBoxes[i + 1].focus();
+  });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'Backspace' && !box.value && i > 0) otpBoxes[i - 1].focus();
+  });
+  box.addEventListener('paste', e => {
+    const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g,'');
+    if (text.length === 6) {
+      otpBoxes.forEach((b, j) => { b.value = text[j] || ''; });
+      otpBoxes[5].focus();
+    }
+    e.preventDefault();
+  });
+});
+
+/* ═══════════════ PANEL 3: Verify OTP ═══════════════ */
+$('verify-otp-btn').addEventListener('click', () => {
+  const entered = Array.from(otpBoxes).map(b => b.value).join('');
+  const err = $('otp-error');
+  hide(err);
+
+  if (entered.length < 6) { show(err, 'Please enter the complete 6-digit OTP.'); return; }
+  if (!currentOtp)        { show(err, 'OTP has expired. Please request a new one.'); return; }
+  if (Date.now() > otpExpiry) { show(err, 'OTP has expired. Please request a new one.'); currentOtp = ''; return; }
+  if (entered !== currentOtp) { show(err, 'Incorrect OTP. Please try again.'); return; }
+
+  clearInterval(otpTimerInterval);
+  currentOtp = ''; // invalidate after use
+  showPanel('panel-reset');
+});
+
+$('goto-login-from-otp').addEventListener('click', () => {
+  clearInterval(otpTimerInterval);
+  clearInterval(resendInterval);
+  currentOtp = '';
+  showPanel('panel-login');
+});
+
+/* ═══════════════ PANEL 4: Reset Password ═══════════════ */
+$('reset-btn').addEventListener('click', () => {
+  const np  = $('new-pass').value;
+  const cp  = $('confirm-pass').value;
+  const err = $('reset-error');
+  const suc = $('reset-success');
+  hide(err); hide(suc);
+
+  if (np.length < 8)    { show(err, 'Password must be at least 8 characters.'); return; }
+  if (np !== cp)        { show(err, 'Passwords do not match.'); return; }
+
+  newPasswordStore = np; // update in-memory password
+  show(suc, '✅ Password reset successfully! Redirecting to login…');
+
+  setTimeout(() => {
+    $('new-pass').value = '';
+    $('confirm-pass').value = '';
+    $('strength-fill').style.width = '0';
+    hide(suc);
+    showPanel('panel-login');
+  }, 2500);
+});
 </script>
 </body>
 </html>
