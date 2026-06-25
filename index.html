@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5SJYTYY9W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Z5SJYTYY9W');</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SPrinova - Digital Marketing Agency | Mumbai</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111827;--ink2:#1f2937;--slate:#6b7280;--muted:#9ca3af;
+  --line:#e5e7eb;--bg:#fff;--bg2:#f9fafb;--bg3:#f3f4f6;
+  --accent:#2563eb;--accent-l:#eff6ff;--accent-m:#dbeafe;
+  --accent2:#f97316;--green:#16a34a;
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:500;height:66px;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.07)}
+.nav-logo{font-size:1.25rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.03em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--slate);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--accent);color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:background .2s,transform .15s}
+.nav-cta:hover{background:#1d4ed8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:none;background:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s}
+#mobile-nav{position:fixed;inset:0;z-index:490;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+#mobile-nav.open{transform:translateX(0)}
+#mobile-nav a{font-size:1.6rem;font-weight:700;color:var(--ink);text-decoration:none}
+#mobile-nav a:hover{color:var(--accent)}
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:5rem;padding:7rem 5rem 4rem;max-width:1280px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-l);color:var(--accent);border-radius:100px;padding:.3rem .9rem;font-size:.78rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:.02em}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.4rem,3.6vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--ink);margin-bottom:1.3rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{color:var(--slate);font-size:1rem;line-height:1.8;max-width:440px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-primary{background:var(--accent);color:#fff;padding:.8rem 1.75rem;border-radius:7px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,.25)}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--line);padding:.8rem 1.75rem;border-radius:7px;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-secondary:hover{border-color:#d1d5db;background:var(--bg2)}
+.btn-orange{background:var(--accent2);color:#fff;padding:.8rem 1.75rem;border-radius:7px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-orange:hover{background:#ea6c00;transform:translateY(-2px);box-shadow:0 8px 20px rgba(249,115,22,.25)}
+.hero-stats{display:flex;gap:2.5rem}
+.stat-item .num{font-size:1.9rem;font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.stat-item .num span{color:var(--accent)}
+.stat-item .lbl{font-size:.75rem;color:var(--muted);margin-top:.25rem;font-weight:500}
+.hero-right{position:relative}
+.hero-img-wrap{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.hero-img-wrap img{width:100%;height:460px;object-fit:cover;display:block}
+.hero-float-card{position:absolute;bottom:24px;left:-28px;background:#fff;border-radius:12px;padding:1rem 1.25rem;box-shadow:0 8px 28px rgba(0,0,0,.12);display:flex;align-items:center;gap:.85rem;min-width:195px}
+.hfc-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-l);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hfc-num{font-size:1.25rem;font-weight:800;color:var(--ink);line-height:1}
+.hfc-lbl{font-size:.7rem;color:var(--muted);font-weight:500;margin-top:2px}
+.hero-float-card2{position:absolute;top:20px;right:-18px;background:#fff;border-radius:10px;padding:.7rem 1rem;box-shadow:0 8px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:.55rem}
+.hfc2-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+.hfc2-text{font-size:.78rem;font-weight:600;color:var(--ink)}
+/* CLIENTS */
+.clients-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.4rem 2rem;background:var(--bg2)}
+.clients-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.clients-label{font-size:.72rem;font-weight:700;color:var(--muted);white-space:nowrap;letter-spacing:.06em;text-transform:uppercase}
+.clients-logos{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.client-name{font-weight:700;font-size:.9rem;color:var(--muted);opacity:.65}
+/* MARQUEE */
+.marquee-strip{overflow:hidden;padding:.9rem 0;background:var(--ink)}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite}
+.m-item{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;padding:0 2rem}
+.m-item::after{content:'\B7';color:rgba(255,255,255,.2);margin-left:2rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* SECTIONS */
+section{padding:5.5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem}
+h2{font-weight:800;font-size:clamp(1.75rem,2.6vw,2.5rem);letter-spacing:-.03em;line-height:1.12;color:var(--ink);margin-bottom:.9rem}
+h2 span{color:var(--accent)}
+.section-sub{color:var(--slate);font-size:.95rem;line-height:1.85;max-width:520px}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-22px);transition:opacity .6s ease,transform .6s ease}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal-right.visible{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+/* SERVICES */
+#services{background:var(--bg2)}
+.svc-header{text-align:center;margin-bottom:3rem}
+.svc-header .section-sub{margin:0 auto}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.svc-card{background:var(--bg);padding:1.75rem;cursor:pointer;transition:background .2s;position:relative}
+.svc-card:hover{background:var(--accent-l)}
+.svc-icon-wrap{width:48px;height:48px;border-radius:10px;background:var(--accent-l);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:background .25s}
+.svc-card:hover .svc-icon-wrap{background:var(--accent)}
+.svc-card:hover .svc-icon-wrap svg{stroke:#fff}
+.svc-name{font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.45rem}
+.svc-desc{font-size:.82rem;color:var(--slate);line-height:1.7}
+.svc-tag{display:inline-block;margin-top:.85rem;font-size:.68rem;font-weight:700;color:var(--accent);letter-spacing:.07em;text-transform:uppercase}
+.svc-arrow{position:absolute;top:1.75rem;right:1.75rem;color:var(--muted);font-size:.85rem;opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-5px)}
+.svc-card:hover .svc-arrow{opacity:1;transform:translateX(0)}
+/* WHY */
+#why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-img-col{position:relative}
+.why-img{border-radius:14px;overflow:hidden;box-shadow:0 16px 44px rgba(0,0,0,.1)}
+.why-img img{width:100%;height:420px;object-fit:cover;display:block}
+.why-img-badge{position:absolute;bottom:-18px;right:-18px;background:var(--accent);color:#fff;border-radius:12px;padding:1.1rem 1.4rem;text-align:center;box-shadow:0 8px 22px rgba(37,99,235,.3)}
+.wib-num{font-size:1.9rem;font-weight:800;line-height:1}
+.wib-lbl{font-size:.7rem;font-weight:500;opacity:.85;margin-top:4px;line-height:1.4}
+.why-items{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.8rem}
+.why-item{display:flex;gap:.9rem;align-items:flex-start}
+.why-num{width:32px;height:32px;border-radius:8px;background:var(--accent-l);color:var(--accent);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.why-title{font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:.25rem}
+.why-text{font-size:.82rem;color:var(--slate);line-height:1.7}
+/* PROCESS */
+#process{background:var(--bg2)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:27px;left:13%;right:13%;height:1px;background:repeating-linear-gradient(90deg,var(--line) 0,var(--line) 8px,transparent 8px,transparent 14px);z-index:0}
+.process-step{position:relative;z-index:1;text-align:center}
+.ps-num{width:54px;height:54px;border-radius:50%;background:var(--bg);border:2px solid var(--line);font-weight:800;font-size:1rem;color:var(--ink);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;transition:all .3s}
+.process-step:hover .ps-num{background:var(--accent);border-color:var(--accent);color:#fff}
+.ps-title{font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:.4rem}
+.ps-text{font-size:.8rem;color:var(--slate);line-height:1.7}
+/* SVC DETAIL */
+.svc-detail{border-top:1px solid var(--line);background:var(--bg)}
+.svc-detail:nth-child(even){background:var(--bg2)}
+.svc-detail-header{background:var(--ink);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.svc-detail-header::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.13),transparent 70%);top:-180px;right:-80px;pointer-events:none}
+.svc-detail-header .section-eyebrow{color:rgba(255,255,255,.5)}
+.svc-detail-header h2{color:#fff;max-width:600px;margin:0 auto .9rem}
+.svc-detail-header h2 span{color:#93c5fd}
+.svc-detail-header p{color:rgba(255,255,255,.55);max-width:510px;margin:0 auto 2rem;font-size:.95rem;line-height:1.8}
+.results-strip{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:3rem}
+.result-pill{flex:1;background:var(--bg);padding:1.2rem;text-align:center}
+.rp-num{font-weight:800;font-size:1.5rem;color:var(--accent);letter-spacing:-.02em}
+.rp-lbl{font-size:.7rem;color:var(--muted);font-weight:600;margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start}
+.feat-list{display:flex;flex-direction:column;gap:.75rem;margin-top:1.4rem}
+.feat-item{display:flex;gap:.85rem;align-items:flex-start;padding:.95rem;border:1px solid var(--line);border-radius:8px;transition:border-color .2s,background .2s}
+.feat-item:hover{border-color:rgba(37,99,235,.2);background:var(--accent-l)}
+.fi-icon{width:36px;height:36px;border-radius:8px;flex-shrink:0;background:var(--accent-l);display:flex;align-items:center;justify-content:center}
+.fi-title{font-weight:700;font-size:.87rem;color:var(--ink);margin-bottom:.2rem}
+.fi-desc{font-size:.79rem;color:var(--slate);line-height:1.65}
+.step-list{display:flex;flex-direction:column;gap:1.1rem;margin-top:1.4rem}
+.step-row{display:flex;gap:.9rem;align-items:flex-start}
+.sn{width:32px;height:32px;border-radius:8px;flex-shrink:0;background:var(--ink);color:#fff;font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center}
+.st-title{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:.2rem}
+.st-desc{font-size:.79rem;color:var(--slate);line-height:1.65}
+.feat-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.4rem}
+/* RESULTS */
+#results{background:var(--bg)}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.results-img{border-radius:14px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.results-img img{width:100%;height:380px;object-fit:cover;display:block}
+.results-numbers{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.8rem}
+.rn-card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:1.1rem}
+.rn-num{font-weight:800;font-size:1.5rem;color:var(--accent);letter-spacing:-.02em}
+.rn-lbl{font-size:.76rem;color:var(--muted);margin-top:3px;font-weight:500}
+/* TESTIMONIALS */
+#testimonials{background:var(--bg2)}
+.test-header{text-align:center;margin-bottom:2.8rem}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+.t-card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1.8rem;transition:box-shadow .2s,transform .2s}
+.t-card:hover{box-shadow:0 10px 32px rgba(0,0,0,.07);transform:translateY(-3px)}
+.t-stars{display:flex;gap:3px;margin-bottom:1rem}
+.t-star{width:14px;height:14px;fill:#f59e0b}
+.t-text{color:var(--slate);font-size:.87rem;line-height:1.8;margin-bottom:1.4rem;font-style:italic}
+.t-author{display:flex;align-items:center;gap:.7rem}
+.t-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:var(--accent);color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.t-name{font-weight:700;font-size:.87rem;color:var(--ink)}
+.t-role{font-size:.73rem;color:var(--muted)}
+/* BLOG */
+#blog{background:var(--bg)}
+.blog-header{text-align:center;margin-bottom:1.4rem}
+.blog-tabs{display:flex;justify-content:center;gap:.5rem;margin-bottom:2.4rem;flex-wrap:wrap}
+.blog-tab{padding:.38rem 1rem;border-radius:100px;border:1.5px solid var(--line);font-size:.79rem;font-weight:600;color:var(--slate);background:transparent;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.blog-tab.active,.blog-tab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.blog-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:box-shadow .2s,transform .2s}
+.blog-card:hover{box-shadow:0 10px 28px rgba(0,0,0,.07);transform:translateY(-3px)}
+.blog-img{height:180px;object-fit:cover;width:100%;display:block}
+.blog-img-ph{height:180px;display:flex;align-items:center;justify-content:center;background:var(--accent-l)}
+.blog-body{padding:1.25rem}
+.blog-meta{display:flex;align-items:center;gap:.65rem;margin-bottom:.65rem}
+.blog-cat{font-size:.67rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;background:var(--accent-l);padding:.18rem .5rem;border-radius:4px}
+.blog-date{font-size:.73rem;color:var(--muted)}
+.blog-title{font-weight:700;font-size:.93rem;color:var(--ink);line-height:1.4;margin-bottom:.45rem}
+.blog-excerpt{font-size:.8rem;color:var(--slate);line-height:1.7;margin-bottom:.9rem}
+.blog-read{font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none}
+.blog-read:hover{text-decoration:underline}
+/* PRICING */
+#pricing{background:var(--bg2)}
+.pricing-header{text-align:center;margin-bottom:2.8rem}
+.pricing-header .section-sub{margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem}
+.price-card{background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:2rem;transition:all .25s;position:relative}
+.price-card:hover{box-shadow:0 14px 36px rgba(0,0,0,.07);transform:translateY(-4px)}
+.price-card.popular{border-color:var(--accent)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;border-radius:100px;padding:.22rem 1rem;font-size:.7rem;font-weight:700;white-space:nowrap;letter-spacing:.04em}
+.price-plan{font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+.price-amount{font-weight:800;font-size:2.3rem;color:var(--ink);line-height:1;margin-bottom:.3rem;letter-spacing:-.03em}
+.price-amount sup{font-size:1rem;vertical-align:super;color:var(--accent)}
+.price-period{font-size:.78rem;color:var(--muted);margin-bottom:1.6rem}
+.price-features{list-style:none;margin-bottom:1.8rem;display:flex;flex-direction:column;gap:.6rem}
+.price-features li{display:flex;align-items:flex-start;gap:.55rem;font-size:.84rem;color:var(--slate)}
+.pchk{width:16px;height:16px;flex-shrink:0;margin-top:1px;color:var(--green)}
+/* FAQ */
+#faq{background:var(--bg)}
+.faq-header{text-align:center;margin-bottom:2.8rem}
+.faq-header .section-sub{margin:0 auto}
+.faq-grid{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:.65rem}
+.faq-item{border:1.5px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:rgba(37,99,235,.25)}
+.faq-q{padding:1.05rem 1.25rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:1rem;background:var(--bg)}
+.faq-q-text{font-weight:600;font-size:.91rem;color:var(--ink);line-height:1.4;transition:color .2s}
+.faq-q:hover .faq-q-text{color:var(--accent)}
+.faq-chev{width:26px;height:26px;border-radius:6px;flex-shrink:0;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .2s}
+.faq-item.open .faq-chev{transform:rotate(180deg);background:var(--accent-l);border-color:rgba(37,99,235,.2)}
+.faq-item.open .faq-chev svg{stroke:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:600px}
+.faq-a-inner{padding:.2rem 1.25rem 1.05rem;color:var(--slate);font-size:.86rem;line-height:1.85;border-top:1px solid var(--line)}
+.faq-empty,.faq-loading{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:.88rem}
+/* CONTACT */
+#contact{background:var(--ink);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.11),transparent 70%);top:-280px;right:-160px;pointer-events:none}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
+.contact-left .section-eyebrow{color:rgba(255,255,255,.4)}
+.contact-left h2{color:#fff}
+.contact-left h2 span{color:#93c5fd}
+.contact-left p{color:rgba(255,255,255,.5);font-size:.95rem;line-height:1.8;margin-top:.75rem;margin-bottom:2.2rem}
+.contact-info{display:flex;flex-direction:column;gap:1.1rem}
+.ci-row{display:flex;align-items:flex-start;gap:.85rem}
+.ci-ico{width:38px;height:38px;border-radius:9px;flex-shrink:0;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center}
+.ci-label{font-size:.68rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:2px}
+.ci-val{font-size:.87rem;color:rgba(255,255,255,.72);font-weight:500}
+.contact-form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.8rem}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.cf-full{grid-column:1/-1}
+.cf-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.82rem 1rem;color:#fff;font-family:var(--font);font-size:.875rem;outline:none;transition:border-color .2s}
+.cf-input:focus{border-color:rgba(37,99,235,.55);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.cf-input::placeholder{color:rgba(255,255,255,.26)}
+.cf-input option{background:#1f2937;color:#fff}
+.cf-textarea{min-height:95px;resize:vertical}
+.cf-submit{width:100%;background:var(--accent);color:#fff;border:none;cursor:pointer;padding:.9rem;border-radius:7px;font-family:var(--font);font-weight:700;font-size:.92rem;transition:all .2s;margin-top:.25rem;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none}
+.cf-submit:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 8px 18px rgba(37,99,235,.35)}
+/* FOOTER */
+footer{background:#060a14;border-top:1px solid rgba(255,255,255,.06);padding:2.25rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.1rem}
+.footer-logo{font-size:1.1rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em}
+.footer-logo span{color:#60a5fa}
+.footer-copy{color:rgba(255,255,255,.28);font-size:.76rem}
+.footer-links{display:flex;gap:1.4rem}
+.footer-links a{color:rgba(255,255,255,.38);text-decoration:none;font-size:.76rem;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+.footer-social{display:flex;gap:.5rem}
+.social-btn{width:34px;height:34px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .2s}
+.social-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+/* MISC */
+#btt{position:fixed;bottom:2rem;right:2rem;z-index:400;width:40px;height:40px;border-radius:8px;background:var(--ink);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(14px);transition:all .3s;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+#btt.show{opacity:1;transform:translateY(0)}
+#btt:hover{background:var(--accent);transform:translateY(-2px)}
+.svc-nav{background:var(--bg);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;align-items:center;position:sticky;top:66px;z-index:100;overflow-x:auto}
+.svc-nav-tab{padding:.95rem 1.4rem;font-size:.82rem;font-weight:600;color:var(--slate);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+.svc-nav-tab:hover{color:var(--ink)}
+.svc-nav-tab.active{border-bottom-color:var(--accent);color:var(--accent)}
+/* MODAL */
+#svc-overlay{position:fixed;inset:0;z-index:800;background:rgba(17,24,39,.6);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+@media(min-width:700px){#svc-overlay{align-items:center}}
+#svc-overlay.open{opacity:1;pointer-events:auto}
+#svc-modal{background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:560px;max-height:88vh;overflow-y:auto;transform:translateY(40px);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+@media(min-width:700px){#svc-modal{border-radius:16px;transform:translateY(18px) scale(.97)}}
+#svc-overlay.open #svc-modal{transform:translateY(0) scale(1)}
+.sm-hd{background:var(--ink);border-radius:14px 14px 0 0;padding:1.75rem 1.9rem;position:relative}
+.sm-close{position:absolute;top:1rem;right:1rem;width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:.9rem;transition:background .2s}
+.sm-close:hover{background:rgba(255,255,255,.2);color:#fff}
+.sm-ico{width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
+.sm-label{font-size:.66rem;color:rgba(255,255,255,.38);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.sm-title{font-weight:800;font-size:1.25rem;color:#fff;margin-bottom:.4rem}
+.sm-tagline{font-size:.84rem;color:rgba(255,255,255,.52);line-height:1.6}
+.sm-body{padding:1.75rem 1.9rem}
+.sm-stats{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.sm-stat{flex:1;min-width:88px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:.85rem;text-align:center}
+.sm-stat-num{font-weight:800;font-size:1.25rem;color:var(--accent)}
+.sm-stat-lbl{font-size:.63rem;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.05em}
+.sm-sec-title{font-weight:700;font-size:.82rem;color:var(--ink);margin:1.25rem 0 .75rem;display:flex;align-items:center;gap:.45rem;text-transform:uppercase;letter-spacing:.05em}
+.sm-sec-title::before{content:'';display:block;width:3px;height:14px;border-radius:2px;background:var(--accent)}
+.sm-feats{display:flex;flex-direction:column;gap:.55rem}
+.sm-feat{display:flex;gap:.7rem;align-items:flex-start;padding:.85rem;background:var(--bg2);border:1px solid var(--line);border-radius:8px;transition:border-color .2s}
+.sm-feat:hover{border-color:rgba(37,99,235,.22)}
+.sm-feat-ico{width:32px;height:32px;border-radius:7px;flex-shrink:0;background:var(--accent-l);display:flex;align-items:center;justify-content:center}
+.sm-feat-title{font-weight:700;font-size:.82rem;color:var(--ink)}
+.sm-feat-desc{font-size:.76rem;color:var(--slate);line-height:1.6;margin-top:.12rem}
+.sm-cta{margin-top:1.6rem;background:var(--accent);color:#fff;border:none;cursor:pointer;width:100%;padding:.9rem;border-radius:8px;font-family:var(--font);font-weight:700;font-size:.9rem;transition:all .2s}
+.sm-cta:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 8px 18px rgba(37,99,235,.3)}
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;padding:6.5rem 2rem 3rem;gap:2.5rem;text-align:center;min-height:auto}
+  .hero-sub,.hero-btns,.hero-stats{max-width:100%;justify-content:center}
+  .hero-right{display:none}
+  .why-grid,.results-grid,.contact-wrap,.two-col{grid-template-columns:1fr;gap:2.5rem}
+  .process-steps{grid-template-columns:1fr 1fr;gap:1.4rem}
+  .process-steps::before{display:none}
+  nav{padding:0 1.2rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .feat-grid-2{grid-template-columns:1fr}
+  .cf-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .process-steps,.pricing-grid{grid-template-columns:1fr}
+  .results-numbers{grid-template-columns:1fr 1fr}
+  h1{font-size:2.2rem}
+  section{padding:4rem 1.5rem}
+}
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #6C3FD4;
+    --accent: #FF6B35;
+    --dark: #1A1A2E;
+    --light: #F8F6FF;
+    --text: #2D2D2D;
+    --muted: #7A7A9A;
+    --card: #FFFFFF;
+    --border: #E8E4F0;
+    --success: #22C55E;
+    --danger: #EF4444;
+    --warn: #F59E0B;
+  }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--light); color: var(--text); min-height: 100vh; }
+
+  /* ─── AUTH SCREENS ─── */
+  .auth-wrap {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--dark) 0%, #2D1B69 100%); padding: 2rem;
+  }
+  .auth-card {
+    background: var(--card); border-radius: 20px; padding: 2.5rem;
+    width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .auth-logo { text-align: center; margin-bottom: 2rem; }
+  .auth-logo h1 { font-size: 1.6rem; font-weight: 900; color: var(--dark); }
+  .auth-logo h1 span { color: var(--primary); }
+  .auth-logo p { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+  .auth-badge { background: #EDE7FF; color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
+
+  label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; margin-top: 1.2rem; }
+  .input-wrap { position: relative; }
+  input[type=text], input[type=email], input[type=password], textarea, select {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+    border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s;
+    background: #fff; color: var(--text);
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--primary); }
+  .eye-btn {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted);
+  }
+
+  .btn {
+    width: 100%; padding: 13px; border: none; border-radius: 10px;
+    font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 1.5rem; transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-accent  { background: var(--accent);  color: #fff; }
+  .btn-ghost   { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+
+  .auth-link { text-align: center; margin-top: 1.2rem; font-size: 0.88rem; color: var(--muted); }
+  .auth-link a { color: var(--primary); font-weight: 600; text-decoration: none; cursor: pointer; }
+
+  .error-msg { background: #FEE2E2; color: var(--danger); border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; margin-top: 1rem; display: none; }
+  .error-msg.show { display: block; }
+  .info-msg  { background: #EDE7FF; color: var(--primary); border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; margin-top: 1rem; display: none; }
+  .info-msg.show { display: block; }
+
+  /* OTP boxes */
+  .otp-inputs { display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.5rem; }
+  .otp-inputs input {
+    width: 48px; height: 54px; text-align: center; font-size: 1.4rem; font-weight: 700;
+    border: 2px solid var(--border); border-radius: 10px; padding: 0;
+  }
+  .otp-inputs input:focus { border-color: var(--primary); }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ─── ADMIN SHELL ─── */
+  #admin-shell { display: none; min-height: 100vh; }
+  #admin-shell.active { display: flex; }
+
+  .sidebar {
+    width: 240px; background: var(--dark); color: #fff; flex-shrink: 0;
+    display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar-logo { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .sidebar-logo h2 { font-size: 1.1rem; font-weight: 900; }
+  .sidebar-logo h2 span { color: var(--accent); }
+  .sidebar-logo p  { color: rgba(255,255,255,0.5); font-size: 0.75rem; margin-top: 0.2rem; }
+  .sidebar-nav { padding: 1rem 0; flex: 1; }
+  .nav-item {
+    display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1.5rem;
+    cursor: pointer; color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500;
+    transition: background 0.2s, color 0.2s; border-left: 3px solid transparent;
+  }
+  .nav-item:hover  { background: rgba(255,255,255,0.06); color: #fff; }
+  .nav-item.active { background: rgba(108,63,212,0.3); color: #fff; border-left-color: var(--accent); }
+  .nav-item .icon  { font-size: 1.1rem; }
+  .sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .sidebar-footer button { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: none; padding: 9px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; width: 100%; transition: background 0.2s; }
+  .sidebar-footer button:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .main-content { margin-left: 240px; flex: 1; padding: 2rem; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* DASHBOARD */
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+  .stat-card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+  .stat-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+  .stat-icon.purple { background: #EDE7FF; }
+  .stat-icon.orange { background: #FFF0EB; }
+  .stat-icon.green  { background: #ECFDF5; }
+  .stat-val  { font-size: 2rem; font-weight: 800; color: var(--dark); line-height: 1; }
+  .stat-lbl  { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* PANEL HEADER */
+  .panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .panel-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+  .add-btn { background: var(--primary); color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s; }
+  .add-btn:hover { opacity: 0.88; }
+
+  /* FORM MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: none; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--card); border-radius: 18px; padding: 2rem; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+  .modal-box h3 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem; }
+  .modal-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+  .modal-actions button { flex: 1; padding: 12px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.95rem; border: none; transition: opacity 0.2s; }
+  .modal-actions .save-btn   { background: var(--primary); color: #fff; }
+  .modal-actions .cancel-btn { background: var(--light); color: var(--text); border: 1px solid var(--border); }
+  .modal-actions button:hover { opacity: 0.88; }
+  textarea { resize: vertical; min-height: 160px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .toggle-wrap { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.2rem; }
+  .toggle-wrap label { margin: 0; }
+  .toggle { width: 44px; height: 24px; background: var(--border); border-radius: 12px; position: relative; cursor: pointer; transition: background 0.2s; }
+  .toggle.on { background: var(--success); }
+  .toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: transform 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+  .toggle.on::after { transform: translateX(20px); }
+
+  /* POSTS TABLE */
+  .posts-table { background: var(--card); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+  .posts-table table { width: 100%; border-collapse: collapse; }
+  .posts-table th { background: var(--light); padding: 12px 16px; text-align: left; font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .posts-table td { padding: 14px 16px; border-top: 1px solid var(--border); font-size: 0.9rem; vertical-align: middle; }
+  .posts-table tr:hover td { background: #FBFAFF; }
+  .status-pill { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .status-pill.published { background: #ECFDF5; color: var(--success); }
+  .status-pill.draft     { background: #FEF3C7; color: var(--warn); }
+  .action-btns { display: flex; gap: 0.5rem; }
+  .edit-btn   { background: #EDE7FF; color: var(--primary); border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: opacity 0.2s; }
+  .del-btn    { background: #FEE2E2; color: var(--danger);  border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: opacity 0.2s; }
+  .edit-btn:hover, .del-btn:hover { opacity: 0.75; }
+  .empty-table { text-align: center; padding: 3rem; color: var(--muted); }
+  .empty-table .icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem; background: var(--dark); color: #fff;
+    padding: 12px 24px; border-radius: 12px; font-size: 0.9rem; font-weight: 500;
+    z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .toast.show { opacity: 1; }
+
+  /* CONFIRM MODAL */
+  .confirm-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 600; display: none; align-items: center; justify-content: center; }
+  .confirm-modal.open { display: flex; }
+  .confirm-box { background: var(--card); border-radius: 16px; padding: 2rem; max-width: 380px; width: 90%; text-align: center; }
+  .confirm-box h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .confirm-box p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .confirm-btns { display: flex; gap: 1rem; justify-content: center; }
+  .confirm-btns button { padding: 10px 28px; border-radius: 10px; font-weight: 700; cursor: pointer; border: none; font-size: 0.95rem; }
+  .confirm-yes { background: var(--danger); color: #fff; }
+  .confirm-no  { background: var(--light);  color: var(--text); border: 1px solid var(--border) !important; }
+
+  @media (max-width: 768px) {
+    .sidebar { width: 200px; }
+    .main-content { margin-left: 200px; padding: 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .sidebar { display: none; }
+    .main-content { margin-left: 0; }
+  }
+
+</style>
+</head>
+<body>
+<div id="public-site">
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#results" onclick="closeMobile()">Results</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#blog" onclick="closeMobile()">Blog</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#" onclick="closeMobile();showAdminLogin();return false;" style="font-size:1.2rem;color:#9ca3af;margin-top:1rem">Admin Panel</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">SPrinova<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="showAdminLogin();return false;" style="font-size:.78rem;color:#9ca3af;padding:.3rem .5rem">Admin</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section style="padding:0;min-height:100vh;display:flex;align-items:center">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Mumbai's Digital Growth Agency</div>
+      <h1>Grow your business <em>faster online</em><br>with strategy that converts</h1>
+      <p class="hero-sub">SPrinova handles your SEO, social media, paid ads, and web presence so you can focus on running your business while we scale it.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get Free Strategy Call &rarr;</a>
+        <a href="#services" class="btn-secondary">See Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="num">200<span>+</span></div><div class="lbl">Clients Served</div></div>
+        <div class="stat-item"><div class="num">4.9<span>&#9733;</span></div><div class="lbl">Avg. Rating</div></div>
+        <div class="stat-item"><div class="num">3<span>&times;</span></div><div class="lbl">Avg. Growth</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&fit=crop&crop=faces,center" alt="Marketing team"/>
+      </div>
+      <div class="hero-float-card">
+        <div class="hfc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div><div class="hfc-num">+340%</div><div class="hfc-lbl">Avg. Organic Traffic Growth</div></div>
+      </div>
+      <div class="hero-float-card2">
+        <div class="hfc2-dot"></div>
+        <div class="hfc2-text">Live campaigns running</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients-strip">
+  <div class="clients-inner">
+    <span class="clients-label">Trusted by</span>
+    <div class="clients-logos">
+      <span class="client-name">Sharma Boutique</span>
+      <span class="client-name">PM Consulting</span>
+      <span class="client-name">Desai Real Estate</span>
+      <span class="client-name">FitLife India</span>
+      <span class="client-name">TechBridge Solutions</span>
+      <span class="client-name">Green Harvest</span>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="m-item">Social Media</span><span class="m-item">SEO Ranking</span><span class="m-item">Meta Ads</span><span class="m-item">Google Ads</span><span class="m-item">Graphic Design</span><span class="m-item">App Development</span><span class="m-item">Google My Business</span><span class="m-item">LinkedIn Growth</span><span class="m-item">Web Development</span><span class="m-item">Google Analytics</span><span class="m-item">On-Page SEO</span><span class="m-item">Off-Page SEO</span>
+    <span class="m-item">Social Media</span><span class="m-item">SEO Ranking</span><span class="m-item">Meta Ads</span><span class="m-item">Google Ads</span><span class="m-item">Graphic Design</span><span class="m-item">App Development</span><span class="m-item">Google My Business</span><span class="m-item">LinkedIn Growth</span><span class="m-item">Web Development</span><span class="m-item">Google Analytics</span><span class="m-item">On-Page SEO</span><span class="m-item">Off-Page SEO</span>
+  </div>
+</div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="svc-header reveal">
+      <span class="section-eyebrow">What We Do</span>
+      <h2>Everything your brand needs to <span>win online</span></h2>
+      <p class="section-sub">One agency for social media, SEO, paid ads, web development, and design &mdash; no juggling vendors.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal d1" data-service="social">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div class="svc-name">Social Media Handling</div>
+        <div class="svc-desc">Daily content, community management, and growth strategy across Instagram, Facebook, and more.</div>
+        <div class="svc-tag">Content + Strategy</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d2" data-service="linkedin">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="svc-name">LinkedIn Page Growth</div>
+        <div class="svc-desc">Profile optimisation, thought leadership content, and organic B2B lead generation on LinkedIn.</div>
+        <div class="svc-tag">B2B Growth</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d3" data-service="gmb">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="svc-name">Google My Business</div>
+        <div class="svc-desc">Rank in local searches, manage reviews, and drive foot traffic and calls from nearby customers.</div>
+        <div class="svc-tag">Local SEO</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d4" data-service="ga4">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="svc-name">Google Analytics (GA4)</div>
+        <div class="svc-desc">Full GA4 setup, conversion tracking, and monthly reports to guide smarter business decisions.</div>
+        <div class="svc-tag">Data &amp; Insights</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d5" data-service="webdev">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="svc-name">Web Development</div>
+        <div class="svc-desc">Fast, mobile-friendly websites that convert visitors into customers on modern frameworks.</div>
+        <div class="svc-tag">Design + Dev</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d6" data-service="seo">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="svc-name">SEO Ranking</div>
+        <div class="svc-desc">Page 1 rankings through keyword research, technical audits, content strategy, and link building.</div>
+        <div class="svc-tag">Organic Traffic</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d1" data-service="onpage">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="svc-name">On-Page SEO</div>
+        <div class="svc-desc">Title tags, meta descriptions, schema markup, and content optimisation for every page.</div>
+        <div class="svc-tag">Technical SEO</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d2" data-service="offpage">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div class="svc-name">Off-Page SEO</div>
+        <div class="svc-desc">Quality backlinks, guest posts, and brand mentions to build domain authority and climb rankings.</div>
+        <div class="svc-tag">Authority Building</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d3" data-service="metaads">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="svc-name">Meta Ads</div>
+        <div class="svc-desc">Facebook and Instagram campaigns with audience research, creatives, and daily optimisation for ROAS.</div>
+        <div class="svc-tag">Paid Advertising</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d4" data-service="googleads">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        <div class="svc-name">Google Ads (PPC)</div>
+        <div class="svc-desc">Search, Display, Shopping, and YouTube campaigns managed end-to-end to maximise every rupee spent.</div>
+        <div class="svc-tag">PPC &amp; SEM</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d5" data-service="design">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="#2563eb"/><circle cx="17.5" cy="10.5" r=".5" fill="#2563eb"/><circle cx="8.5" cy="7.5" r=".5" fill="#2563eb"/><circle cx="6.5" cy="12.5" r=".5" fill="#2563eb"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
+        <div class="svc-name">Graphic Design</div>
+        <div class="svc-desc">Brand identity, social creatives, banners, and brochures &mdash; designed to make your brand unforgettable.</div>
+        <div class="svc-tag">Brand &amp; Creative</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+      <div class="svc-card reveal d6" data-service="appdev">
+        <div class="svc-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <div class="svc-name">App Development</div>
+        <div class="svc-desc">iOS and Android apps and PWAs &mdash; from wireframe to App Store launch with end-to-end project management.</div>
+        <div class="svc-tag">Mobile &amp; Web Apps</div>
+        <span class="svc-arrow">&#8594;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-img-col reveal-left">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop&crop=center" alt="Team collaboration"/>
+        </div>
+        <div class="why-img-badge">
+          <div class="wib-num">5+</div>
+          <div class="wib-lbl">Years delivering<br>real results</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <span class="section-eyebrow">Why SPrinova</span>
+        <h2>We don&rsquo;t just run campaigns &mdash; we <span>grow businesses</span></h2>
+        <p class="section-sub">Most agencies send you a report and move on. We treat your business like our own &mdash; tracking every metric, adjusting every week, only celebrating when you grow.</p>
+        <div class="why-items">
+          <div class="why-item"><div class="why-num">01</div><div><div class="why-title">Full Transparency</div><div class="why-text">Plain-English reports every month &mdash; no vanity metrics. You see exactly what we&rsquo;re doing and why it&rsquo;s working.</div></div></div>
+          <div class="why-item"><div class="why-num">02</div><div><div class="why-title">Dedicated Account Manager</div><div class="why-text">One person who knows your business inside out. Reachable on WhatsApp, responsive, and invested in your growth.</div></div></div>
+          <div class="why-item"><div class="why-num">03</div><div><div class="why-title">Strategy Before Execution</div><div class="why-text">We research your market, competitors, and audience before spending a single rupee on any campaign.</div></div></div>
+          <div class="why-item"><div class="why-num">04</div><div><div class="why-title">No Lock-In Contracts</div><div class="why-text">We earn your business every month. If we&rsquo;re not delivering results, you can walk away &mdash; we&rsquo;re that confident.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <span class="section-eyebrow">How We Work</span>
+      <h2>From first call to <span>measurable results</span></h2>
+      <p class="section-sub" style="margin:0 auto">A clear process that puts your goals first &mdash; no surprises, no fluff.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal d1"><div class="ps-num">01</div><div class="ps-title">Discovery Call</div><div class="ps-text">We learn your business, goals, and current challenges in a free 30-minute strategy session.</div></div>
+      <div class="process-step reveal d2"><div class="ps-num">02</div><div class="ps-title">Audit &amp; Strategy</div><div class="ps-text">We audit your digital presence, research competitors, and build a tailored growth plan.</div></div>
+      <div class="process-step reveal d3"><div class="ps-num">03</div><div class="ps-title">Execute &amp; Optimise</div><div class="ps-text">We launch campaigns, create content, and adjust daily based on what the data tells us.</div></div>
+      <div class="process-step reveal d4"><div class="ps-num">04</div><div class="ps-title">Report &amp; Scale</div><div class="ps-text">Monthly reports with real numbers, plus a plan to scale what&rsquo;s working and double down on growth.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SVC NAV -->
+<div class="svc-nav">
+  <a href="#services" class="svc-nav-tab active">All Services</a>
+  <a href="#google-ads" class="svc-nav-tab">Google Ads</a>
+  <a href="#graphic-design" class="svc-nav-tab">Graphic Design</a>
+  <a href="#app-development" class="svc-nav-tab">App Development</a>
+</div>
+<!-- GOOGLE ADS DETAIL -->
+<section id="google-ads" style="border-top:1px solid var(--line)">
+  <div class="svc-detail-header">
+    <span class="section-eyebrow">Paid Search &amp; Display</span>
+    <h2>Google Ads that <span>actually convert</span></h2>
+    <p>From Search to Shopping to YouTube &mdash; we manage campaigns that put your brand in front of buyers at the exact moment they&rsquo;re ready to act. Every rupee tracked, every click optimised.</p>
+    <a href="#contact" class="btn-orange">Get a Free Audit &rarr;</a>
+  </div>
+  <div class="section-inner" style="padding:4rem 2rem">
+    <div class="results-strip reveal">
+      <div class="result-pill"><div class="rp-num">4.8&times;</div><div class="rp-lbl">Avg. ROAS</div></div>
+      <div class="result-pill"><div class="rp-num">&minus;38%</div><div class="rp-lbl">Cost Per Click</div></div>
+      <div class="result-pill"><div class="rp-num">+320%</div><div class="rp-lbl">Conversions</div></div>
+      <div class="result-pill"><div class="rp-num">100%</div><div class="rp-lbl">Transparent Reports</div></div>
+    </div>
+    <div class="two-col">
+      <div class="reveal-left">
+        <span class="section-eyebrow">What&rsquo;s Included</span>
+        <h2 style="font-size:1.6rem">Full-funnel <span>PPC management</span></h2>
+        <div class="feat-list"><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div><div class="fi-title">Search Campaigns</div><div class="fi-desc">High-intent keywords with compelling ads that capture buyers ready to convert.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><div class="fi-title">Display &amp; Remarketing</div><div class="fi-desc">Re-engage visitors who didn&rsquo;t convert with smart banner ads across Google&rsquo;s Display Network.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><div><div class="fi-title">Shopping &amp; Performance Max</div><div class="fi-desc">Drive product sales with Shopping campaigns optimised for ROAS and revenue growth.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><div class="fi-title">YouTube Video Ads</div><div class="fi-desc">Build brand awareness and drive action with video ads on the world&rsquo;s #2 search engine.</div></div></div>        </div>
+      </div>
+      <div class="reveal-right">
+        <span class="section-eyebrow">Our Process</span>
+        <h2 style="font-size:1.6rem">How we <span>run your ads</span></h2>
+        <div class="step-list"><div class="step-row"><div class="sn">01</div><div><div class="st-title">Account Audit &amp; Research</div><div class="st-desc">Audit your existing account, research competitors, and map out a winning keyword strategy.</div></div></div><div class="step-row"><div class="sn">02</div><div><div class="st-title">Campaign Setup &amp; Ad Copy</div><div class="st-desc">Structured campaigns, tight ad groups, and conversion-optimised landing page recommendations.</div></div></div><div class="step-row"><div class="sn">03</div><div><div class="st-title">Launch &amp; Daily Optimisation</div><div class="st-desc">We monitor bids, negative keywords, quality scores, and performance daily.</div></div></div><div class="step-row"><div class="sn">04</div><div><div class="st-title">Monthly Report &amp; Scale</div><div class="st-desc">Clear reports with key metrics plus a scaling plan to grow budget on what&rsquo;s proven to work.</div></div></div>        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="#contact" class="btn-primary">Launch My Google Ads Campaign &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- GRAPHIC DESIGN DETAIL -->
+<section id="graphic-design" style="border-top:1px solid var(--line);background:var(--bg2)">
+  <div class="svc-detail-header" style="background:#0f172a">
+    <span class="section-eyebrow">Brand &amp; Creative Design</span>
+    <h2>Design that <span>stops the scroll</span></h2>
+    <p>From logos and brand identity to social media creatives and pitch decks &mdash; our designers create visuals that are beautiful, on-brand, and built to drive action.</p>
+    <a href="#contact" class="btn-orange">Request a Design Quote &rarr;</a>
+  </div>
+  <div class="section-inner" style="padding:4rem 2rem">
+    <div class="results-strip reveal">
+      <div class="result-pill"><div class="rp-num">500+</div><div class="rp-lbl">Designs Delivered</div></div>
+      <div class="result-pill"><div class="rp-num">48hr</div><div class="rp-lbl">Turnaround</div></div>
+      <div class="result-pill"><div class="rp-num">&#8734;</div><div class="rp-lbl">Revisions</div></div>
+      <div class="result-pill"><div class="rp-num">5.0&#9733;</div><div class="rp-lbl">Client Rating</div></div>
+    </div>
+    <div style="text-align:center;margin-bottom:1.5rem" class="reveal">
+      <span class="section-eyebrow">Design Services</span>
+      <h2 style="font-size:1.6rem">Everything <span>visual &amp; creative</span></h2>
+    </div>
+    <div class="feat-grid-2 reveal"><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div><div><div class="fi-title">Logo &amp; Brand Identity</div><div class="fi-desc">Complete brand kits &mdash; logo, colour palette, typography, and brand guidelines.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div><div class="fi-title">Social Media Creatives</div><div class="fi-desc">Posts, stories, reels covers, and carousels for Instagram, Facebook, and LinkedIn.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><div class="fi-title">Brochures &amp; Flyers</div><div class="fi-desc">Print-ready and digital brochures that make your offline marketing look professional.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div class="fi-title">Pitch Decks &amp; Presentations</div><div class="fi-desc">Investor decks and sales presentations that tell your story and close deals.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><div class="fi-title">Banners &amp; Ad Creatives</div><div class="fi-desc">High-converting Google Display banners and Meta ad creatives for every platform.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div><div class="fi-title">Packaging &amp; Print</div><div class="fi-desc">Product packaging, business cards, and branded merchandise for a complete brand experience.</div></div></div>    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="#contact" class="btn-primary">Request a Design Quote &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- APP DEVELOPMENT DETAIL -->
+<section id="app-development" style="border-top:1px solid var(--line)">
+  <div class="svc-detail-header" style="background:#0c1a12">
+    <span class="section-eyebrow">Mobile &amp; Web Apps</span>
+    <h2>Apps people <span>love to use</span></h2>
+    <p>From wireframe to App Store &mdash; we build iOS and Android apps, PWAs, and backend systems that are fast, clean, and built around your users.</p>
+    <a href="#contact" class="btn-orange">Discuss Your App &rarr;</a>
+  </div>
+  <div class="section-inner" style="padding:4rem 2rem">
+    <div class="results-strip reveal">
+      <div class="result-pill"><div class="rp-num">20+</div><div class="rp-lbl">Apps Launched</div></div>
+      <div class="result-pill"><div class="rp-num">4.8&#9733;</div><div class="rp-lbl">Avg. App Rating</div></div>
+      <div class="result-pill"><div class="rp-num">iOS+</div><div class="rp-lbl">Cross-Platform</div></div>
+      <div class="result-pill"><div class="rp-num">100%</div><div class="rp-lbl">On-Time Delivery</div></div>
+    </div>
+    <div class="two-col">
+      <div class="reveal-left">
+        <span class="section-eyebrow">What We Build</span>
+        <h2 style="font-size:1.6rem">Full-stack <span>app development</span></h2>
+        <div class="feat-list"><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><div><div class="fi-title">UI/UX Wireframing</div><div class="fi-desc">User research and interactive prototypes designed before a line of code is written.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><div class="fi-title">Native &amp; Cross-Platform Apps</div><div class="fi-desc">React Native and Flutter apps that run beautifully on both iOS and Android.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="fi-title">Progressive Web Apps (PWA)</div><div class="fi-desc">App-like web experiences that work offline &mdash; no App Store needed.</div></div></div><div class="feat-item"><div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><div><div class="fi-title">API &amp; Backend Integration</div><div class="fi-desc">Secure REST APIs, third-party integrations, and scalable backend architecture.</div></div></div>        </div>
+      </div>
+      <div class="reveal-right">
+        <span class="section-eyebrow">From Idea to Launch</span>
+        <h2 style="font-size:1.6rem">Our development <span>process</span></h2>
+        <div class="step-list"><div class="step-row"><div class="sn">01</div><div><div class="st-title">Discovery &amp; Scoping</div><div class="st-desc">We define features, tech stack, and timelines before any development begins.</div></div></div><div class="step-row"><div class="sn">02</div><div><div class="st-title">Design &amp; Prototyping</div><div class="st-desc">High-fidelity mockups and clickable prototypes for your approval before coding.</div></div></div><div class="step-row"><div class="sn">03</div><div><div class="st-title">Development &amp; Testing</div><div class="st-desc">Agile development with weekly updates, QA testing, and performance optimisation.</div></div></div><div class="step-row"><div class="sn">04</div><div><div class="st-title">Launch &amp; ASO</div><div class="st-desc">End-to-end App Store submission with screenshots, descriptions, and keyword optimisation.</div></div></div>        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="#contact" class="btn-primary">Start Building Your App &rarr;</a>
+    </div>
+  </div>
+</section>
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-inner">
+    <div class="results-grid">
+      <div class="reveal-left">
+        <span class="section-eyebrow">Real Client Results</span>
+        <h2>Numbers that prove <span>we deliver</span></h2>
+        <p class="section-sub">Every campaign comes with clear reporting. Here&rsquo;s what our clients actually experience after working with us.</p>
+        <div class="results-numbers">
+          <div class="rn-card reveal d1"><div class="rn-num">+340%</div><div class="rn-lbl">GMB Impressions</div></div>
+          <div class="rn-card reveal d2"><div class="rn-num">+215%</div><div class="rn-lbl">Social Reach</div></div>
+          <div class="rn-card reveal d3"><div class="rn-num">4.8&times;</div><div class="rn-lbl">Average ROAS</div></div>
+          <div class="rn-card reveal d4"><div class="rn-num">+156%</div><div class="rn-lbl">Overall Growth</div></div>
+        </div>
+        <div style="margin-top:2rem"><a href="#contact" class="btn-primary">Get These Results &rarr;</a></div>
+      </div>
+      <div class="reveal-right">
+        <div class="results-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop&crop=center" alt="Analytics dashboard"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="test-header reveal">
+      <span class="section-eyebrow">Client Stories</span>
+      <h2>What our clients <span>say about us</span></h2>
+    </div>
+    <div class="test-grid">
+      <div class="t-card reveal d1">
+        <div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="t-text">&ldquo;SPrinova grew our Instagram from 800 to 12,000 followers in just 4 months. Our store enquiries doubled and our brand finally looks professional online!&rdquo;</p>
+        <div class="t-author"><div class="t-av">R</div><div><div class="t-name">Rahul Sharma</div><div class="t-role">Owner, Sharma Boutique &middot; Mumbai</div></div></div>
+      </div>
+      <div class="t-card reveal d2">
+        <div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="t-text">&ldquo;Our Google ranking went from page 5 to position #2 in 3 months. The SEO team at SPrinova truly knows what they&rsquo;re doing &mdash; our organic calls tripled!&rdquo;</p>
+        <div class="t-author"><div class="t-av">P</div><div><div class="t-name">Priya Mehta</div><div class="t-role">Director, PM Consulting &middot; Pune</div></div></div>
+      </div>
+      <div class="t-card reveal d3">
+        <div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="t-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="t-text">&ldquo;The Meta Ads campaign generated 180 quality leads in the first month. SPrinova&rsquo;s team is responsive, creative, and truly results-focused.&rdquo;</p>
+        <div class="t-author"><div class="t-av">A</div><div><div class="t-name">Amit Desai</div><div class="t-role">CEO, Desai Real Estate &middot; Ahmedabad</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="blog-header reveal">
+      <span class="section-eyebrow">Resources &amp; Insights</span>
+      <h2>Tips, guides, and <span>marketing wins</span></h2>
+    </div>
+    <div class="blog-tabs">
+      <button class="blog-tab active" onclick="filterBlog('all',this)">All</button>
+      <button class="blog-tab" onclick="filterBlog('tips',this)">Tips &amp; Guides</button>
+      <button class="blog-tab" onclick="filterBlog('video',this)">Videos</button>
+      <button class="blog-tab" onclick="filterBlog('promo',this)">Offers</button>
+    </div>
+    <div class="blog-grid" id="blogGrid">
+      <div class="blog-card reveal d1" data-type="tips">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&q=70&fit=crop" alt="SEO"/>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="blog-cat">SEO</span><span class="blog-date">May 10, 2026</span></div>
+          <div class="blog-title">Why Your Website Isn&rsquo;t Ranking on Google (And How to Fix It in 30 Days)</div>
+          <div class="blog-excerpt">Most websites fail to rank because of 3 fixable mistakes. Here&rsquo;s what we find in 90% of our SEO audits.</div>
+          <a href="#" class="blog-read">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="blog-card reveal d2" data-type="video">
+        <div class="blog-img-ph">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="blog-cat">Google Ads</span><span class="blog-date">Apr 28, 2026</span></div>
+          <div class="blog-title">How to Set Up Google Analytics 4 &mdash; Full Walkthrough</div>
+          <div class="blog-excerpt">A step-by-step video guide to setting up GA4 from scratch, including goal tracking and conversion events.</div>
+          <span class="blog-read">Watch Video &rarr;</span>
+        </div>
+      </div>
+      <div class="blog-card reveal d3" data-type="tips">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&q=70&fit=crop" alt="LinkedIn"/>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="blog-cat">LinkedIn</span><span class="blog-date">Apr 20, 2026</span></div>
+          <div class="blog-title">5 LinkedIn Post Types That Get 10&times; More Engagement for B2B</div>
+          <div class="blog-excerpt">We analysed 500+ LinkedIn posts and found exactly what format drives the most impressions and leads.</div>
+          <a href="#" class="blog-read">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="blog-card reveal d4" data-type="promo" style="background:var(--ink);border-color:rgba(249,115,22,.3)">
+        <div class="blog-img-ph" style="background:rgba(255,255,255,.04)">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="blog-cat">Promotion</span><span class="blog-date" style="color:rgba(255,255,255,.35)">May 2026</span></div>
+          <div class="blog-title" style="color:#fff">FREE Website Audit + SEO Report Worth &#8377;5,000</div>
+          <div class="blog-excerpt" style="color:rgba(255,255,255,.48)">This month only &mdash; get a complete website audit and 30-min strategy call absolutely free. Limited slots!</div>
+          <a href="#contact" class="blog-read" style="color:#f97316">Claim Offer &rarr;</a>
+        </div>
+      </div>
+      <div id="dynamicPosts"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="pricing-header reveal">
+      <span class="section-eyebrow">Transparent Pricing</span>
+      <h2>Simple, <span>affordable plans</span></h2>
+      <p class="section-sub">No hidden charges. Cancel anytime. Choose the plan that fits your growth goals.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal d1">
+        <div class="price-plan">Starter</div>
+        <div class="price-amount"><sup>&#8377;</sup>9,999</div>
+        <div class="price-period">per month</div>
+        <ul class="price-features">
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Social Media Handling (2 platforms)</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google My Business Setup</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>On-Page SEO (5 pages)</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly Analytics Report</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Email Support</li>
+        </ul>
+        <a href="#contact" class="btn-secondary" style="display:block;text-align:center">Get Started</a>
+      </div>
+      <div class="price-card popular reveal d2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-plan">Growth</div>
+        <div class="price-amount"><sup>&#8377;</sup>19,999</div>
+        <div class="price-period">per month</div>
+        <ul class="price-features">
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Social Media (4 platforms)</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Meta Ads Management</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Full SEO (On + Off Page)</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>LinkedIn Page Growth</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google Analytics Setup</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bi-weekly Reports + Strategy Call</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display:block;text-align:center">Start Growing &rarr;</a>
+      </div>
+      <div class="price-card reveal d3">
+        <div class="price-plan">Enterprise</div>
+        <div class="price-amount" style="font-size:1.85rem">Custom</div>
+        <div class="price-period">tailored to your needs</div>
+        <ul class="price-features">
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All Growth features</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Web Development</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated Account Manager</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>High-Budget Meta + Google Ads</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Content Creation (Reels, Blogs)</li>
+          <li><svg class="pchk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Weekly Reporting + Priority Support</li>
+        </ul>
+        <a href="#contact" class="btn-orange" style="display:block;text-align:center">Talk to Us &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-header reveal">
+      <span class="section-eyebrow">Common Questions</span>
+      <h2>Frequently asked <span>questions</span></h2>
+      <p class="section-sub" style="margin:0 auto">Everything you need to know about our services, pricing, and how we work.</p>
+    </div>
+    <div class="faq-grid" id="faqGrid">
+      <div class="faq-loading">Loading FAQs&hellip;</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="contact-left reveal-left">
+        <span class="section-eyebrow">Get In Touch</span>
+        <h2>Ready to grow? <span>Let&rsquo;s talk free</span></h2>
+        <p>Book a free 30-minute strategy call &mdash; no commitment, just clarity on how to grow your business online.</p>
+        <div class="contact-info"><div class="ci-row"><div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="ci-label">Email</div><div class="ci-val">syghorpade15@gmail.com</div></div></div><div class="ci-row"><div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84A16 16 0 0 0 14 14.94l.75-.75a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.77 16.5z"/></svg></div><div><div class="ci-label">WhatsApp</div><div class="ci-val">+91 00000 00000</div></div></div><div class="ci-row"><div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="ci-label">Location</div><div class="ci-val">Mumbai, India</div></div></div><div class="ci-row"><div class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="ci-label">Working Hours</div><div class="ci-val">Mon&ndash;Sat, 9AM&ndash;7PM IST</div></div></div>        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="cf-grid">
+          <div><input type="text" class="cf-input" placeholder="Your Name"/></div>
+          <div><input type="email" class="cf-input" placeholder="Email Address"/></div>
+          <div><input type="tel" class="cf-input" placeholder="Phone / WhatsApp"/></div>
+          <div>
+            <select class="cf-input">
+              <option value="">Select Service</option>
+              <option>Social Media Handling</option>
+              <option>LinkedIn Growth</option>
+              <option>Google My Business</option>
+              <option>Google Analytics</option>
+              <option>Web Development</option>
+              <option>SEO Ranking</option>
+              <option>Meta Ads</option>
+              <option>Google Ads</option>
+              <option>Full Package</option>
+            </select>
+          </div>
+          <div class="cf-full"><textarea class="cf-input cf-textarea" placeholder="Tell us about your business and goals&hellip;"></textarea></div>
+          <div class="cf-full"><a href="mailto:syghorpade15@gmail.com" class="cf-submit">Send Message &amp; Book Free Call &rarr;</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">SPrinova<span>.</span></a>
+    <span class="footer-copy">&copy; 2026 SPrinova Digital Marketing. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#" onclick="showAdminLogin();return false;">Admin</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="social-btn" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- SERVICE MODAL -->
+<div id="svc-overlay">
+  <div id="svc-modal">
+    <div class="sm-hd">
+      <button class="sm-close" id="sm-close">&#10005;</button>
+      <div class="sm-ico" id="sm-ico"></div>
+      <div class="sm-label" id="sm-lbl"></div>
+      <div class="sm-title" id="sm-ttl"></div>
+      <div class="sm-tagline" id="sm-tag"></div>
+    </div>
+    <div class="sm-body">
+      <div class="sm-stats" id="sm-stats"></div>
+      <div class="sm-sec-title">What&rsquo;s Included</div>
+      <div class="sm-feats" id="sm-feats"></div>
+      <button class="sm-cta" onclick="closeMod();setTimeout(()=>document.querySelector('.cf-input').focus(),350)">Get a Free Consultation &rarr;</button>
+    </div>
+  </div>
+</div>
+<script>
+// ── SVG icon map ──
+const I = {
+  instagram:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+  linkedin:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+  location:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  chart:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+  code:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  search:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  doc:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+  link:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
+  pulse:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+  searchp:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>`,
+  palette:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="#2563eb"/><circle cx="17.5" cy="10.5" r=".5" fill="#2563eb"/><circle cx="8.5" cy="7.5" r=".5" fill="#2563eb"/><circle cx="6.5" cy="12.5" r=".5" fill="#2563eb"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
+  mobile:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+  pencil:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  cal:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  chat:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  trend:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+  pin:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  img:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+  star:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  target:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+  dashboard:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
+  globe:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  layout:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`,
+  tag:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`,
+  users:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  repeat:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>`,
+  video:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>`,
+  cart:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
+  key:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
+  rocket:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>`,
+  shield:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  box:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
+  layers:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`
+};
+
+// ── Service modal data ──
+const SVC = {
+  social:{ico:'instagram',label:'Content + Strategy',title:'Social Media Handling',tag:"We live and breathe social — your brand never has a silent day online.",stats:[{n:'3x',l:'Follower Growth'},{n:'5x',l:'Engagement'},{n:'30+',l:'Posts/Month'}],feats:[{k:'pencil',t:'Content Creation',d:'Reels, carousels, stories, and static posts crafted to fit your brand voice.'},{k:'cal',t:'Content Calendar',d:'Monthly calendar with themes, hashtags, and posting schedules for consistency.'},{k:'chat',t:'Community Management',d:'Daily comment replies, DMs, and proactive engagement to build a loyal community.'},{k:'trend',t:'Growth Strategy',d:'Follower growth tactics using collaboration, trending formats, and algorithm-friendly timing.'},{k:'chart',t:'Monthly Reports',d:'Detailed analytics covering reach, impressions, saves, shares, and follower growth.'}]},
+  linkedin:{ico:'linkedin',label:'B2B Growth',title:'LinkedIn Page Growth',tag:'Turn your LinkedIn into a lead machine — not just a digital business card.',stats:[{n:'10x',l:'Profile Reach'},{n:'5x',l:'Connections'},{n:'B2B',l:'Leads'}],feats:[{k:'target',t:'Profile Optimisation',d:'Keyword-rich headline, about section, featured posts, and banner designed to impress.'},{k:'pencil',t:'Thought Leadership Content',d:'Weekly posts in your voice that demonstrate expertise and attract quality connections.'},{k:'users',t:'Connection Strategy',d:'Targeted outreach to ideal prospects with personalised connection messages.'},{k:'chart',t:'Analytics & Reporting',d:'Monthly performance report with follower growth, post reach, and lead metrics.'}]},
+  gmb:{ico:'location',label:'Local SEO',title:'Google My Business',tag:'Show up when local customers are actively searching for what you offer.',stats:[{n:'#1',l:'Local Goal'},{n:'+340%',l:'Impressions'},{n:'3x',l:'More Calls'}],feats:[{k:'target',t:'Profile Setup & Optimisation',d:'Complete GMB profile with categories, services, photos, and keyword-rich description.'},{k:'img',t:'Regular Photo & Post Updates',d:'Weekly Google Posts and photo uploads to signal an active, trusted business.'},{k:'star',t:'Review Management',d:'Strategy to get more 5-star reviews and professional responses to all feedback.'},{k:'pin',t:'Local Citation Building',d:'Consistent NAP across all major directories for a ranking boost.'}]},
+  ga4:{ico:'chart',label:'Data & Insights',title:'Google Analytics (GA4)',tag:"Know exactly what's working on your website — and what's not.",stats:[{n:'GA4',l:'Platform'},{n:'100%',l:'Accuracy'},{n:'ROI',l:'Clarity'}],feats:[{k:'target',t:'GA4 Setup & Migration',d:'Full GA4 property setup including all tracking configurations and event tagging.'},{k:'dashboard',t:'Conversion Tracking',d:"Goals, events, and e-commerce tracking so you know exactly what drives revenue."},{k:'dashboard',t:'Custom Dashboards',d:"Looker Studio dashboards tailored to your KPIs for at-a-glance performance."},{k:'doc',t:'Monthly Insights Reports',d:'Plain-English reports with key findings and actionable recommendations.'}]},
+  webdev:{ico:'code',label:'Design + Dev',title:'Web Development',tag:'A website that works as hard as you do — fast, beautiful, and built to convert.',stats:[{n:'<2s',l:'Load Time'},{n:'100',l:'PageSpeed'},{n:'Mobile',l:'First'}],feats:[{k:'palette',t:'UI/UX Design',d:'Wireframes and high-fidelity designs that put user experience first.'},{k:'code',t:'Fast & Optimised Build',d:'Built on modern frameworks (React, Next.js, WordPress) for speed and SEO.'},{k:'mobile',t:'Mobile-First Development',d:'Responsive across all devices with pixel-perfect implementation.'},{k:'target',t:'Ongoing Support',d:'Post-launch support, updates, and maintenance to keep your site running perfectly.'}]},
+  seo:{ico:'search',label:'Organic Traffic',title:'SEO Ranking',tag:'Get found on Google — organically, sustainably, without paying per click.',stats:[{n:'Pg 1',l:'Goal'},{n:'+280%',l:'Traffic'},{n:'6mo',l:'Results'}],feats:[{k:'key',t:'Keyword Research',d:'In-depth research to find the exact terms your customers are searching for.'},{k:'target',t:'Technical SEO Audit',d:'Site speed, crawlability, indexing, and Core Web Vitals fixes.'},{k:'pencil',t:'Content Strategy',d:'Blog posts, landing pages, and content clusters designed to rank and convert.'},{k:'link',t:'Link Building',d:'High-quality backlinks from relevant, authoritative websites in your niche.'}]},
+  onpage:{ico:'doc',label:'Technical SEO',title:'On-Page SEO',tag:'Every page on your website optimised to rank — and to convert.',stats:[{n:'5x',l:'CTR'},{n:'Full',l:'Audit'},{n:'Schema',l:'Markup'}],feats:[{k:'tag',t:'Meta Tags Optimisation',d:'Title tags and meta descriptions written to maximise clicks from search results.'},{k:'layers',t:'Heading Structure',d:'H1–H6 hierarchy optimised for both users and search engine crawlers.'},{k:'img',t:'Image Optimisation',d:'Alt text, compression, and file naming to improve load speed and rankings.'},{k:'link',t:'Internal Linking',d:'Strategic internal links to distribute page authority and guide users.'}]},
+  offpage:{ico:'link',label:'Authority Building',title:'Off-Page SEO',tag:'Build the domain authority that pushes you above competitors in search.',stats:[{n:'DA+',l:'Growth'},{n:'Quality',l:'Backlinks'},{n:'White',l:'Hat Only'}],feats:[{k:'pencil',t:'Guest Posting',d:'Articles published on relevant, high-authority websites in your industry.'},{k:'doc',t:'Directory Submissions',d:'Listings on trusted directories to build consistent citations.'},{k:'chat',t:'Brand Mentions',d:'PR-style outreach to get your brand mentioned on industry blogs and news sites.'},{k:'search',t:'Competitor Backlink Analysis',d:"Research where competitors are getting links and replicate their best sources."}]},
+  metaads:{ico:'pulse',label:'Paid Advertising',title:'Meta Ads',tag:'Precise targeting on Facebook and Instagram to reach buyers, not browsers.',stats:[{n:'180',l:'Leads/Mo'},{n:'4x',l:'ROAS'},{n:'A/B',l:'Testing'}],feats:[{k:'users',t:'Audience Research',d:'Custom audiences, lookalikes, and interest targeting to reach your ideal customers.'},{k:'palette',t:'Creative Ad Design',d:'Scroll-stopping visuals and copy designed to drive action on Facebook and Instagram.'},{k:'repeat',t:'A/B Testing',d:'Continuous split testing of audiences, creatives, and copy to improve performance.'},{k:'chart',t:'ROAS Optimisation',d:"Daily campaign monitoring with budget shifts to scale what converts."}]},
+  googleads:{ico:'searchp',label:'PPC & SEM',title:'Google Ads (PPC)',tag:'Show up at the top when customers are actively searching for what you sell.',stats:[{n:'4.8x',l:'ROAS'},{n:'-38%',l:'CPC'},{n:'+320%',l:'Conversions'}],feats:[{k:'target',t:'Search Campaigns',d:'High-intent keywords with compelling ads that capture buyers ready to convert.'},{k:'img',t:'Display & Remarketing',d:"Re-engage visitors who didn't convert across millions of websites."},{k:'cart',t:'Shopping Campaigns',d:'Drive product sales with optimised Shopping and Performance Max campaigns.'},{k:'video',t:'YouTube Ads',d:"Build brand awareness with video ads on the world's #2 search engine."}]},
+  design:{ico:'palette',label:'Brand & Creative',title:'Graphic Design',tag:'Visuals that make people stop, look, and remember your brand.',stats:[{n:'500+',l:'Designs'},{n:'48hr',l:'Turnaround'},{n:'∞',l:'Revisions'}],feats:[{k:'tag',t:'Logo & Brand Identity',d:'Complete brand kits — logo, colours, typography, and brand guidelines.'},{k:'instagram',t:'Social Media Creatives',d:'Posts, stories, and carousels designed for maximum engagement.'},{k:'doc',t:'Print Design',d:'Brochures, flyers, business cards, and packaging.'},{k:'layers',t:'Pitch Decks',d:'Investor and sales presentations that tell your story and close deals.'}]},
+  appdev:{ico:'mobile',label:'Mobile & Web Apps',title:'App Development',tag:'From wireframe to App Store — we build apps people love to use.',stats:[{n:'20+',l:'Apps'},{n:'4.8★',l:'Rating'},{n:'iOS+',l:'Cross-Platform'}],feats:[{k:'layout',t:'UI/UX Wireframing',d:'User research and interactive prototypes designed before a line of code is written.'},{k:'mobile',t:'Native & Cross-Platform Apps',d:'React Native and Flutter apps that run beautifully on both iOS and Android.'},{k:'globe',t:'Progressive Web Apps',d:'App-like web experiences that work offline — no App Store needed.'},{k:'link',t:'API & Backend Integration',d:'Secure REST APIs, third-party integrations, and scalable backend architecture.'},{k:'rocket',t:'App Store Launch & ASO',d:'End-to-end submission with screenshots, descriptions, and keyword optimisation.'}]}
+};
+
+function openMod(key){
+  const d=SVC[key]; if(!d)return;
+  document.getElementById('sm-ico').innerHTML=I[d.ico]||I.search;
+  document.getElementById('sm-lbl').textContent=d.label;
+  document.getElementById('sm-ttl').textContent=d.title;
+  document.getElementById('sm-tag').textContent=d.tag;
+  document.getElementById('sm-stats').innerHTML=d.stats.map(s=>`<div class="sm-stat"><div class="sm-stat-num">${s.n}</div><div class="sm-stat-lbl">${s.l}</div></div>`).join('');
+  document.getElementById('sm-feats').innerHTML=d.feats.map(f=>`<div class="sm-feat"><div class="sm-feat-ico">${I[f.k]||I.search}</div><div><div class="sm-feat-title">${f.t}</div><div class="sm-feat-desc">${f.d}</div></div></div>`).join('');
+  document.getElementById('svc-modal').scrollTop=0;
+  document.getElementById('svc-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMod(){
+  document.getElementById('svc-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('sm-close').addEventListener('click',closeMod);
+document.getElementById('svc-overlay').addEventListener('click',function(e){if(e.target===this)closeMod();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMod();});
+document.querySelectorAll('.svc-card[data-service]').forEach(c=>{
+  c.addEventListener('click',function(){openMod(this.dataset.service);});
+});
+
+// Mobile nav
+function toggleMobile(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobile-nav').classList.contains('open')?'hidden':'';
+}
+function closeMobile(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// Scroll reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>io.observe(el));
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',scrollY>30);
+  document.getElementById('btt').classList.toggle('show',scrollY>400);
+});
+
+// Blog filter
+function filterBlog(type,btn){
+  document.querySelectorAll('.blog-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blogGrid>[data-type]').forEach(c=>{
+    c.style.display=(type==='all'||c.dataset.type===type)?'':'none';
+  });
+}
+
+// FAQ
+function toggleFaq(item){
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+const chevSvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+// Dynamic blog loaded by refreshPublicBlog()
+
+// Dynamic FAQ loaded by refreshPublicFaqs()
+</script>
+
+</div><!-- /#public-site -->
+
+<!-- ═══════ ADMIN PANEL ═══════ -->
+
+
+<!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
+<div id="auth-wrap" class="auth-wrap" style="display:none">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <h1>Sprinova<span>Digital</span></h1>
+      <p>Admin Panel</p>
+    </div>
+
+    <!-- Login -->
+    <div id="screen-login" class="screen active">
+      <div style="text-align:center"><span class="auth-badge">🔐 Secure Admin Access</span></div>
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter username" autocomplete="username">
+      <label>Password</label>
+      <div class="input-wrap">
+        <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password">
+        <button class="eye-btn" onclick="togglePwd('login-pass', this)">👁️</button>
+      </div>
+      <div class="error-msg" id="login-err">Incorrect username or password.</div>
+      <button class="btn btn-primary" onclick="doLogin()">Sign In</button>
+      <div class="auth-link"><a onclick="showScreen('screen-forgot')">Forgot username or password?</a></div>
+    </div>
+
+    <!-- Forgot -->
+    <div id="screen-forgot" class="screen">
+      <h3 style="font-weight:700;color:var(--dark);margin-bottom:0.4rem;">Reset Access</h3>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;">An OTP will be sent to <strong>sprinovadigital@gmail.com</strong></p>
+      <div class="info-msg show">OTP is only sent to sprinovadigital@gmail.com for security.</div>
+      <button class="btn btn-primary" onclick="sendOtp()" style="margin-top:1rem;">Send OTP to Email</button>
+      <div class="auth-link"><a onclick="showScreen('screen-login')">← Back to Login</a></div>
+    </div>
+
+    <!-- OTP Verify -->
+    <div id="screen-otp" class="screen">
+      <h3 style="font-weight:700;color:var(--dark);margin-bottom:0.4rem;">Enter OTP</h3>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;">6-digit code sent to sprinovadigital@gmail.com</p>
+      <div class="info-msg show" id="otp-demo-msg"></div>
+      <div class="otp-inputs">
+        <input type="text" maxlength="1" id="otp0" oninput="otpMove(0)">
+        <input type="text" maxlength="1" id="otp1" oninput="otpMove(1)">
+        <input type="text" maxlength="1" id="otp2" oninput="otpMove(2)">
+        <input type="text" maxlength="1" id="otp3" oninput="otpMove(3)">
+        <input type="text" maxlength="1" id="otp4" oninput="otpMove(4)">
+        <input type="text" maxlength="1" id="otp5" oninput="otpMove(5)">
+      </div>
+      <div class="error-msg" id="otp-err">Incorrect OTP. Please try again.</div>
+      <button class="btn btn-primary" onclick="verifyOtp()">Verify OTP</button>
+      <div class="auth-link"><a onclick="sendOtp()">Resend OTP</a> · <a onclick="showScreen('screen-login')">Back</a></div>
+    </div>
+
+    <!-- Reset Credentials -->
+    <div id="screen-reset" class="screen">
+      <h3 style="font-weight:700;color:var(--dark);margin-bottom:1rem;">Set New Credentials</h3>
+      <label>New Username</label>
+      <input type="text" id="reset-user" placeholder="Enter new username">
+      <label>New Password</label>
+      <div class="input-wrap">
+        <input type="password" id="reset-pass" placeholder="Enter new password">
+        <button class="eye-btn" onclick="togglePwd('reset-pass', this)">👁️</button>
+      </div>
+      <label>Confirm Password</label>
+      <div class="input-wrap">
+        <input type="password" id="reset-pass2" placeholder="Confirm new password">
+        <button class="eye-btn" onclick="togglePwd('reset-pass2', this)">👁️</button>
+      </div>
+      <div class="error-msg" id="reset-err"></div>
+      <button class="btn btn-primary" onclick="doReset()">Save New Credentials</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ ADMIN SHELL ═══════════════ -->
+<div id="admin-shell" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>Sprinova<span>Digital</span></h2>
+      <p>Admin Panel</p>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" onclick="showPanel('dashboard')" id="nav-dashboard"><span class="icon">📊</span> Dashboard</div>
+      <div class="nav-item" onclick="showPanel('blog')" id="nav-blog"><span class="icon">📝</span> Blog Posts</div>
+      <div class="nav-item" onclick="showPanel('faq')" id="nav-faq"><span class="icon">❓</span> FAQs</div>
+      <div class="nav-item" onclick="showPanel('settings')" id="nav-settings"><span class="icon">⚙️</span> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <button onclick="hideAdminPanel()">🌐 View Website</button>
+      <button onclick="logout()" style="margin-top:0.5rem;">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="panel-header"><h2>Dashboard</h2></div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon purple">📝</div>
+          <div><div class="stat-val" id="stat-posts">0</div><div class="stat-lbl">Total Posts</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">✅</div>
+          <div><div class="stat-val" id="stat-published">0</div><div class="stat-lbl">Published</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">❓</div>
+          <div><div class="stat-val" id="stat-faqs">0</div><div class="stat-lbl">FAQs</div></div>
+        </div>
+      </div>
+      <div style="background:var(--card);border-radius:14px;padding:2rem;border:1px solid var(--border);">
+        <h3 style="font-weight:700;color:var(--dark);margin-bottom:1rem;">Quick Actions</h3>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <button class="add-btn" onclick="showPanel('blog');openPostModal()">✚ New Blog Post</button>
+          <button class="add-btn" style="background:var(--accent);" onclick="showPanel('faq');openFaqModal()">✚ New FAQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOG PANEL -->
+    <div class="panel" id="panel-blog">
+      <div class="panel-header">
+        <h2>Blog Posts</h2>
+        <button class="add-btn" onclick="openPostModal()">✚ New Post</button>
+      </div>
+      <div class="posts-table">
+        <table>
+          <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="posts-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ PANEL -->
+    <div class="panel" id="panel-faq">
+      <div class="panel-header">
+        <h2>FAQs</h2>
+        <button class="add-btn" onclick="openFaqModal()">✚ New FAQ</button>
+      </div>
+      <div class="posts-table">
+        <table>
+          <thead><tr><th>Question</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="faqs-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS PANEL -->
+    <div class="panel" id="panel-settings">
+      <div class="panel-header"><h2>Settings</h2></div>
+      <div style="background:var(--card);border-radius:14px;padding:2rem;border:1px solid var(--border);max-width:500px;">
+        <h3 style="font-weight:700;color:var(--dark);margin-bottom:1.5rem;">Change Credentials</h3>
+        <label>New Username</label>
+        <input type="text" id="settings-user" placeholder="Enter new username">
+        <label>Current Password</label>
+        <div class="input-wrap">
+          <input type="password" id="settings-cur-pass" placeholder="Current password">
+          <button class="eye-btn" onclick="togglePwd('settings-cur-pass',this)">👁️</button>
+        </div>
+        <label>New Password</label>
+        <div class="input-wrap">
+          <input type="password" id="settings-new-pass" placeholder="New password">
+          <button class="eye-btn" onclick="togglePwd('settings-new-pass',this)">👁️</button>
+        </div>
+        <div class="error-msg" id="settings-err"></div>
+        <button class="btn btn-primary" onclick="saveSettings()" style="margin-top:1.2rem;">Save Changes</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ─── POST MODAL ─── -->
+<div class="modal-overlay" id="post-modal">
+  <div class="modal-box">
+    <h3 id="post-modal-title">New Blog Post</h3>
+    <label>Title *</label>
+    <input type="text" id="post-title" placeholder="Post title">
+    <div class="form-row">
+      <div>
+        <label>Category</label>
+        <input type="text" id="post-category" placeholder="e.g. Marketing, Design">
+      </div>
+      <div>
+        <label>Emoji / Icon</label>
+        <input type="text" id="post-emoji" placeholder="e.g. 🚀 💡 📱">
+      </div>
+    </div>
+    <label>Author</label>
+    <input type="text" id="post-author" placeholder="Author name" value="SprinovaDigital">
+    <label>Content *</label>
+    <textarea id="post-content" placeholder="Write your blog post content here…"></textarea>
+    <div class="toggle-wrap">
+      <div class="toggle" id="post-toggle" onclick="toggleEl('post-toggle')"></div>
+      <label>Publish immediately (visible on website)</label>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeModal('post-modal')">Cancel</button>
+      <button class="save-btn" onclick="savePost()">Save Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FAQ MODAL ─── -->
+<div class="modal-overlay" id="faq-modal">
+  <div class="modal-box">
+    <h3 id="faq-modal-title">New FAQ</h3>
+    <label>Question *</label>
+    <input type="text" id="faq-question" placeholder="What question do visitors ask?">
+    <label>Answer *</label>
+    <textarea id="faq-answer" placeholder="Write the full answer here…"></textarea>
+    <div class="toggle-wrap">
+      <div class="toggle" id="faq-toggle" onclick="toggleEl('faq-toggle')"></div>
+      <label>Publish immediately (visible on website)</label>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeModal('faq-modal')">Cancel</button>
+      <button class="save-btn" onclick="saveFaq()">Save FAQ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONFIRM DELETE ─── -->
+<div class="confirm-modal" id="confirm-modal">
+  <div class="confirm-box">
+    <h4>Delete this item?</h4>
+    <p>This action cannot be undone.</p>
+    <div class="confirm-btns">
+      <button class="confirm-no"  onclick="closeConfirm()">Cancel</button>
+      <button class="confirm-yes" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════ CREDENTIALS ════════════════
+const DEFAULT_USER = 'admin';
+const DEFAULT_PASS = 'Sprinova@2025';
+
+function getCreds() {
+  return {
+    user: localStorage.getItem('sd_admin_user') || DEFAULT_USER,
+    pass: localStorage.getItem('sd_admin_pass') || DEFAULT_PASS,
+  };
+}
+
+// ════════════════ AUTH SCREENS ════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+  clearErrors();
+}
+
+function clearErrors() {
+  document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+}
+
+function togglePwd(id, btn) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
+}
+
+// ── LOGIN ──
+function doLogin() {
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  const c = getCreds();
+  if (u === c.user && p === c.pass) {
+    enterAdmin();
+  } else {
+    document.getElementById('login-err').classList.add('show');
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+// ── FORGOT / OTP ──
+let currentOtp = '';
+function sendOtp() {
+  currentOtp = String(Math.floor(100000 + Math.random() * 900000));
+  document.getElementById('otp-demo-msg').textContent =
+    `Demo mode: Your OTP is ${currentOtp} (In production, this is sent to sprinovadigital@gmail.com)`;
+  showScreen('screen-otp');
+  for (let i = 0; i < 6; i++) document.getElementById('otp' + i).value = '';
+  document.getElementById('otp0').focus();
+}
+
+function otpMove(i) {
+  const v = document.getElementById('otp' + i).value;
+  if (v && i < 5) document.getElementById('otp' + (i + 1)).focus();
+}
+
+function verifyOtp() {
+  const entered = [0,1,2,3,4,5].map(i => document.getElementById('otp'+i).value).join('');
+  if (entered === currentOtp) {
+    showScreen('screen-reset');
+  } else {
+    document.getElementById('otp-err').classList.add('show');
+  }
+}
+
+function doReset() {
+  const u  = document.getElementById('reset-user').value.trim();
+  const p  = document.getElementById('reset-pass').value;
+  const p2 = document.getElementById('reset-pass2').value;
+  const err = document.getElementById('reset-err');
+  if (!u || !p) { err.textContent = 'All fields are required.'; err.classList.add('show'); return; }
+  if (p !== p2) { err.textContent = 'Passwords do not match.'; err.classList.add('show'); return; }
+  localStorage.setItem('sd_admin_user', u);
+  localStorage.setItem('sd_admin_pass', p);
+  showToast('✅ Credentials updated! Please log in.');
+  showScreen('screen-login');
+}
+
+// ── ENTER/EXIT ADMIN ──
+function enterAdmin() {
+  document.getElementById('auth-wrap').style.display   = 'none';
+  document.getElementById('admin-shell').style.display = 'flex';
+  document.getElementById('admin-shell').classList.add('active');
+  refreshDashboard();
+  renderPostsTable();
+  renderFaqsTable();
+}
+
+function logout() {
+  document.getElementById('admin-shell').style.display = 'none';
+  document.getElementById('admin-shell').classList.remove('active');
+  document.getElementById('auth-wrap').style.display   = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  showScreen('screen-login');
+}
+
+function goToSite() { window.open('index.html', '_blank'); }
+
+// ════════════════ PANELS ════════════════
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id)?.classList.add('active');
+  document.getElementById('nav-' + id)?.classList.add('active');
+  if (id === 'dashboard') refreshDashboard();
+  if (id === 'blog') renderPostsTable();
+  if (id === 'faq')  renderFaqsTable();
+}
+
+// ════════════════ DATA HELPERS ════════════════
+function getPosts() { try { return JSON.parse(localStorage.getItem('sd_posts') || '[]'); } catch(e){ return []; } }
+function savePosts(d) { localStorage.setItem('sd_posts', JSON.stringify(d)); }
+function getFaqs()  { try { return JSON.parse(localStorage.getItem('sd_faqs')  || '[]'); } catch(e){ return []; } }
+function saveFaqs(d) { localStorage.setItem('sd_faqs', JSON.stringify(d)); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+function formatDate(d) { if (!d) return ''; return new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }); }
+function escHtml(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+// ════════════════ DASHBOARD ════════════════
+function refreshDashboard() {
+  const posts = getPosts();
+  const faqs  = getFaqs();
+  document.getElementById('stat-posts').textContent     = posts.length;
+  document.getElementById('stat-published').textContent = posts.filter(p => p.published).length;
+  document.getElementById('stat-faqs').textContent      = faqs.filter(f => f.published).length;
+}
+
+// ════════════════ BLOG POSTS ════════════════
+let editingPostId = null;
+
+function renderPostsTable() {
+  const posts = getPosts();
+  const tbody = document.getElementById('posts-tbody');
+  if (!posts.length) {
+    tbody.innerHTML = '<tr><td colspan="5"><div class="empty-table"><div class="icon">📝</div><p>No blog posts yet. Click "New Post" to add one.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = posts.map(p => `
+    <tr>
+      <td><strong>${escHtml(p.title)}</strong></td>
+      <td>${escHtml(p.category || '—')}</td>
+      <td>${formatDate(p.date)}</td>
+      <td><span class="status-pill ${p.published ? 'published' : 'draft'}">${p.published ? '✅ Published' : '📄 Draft'}</span></td>
+      <td><div class="action-btns">
+        <button class="edit-btn" onclick="openPostModal('${p.id}')">Edit</button>
+        <button class="del-btn"  onclick="askDelete('post','${p.id}')">Delete</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function openPostModal(id) {
+  editingPostId = id || null;
+  const modal = document.getElementById('post-modal');
+  if (id) {
+    const p = getPosts().find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('post-modal-title').textContent = 'Edit Blog Post';
+    document.getElementById('post-title').value    = p.title || '';
+    document.getElementById('post-category').value = p.category || '';
+    document.getElementById('post-emoji').value    = p.emoji || '';
+    document.getElementById('post-author').value   = p.author || 'SprinovaDigital';
+    document.getElementById('post-content').value  = p.content || '';
+    const tog = document.getElementById('post-toggle');
+    p.published ? tog.classList.add('on') : tog.classList.remove('on');
+  } else {
+    document.getElementById('post-modal-title').textContent = 'New Blog Post';
+    document.getElementById('post-title').value    = '';
+    document.getElementById('post-category').value = '';
+    document.getElementById('post-emoji').value    = '';
+    document.getElementById('post-author').value   = 'SprinovaDigital';
+    document.getElementById('post-content').value  = '';
+    document.getElementById('post-toggle').classList.remove('on');
+  }
+  modal.classList.add('open');
+}
+
+function savePost() {
+  const title   = document.getElementById('post-title').value.trim();
+  const content = document.getElementById('post-content').value.trim();
+  if (!title || !content) { showToast('⚠️ Title and content are required.'); return; }
+  const posts = getPosts();
+  const published = document.getElementById('post-toggle').classList.contains('on');
+  if (editingPostId) {
+    const idx = posts.findIndex(p => p.id === editingPostId);
+    if (idx > -1) {
+      posts[idx] = { ...posts[idx], title, content, published,
+        category: document.getElementById('post-category').value.trim(),
+        emoji:    document.getElementById('post-emoji').value.trim(),
+        author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
+      };
+    }
+    showToast('✅ Post updated!');
+  } else {
+    posts.unshift({ id: uid(), title, content, published,
+      category: document.getElementById('post-category').value.trim(),
+      emoji:    document.getElementById('post-emoji').value.trim() || '📄',
+      author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
+      date: new Date().toISOString(),
+    });
+    showToast('✅ Post created!');
+  }
+  savePosts(posts);
+  closeModal('post-modal');
+  renderPostsTable();
+  refreshDashboard();
+}
+
+// ════════════════ FAQs ════════════════
+let editingFaqId = null;
+
+function renderFaqsTable() {
+  const faqs  = getFaqs();
+  const tbody = document.getElementById('faqs-tbody');
+  if (!faqs.length) {
+    tbody.innerHTML = '<tr><td colspan="4"><div class="empty-table"><div class="icon">❓</div><p>No FAQs yet. Click "New FAQ" to add one.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = faqs.map(f => `
+    <tr>
+      <td><strong>${escHtml(f.question)}</strong></td>
+      <td>${formatDate(f.date)}</td>
+      <td><span class="status-pill ${f.published ? 'published' : 'draft'}">${f.published ? '✅ Published' : '📄 Draft'}</span></td>
+      <td><div class="action-btns">
+        <button class="edit-btn" onclick="openFaqModal('${f.id}')">Edit</button>
+        <button class="del-btn"  onclick="askDelete('faq','${f.id}')">Delete</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function openFaqModal(id) {
+  editingFaqId = id || null;
+  if (id) {
+    const f = getFaqs().find(x => x.id === id);
+    if (!f) return;
+    document.getElementById('faq-modal-title').textContent = 'Edit FAQ';
+    document.getElementById('faq-question').value = f.question || '';
+    document.getElementById('faq-answer').value   = f.answer   || '';
+    const tog = document.getElementById('faq-toggle');
+    f.published ? tog.classList.add('on') : tog.classList.remove('on');
+  } else {
+    document.getElementById('faq-modal-title').textContent = 'New FAQ';
+    document.getElementById('faq-question').value = '';
+    document.getElementById('faq-answer').value   = '';
+    document.getElementById('faq-toggle').classList.remove('on');
+  }
+  document.getElementById('faq-modal').classList.add('open');
+}
+
+function saveFaq() {
+  const question = document.getElementById('faq-question').value.trim();
+  const answer   = document.getElementById('faq-answer').value.trim();
+  if (!question || !answer) { showToast('⚠️ Question and answer are required.'); return; }
+  const faqs = getFaqs();
+  const published = document.getElementById('faq-toggle').classList.contains('on');
+  if (editingFaqId) {
+    const idx = faqs.findIndex(f => f.id === editingFaqId);
+    if (idx > -1) faqs[idx] = { ...faqs[idx], question, answer, published };
+    showToast('✅ FAQ updated!');
+  } else {
+    faqs.push({ id: uid(), question, answer, published, date: new Date().toISOString() });
+    showToast('✅ FAQ added!');
+  }
+  saveFaqs(faqs);
+  closeModal('faq-modal');
+  renderFaqsTable();
+  refreshDashboard();
+}
+
+// ════════════════ DELETE ════════════════
+let deleteType = '', deleteId = '';
+function askDelete(type, id) {
+  deleteType = type; deleteId = id;
+  document.getElementById('confirm-modal').classList.add('open');
+}
+function closeConfirm() { document.getElementById('confirm-modal').classList.remove('open'); }
+function confirmDelete() {
+  if (deleteType === 'post') {
+    savePosts(getPosts().filter(p => p.id !== deleteId));
+    renderPostsTable();
+    showToast('🗑️ Post deleted.');
+  } else {
+    saveFaqs(getFaqs().filter(f => f.id !== deleteId));
+    renderFaqsTable();
+    showToast('🗑️ FAQ deleted.');
+  }
+  refreshDashboard();
+  closeConfirm();
+}
+
+// ════════════════ SETTINGS ════════════════
+function saveSettings() {
+  const u   = document.getElementById('settings-user').value.trim();
+  const cur = document.getElementById('settings-cur-pass').value;
+  const np  = document.getElementById('settings-new-pass').value;
+  const err = document.getElementById('settings-err');
+  const c   = getCreds();
+  if (cur !== c.pass) { err.textContent = 'Current password is incorrect.'; err.classList.add('show'); return; }
+  if (u) localStorage.setItem('sd_admin_user', u);
+  if (np) localStorage.setItem('sd_admin_pass', np);
+  err.classList.remove('show');
+  showToast('✅ Credentials saved!');
+  document.getElementById('settings-user').value = '';
+  document.getElementById('settings-cur-pass').value = '';
+  document.getElementById('settings-new-pass').value = '';
+}
+
+// ════════════════ UTILS ════════════════
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+function toggleEl(id) { document.getElementById(id)?.classList.toggle('on'); }
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+});
+</script>
+
+<script>
+
+// ════════════════ CREDENTIALS ════════════════
+const DEFAULT_USER = 'admin';
+const DEFAULT_PASS = 'Sprinova@2025';
+
+function getCreds() {
+  return {
+    user: localStorage.getItem('sd_admin_user') || DEFAULT_USER,
+    pass: localStorage.getItem('sd_admin_pass') || DEFAULT_PASS,
+  };
+}
+
+// ════════════════ AUTH SCREENS ════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+  clearErrors();
+}
+
+function clearErrors() {
+  document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+}
+
+function togglePwd(id, btn) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
+}
+
+// ── LOGIN ──
+function doLogin() {
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  const c = getCreds();
+  if (u === c.user && p === c.pass) {
+    enterAdmin();
+  } else {
+    document.getElementById('login-err').classList.add('show');
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+// ── FORGOT / OTP ──
+let currentOtp = '';
+function sendOtp() {
+  currentOtp = String(Math.floor(100000 + Math.random() * 900000));
+  document.getElementById('otp-demo-msg').textContent =
+    `Demo mode: Your OTP is ${currentOtp} (In production, this is sent to sprinovadigital@gmail.com)`;
+  showScreen('screen-otp');
+  for (let i = 0; i < 6; i++) document.getElementById('otp' + i).value = '';
+  document.getElementById('otp0').focus();
+}
+
+function otpMove(i) {
+  const v = document.getElementById('otp' + i).value;
+  if (v && i < 5) document.getElementById('otp' + (i + 1)).focus();
+}
+
+function verifyOtp() {
+  const entered = [0,1,2,3,4,5].map(i => document.getElementById('otp'+i).value).join('');
+  if (entered === currentOtp) {
+    showScreen('screen-reset');
+  } else {
+    document.getElementById('otp-err').classList.add('show');
+  }
+}
+
+function doReset() {
+  const u  = document.getElementById('reset-user').value.trim();
+  const p  = document.getElementById('reset-pass').value;
+  const p2 = document.getElementById('reset-pass2').value;
+  const err = document.getElementById('reset-err');
+  if (!u || !p) { err.textContent = 'All fields are required.'; err.classList.add('show'); return; }
+  if (p !== p2) { err.textContent = 'Passwords do not match.'; err.classList.add('show'); return; }
+  localStorage.setItem('sd_admin_user', u);
+  localStorage.setItem('sd_admin_pass', p);
+  showToast('✅ Credentials updated! Please log in.');
+  showScreen('screen-login');
+}
+
+// ── ENTER/EXIT ADMIN ──
+function enterAdmin() {
+  document.getElementById('auth-wrap').style.display   = 'none';
+  document.getElementById('admin-shell').style.display = 'flex';
+  document.getElementById('admin-shell').classList.add('active');
+  refreshDashboard();
+  renderPostsTable();
+  renderFaqsTable();
+}
+
+function logout() {
+  document.getElementById('admin-shell').style.display = 'none';
+  document.getElementById('admin-shell').classList.remove('active');
+  document.getElementById('auth-wrap').style.display   = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  showScreen('screen-login');
+}
+
+function _goToSiteOLD() { window.open('index.html', '_blank'); }
+
+// ════════════════ PANELS ════════════════
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id)?.classList.add('active');
+  document.getElementById('nav-' + id)?.classList.add('active');
+  if (id === 'dashboard') refreshDashboard();
+  if (id === 'blog') renderPostsTable();
+  if (id === 'faq')  renderFaqsTable();
+}
+
+// ════════════════ DATA HELPERS ════════════════
+function getPosts() { try { return JSON.parse(localStorage.getItem('sd_posts') || '[]'); } catch(e){ return []; } }
+function savePosts(d) { localStorage.setItem('sd_posts', JSON.stringify(d)); }
+function getFaqs()  { try { return JSON.parse(localStorage.getItem('sd_faqs')  || '[]'); } catch(e){ return []; } }
+function saveFaqs(d) { localStorage.setItem('sd_faqs', JSON.stringify(d)); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+function formatDate(d) { if (!d) return ''; return new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }); }
+function escHtml(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+// ════════════════ DASHBOARD ════════════════
+function refreshDashboard() {
+  const posts = getPosts();
+  const faqs  = getFaqs();
+  document.getElementById('stat-posts').textContent     = posts.length;
+  document.getElementById('stat-published').textContent = posts.filter(p => p.published).length;
+  document.getElementById('stat-faqs').textContent      = faqs.filter(f => f.published).length;
+}
+
+// ════════════════ BLOG POSTS ════════════════
+let editingPostId = null;
+
+function renderPostsTable() {
+  const posts = getPosts();
+  const tbody = document.getElementById('posts-tbody');
+  if (!posts.length) {
+    tbody.innerHTML = '<tr><td colspan="5"><div class="empty-table"><div class="icon">📝</div><p>No blog posts yet. Click "New Post" to add one.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = posts.map(p => `
+    <tr>
+      <td><strong>${escHtml(p.title)}</strong></td>
+      <td>${escHtml(p.category || '—')}</td>
+      <td>${formatDate(p.date)}</td>
+      <td><span class="status-pill ${p.published ? 'published' : 'draft'}">${p.published ? '✅ Published' : '📄 Draft'}</span></td>
+      <td><div class="action-btns">
+        <button class="edit-btn" onclick="openPostModal('${p.id}')">Edit</button>
+        <button class="del-btn"  onclick="askDelete('post','${p.id}')">Delete</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function openPostModal(id) {
+  editingPostId = id || null;
+  const modal = document.getElementById('post-modal');
+  if (id) {
+    const p = getPosts().find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('post-modal-title').textContent = 'Edit Blog Post';
+    document.getElementById('post-title').value    = p.title || '';
+    document.getElementById('post-category').value = p.category || '';
+    document.getElementById('post-emoji').value    = p.emoji || '';
+    document.getElementById('post-author').value   = p.author || 'SprinovaDigital';
+    document.getElementById('post-content').value  = p.content || '';
+    const tog = document.getElementById('post-toggle');
+    p.published ? tog.classList.add('on') : tog.classList.remove('on');
+  } else {
+    document.getElementById('post-modal-title').textContent = 'New Blog Post';
+    document.getElementById('post-title').value    = '';
+    document.getElementById('post-category').value = '';
+    document.getElementById('post-emoji').value    = '';
+    document.getElementById('post-author').value   = 'SprinovaDigital';
+    document.getElementById('post-content').value  = '';
+    document.getElementById('post-toggle').classList.remove('on');
+  }
+  modal.classList.add('open');
+}
+
+function savePost() {
+  const title   = document.getElementById('post-title').value.trim();
+  const content = document.getElementById('post-content').value.trim();
+  if (!title || !content) { showToast('⚠️ Title and content are required.'); return; }
+  const posts = getPosts();
+  const published = document.getElementById('post-toggle').classList.contains('on');
+  if (editingPostId) {
+    const idx = posts.findIndex(p => p.id === editingPostId);
+    if (idx > -1) {
+      posts[idx] = { ...posts[idx], title, content, published,
+        category: document.getElementById('post-category').value.trim(),
+        emoji:    document.getElementById('post-emoji').value.trim(),
+        author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
+      };
+    }
+    showToast('✅ Post updated!');
+  } else {
+    posts.unshift({ id: uid(), title, content, published,
+      category: document.getElementById('post-category').value.trim(),
+      emoji:    document.getElementById('post-emoji').value.trim() || '📄',
+      author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
+      date: new Date().toISOString(),
+    });
+    showToast('✅ Post created!');
+  }
+  savePosts(posts);
+  closeModal('post-modal');
+  renderPostsTable();
+  refreshDashboard();
+}
+
+// ════════════════ FAQs ════════════════
+let editingFaqId = null;
+
+function renderFaqsTable() {
+  const faqs  = getFaqs();
+  const tbody = document.getElementById('faqs-tbody');
+  if (!faqs.length) {
+    tbody.innerHTML = '<tr><td colspan="4"><div class="empty-table"><div class="icon">❓</div><p>No FAQs yet. Click "New FAQ" to add one.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = faqs.map(f => `
+    <tr>
+      <td><strong>${escHtml(f.question)}</strong></td>
+      <td>${formatDate(f.date)}</td>
+      <td><span class="status-pill ${f.published ? 'published' : 'draft'}">${f.published ? '✅ Published' : '📄 Draft'}</span></td>
+      <td><div class="action-btns">
+        <button class="edit-btn" onclick="openFaqModal('${f.id}')">Edit</button>
+        <button class="del-btn"  onclick="askDelete('faq','${f.id}')">Delete</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function openFaqModal(id) {
+  editingFaqId = id || null;
+  if (id) {
+    const f = getFaqs().find(x => x.id === id);
+    if (!f) return;
+    document.getElementById('faq-modal-title').textContent = 'Edit FAQ';
+    document.getElementById('faq-question').value = f.question || '';
+    document.getElementById('faq-answer').value   = f.answer   || '';
+    const tog = document.getElementById('faq-toggle');
+    f.published ? tog.classList.add('on') : tog.classList.remove('on');
+  } else {
+    document.getElementById('faq-modal-title').textContent = 'New FAQ';
+    document.getElementById('faq-question').value = '';
+    document.getElementById('faq-answer').value   = '';
+    document.getElementById('faq-toggle').classList.remove('on');
+  }
+  document.getElementById('faq-modal').classList.add('open');
+}
+
+function saveFaq() {
+  const question = document.getElementById('faq-question').value.trim();
+  const answer   = document.getElementById('faq-answer').value.trim();
+  if (!question || !answer) { showToast('⚠️ Question and answer are required.'); return; }
+  const faqs = getFaqs();
+  const published = document.getElementById('faq-toggle').classList.contains('on');
+  if (editingFaqId) {
+    const idx = faqs.findIndex(f => f.id === editingFaqId);
+    if (idx > -1) faqs[idx] = { ...faqs[idx], question, answer, published };
+    showToast('✅ FAQ updated!');
+  } else {
+    faqs.push({ id: uid(), question, answer, published, date: new Date().toISOString() });
+    showToast('✅ FAQ added!');
+  }
+  saveFaqs(faqs);
+  closeModal('faq-modal');
+  renderFaqsTable();
+  refreshDashboard();
+}
+
+// ════════════════ DELETE ════════════════
+let deleteType = '', deleteId = '';
+function askDelete(type, id) {
+  deleteType = type; deleteId = id;
+  document.getElementById('confirm-modal').classList.add('open');
+}
+function closeConfirm() { document.getElementById('confirm-modal').classList.remove('open'); }
+function confirmDelete() {
+  if (deleteType === 'post') {
+    savePosts(getPosts().filter(p => p.id !== deleteId));
+    renderPostsTable();
+    showToast('🗑️ Post deleted.');
+  } else {
+    saveFaqs(getFaqs().filter(f => f.id !== deleteId));
+    renderFaqsTable();
+    showToast('🗑️ FAQ deleted.');
+  }
+  refreshDashboard();
+  closeConfirm();
+}
+
+// ════════════════ SETTINGS ════════════════
+function saveSettings() {
+  const u   = document.getElementById('settings-user').value.trim();
+  const cur = document.getElementById('settings-cur-pass').value;
+  const np  = document.getElementById('settings-new-pass').value;
+  const err = document.getElementById('settings-err');
+  const c   = getCreds();
+  if (cur !== c.pass) { err.textContent = 'Current password is incorrect.'; err.classList.add('show'); return; }
+  if (u) localStorage.setItem('sd_admin_user', u);
+  if (np) localStorage.setItem('sd_admin_pass', np);
+  err.classList.remove('show');
+  showToast('✅ Credentials saved!');
+  document.getElementById('settings-user').value = '';
+  document.getElementById('settings-cur-pass').value = '';
+  document.getElementById('settings-new-pass').value = '';
+}
+
+// ════════════════ UTILS ════════════════
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+function toggleEl(id) { document.getElementById(id)?.classList.toggle('on'); }
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+});
+
+
+// ─── Admin Show/Hide (merged site) ───
+function showAdminLogin() {
+  document.getElementById('public-site').style.display = 'none';
+  document.getElementById('auth-wrap').style.display = 'flex';
+  document.getElementById('admin-shell').style.display = 'none';
+  showScreen('screen-login');
+}
+function hideAdminPanel() {
+  document.getElementById('auth-wrap').style.display = 'none';
+  document.getElementById('admin-shell').style.display = 'none';
+  document.getElementById('public-site').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function goToSite() { hideAdminPanel(); }
+
+// ─── Refresh public Blog after admin save ───
+function refreshPublicBlog() {
+  try {
+    const posts = JSON.parse(localStorage.getItem('sd_posts') || '[]').filter(p => p.published);
+    const c = document.getElementById('dynamicPosts');
+    if (!c) return;
+    c.innerHTML = '';
+    posts.forEach(p => {
+      const d = new Date(p.date);
+      const ds = d.toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'});
+      const ex = p.content ? p.content.slice(0,130) + '\u2026' : '';
+      const card = document.createElement('div');
+      card.className = 'blog-card reveal'; card.dataset.type = 'blog';
+      card.innerHTML = '<div class="blog-img-ph" style="height:180px;display:flex;align-items:center;justify-content:center;background:var(--accent-l);font-size:2.5rem">' + (p.emoji||'\ud83d\udcc4') + '</div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">' + (p.category||'Blog') + '</span><span class="blog-date">' + ds + '</span></div><div class="blog-title">' + p.title + '</div><div class="blog-excerpt">' + ex + '</div><span class="blog-read">Read Article &#8594;</span></div>';
+      c.appendChild(card);
+      if(typeof io !== 'undefined') io.observe(card);
+    });
+  } catch(e) { console.warn('Blog refresh error', e); }
+}
+
+// ─── Refresh public FAQs after admin save ───
+function refreshPublicFaqs() {
+  const g = document.getElementById('faqGrid');
+  if (!g) return;
+  try {
+    const faqs = JSON.parse(localStorage.getItem('sd_faqs') || '[]').filter(f => f.published);
+    if (!faqs.length) { g.innerHTML = '<div class="faq-empty">No FAQs yet \u2014 check back soon.</div>'; return; }
+    g.innerHTML = '';
+    faqs.forEach(faq => {
+      const item = document.createElement('div');
+      item.className = 'faq-item reveal';
+      const chevSvgLocal = '<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"/></svg>';
+      item.innerHTML = '<div class=\"faq-q\" onclick=\"toggleFaq(this.parentElement)\"><span class=\"faq-q-text\">' + faq.question + '</span><span class=\"faq-chev\">' + chevSvgLocal + '</span></div><div class=\"faq-a\"><div class=\"faq-a-inner\">' + faq.answer + '</div></div>';
+      g.appendChild(item);
+      if(typeof io !== 'undefined') io.observe(item);
+    });
+  } catch(e) { g.innerHTML = '<div class="faq-empty">FAQs could not be loaded.</div>'; }
+}
+
+// Init public dynamic content
+refreshPublicBlog();
+refreshPublicFaqs();
+</script>
+</body>
+</html>
