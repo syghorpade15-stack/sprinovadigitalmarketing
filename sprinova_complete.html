@@ -1465,329 +1465,7 @@ const chevSvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" strok
 
 <div class="toast" id="toast"></div>
 
-<script>
-// ════════════════ CREDENTIALS ════════════════
-const DEFAULT_USER = 'admin';
-const DEFAULT_PASS = 'Sprinova@2025';
 
-function getCreds() {
-  return {
-    user: localStorage.getItem('sd_admin_user') || DEFAULT_USER,
-    pass: localStorage.getItem('sd_admin_pass') || DEFAULT_PASS,
-  };
-}
-
-// ════════════════ AUTH SCREENS ════════════════
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id)?.classList.add('active');
-  clearErrors();
-}
-
-function clearErrors() {
-  document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
-}
-
-function togglePwd(id, btn) {
-  const inp = document.getElementById(id);
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-  btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
-}
-
-// ── LOGIN ──
-function doLogin() {
-  const u = document.getElementById('login-user').value.trim();
-  const p = document.getElementById('login-pass').value;
-  const c = getCreds();
-  if (u === c.user && p === c.pass) {
-    enterAdmin();
-  } else {
-    document.getElementById('login-err').classList.add('show');
-  }
-}
-document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-
-// ── FORGOT / OTP ──
-let currentOtp = '';
-function sendOtp() {
-  currentOtp = String(Math.floor(100000 + Math.random() * 900000));
-  document.getElementById('otp-demo-msg').textContent =
-    `Demo mode: Your OTP is ${currentOtp} (In production, this is sent to sprinovadigital@gmail.com)`;
-  showScreen('screen-otp');
-  for (let i = 0; i < 6; i++) document.getElementById('otp' + i).value = '';
-  document.getElementById('otp0').focus();
-}
-
-function otpMove(i) {
-  const v = document.getElementById('otp' + i).value;
-  if (v && i < 5) document.getElementById('otp' + (i + 1)).focus();
-}
-
-function verifyOtp() {
-  const entered = [0,1,2,3,4,5].map(i => document.getElementById('otp'+i).value).join('');
-  if (entered === currentOtp) {
-    showScreen('screen-reset');
-  } else {
-    document.getElementById('otp-err').classList.add('show');
-  }
-}
-
-function doReset() {
-  const u  = document.getElementById('reset-user').value.trim();
-  const p  = document.getElementById('reset-pass').value;
-  const p2 = document.getElementById('reset-pass2').value;
-  const err = document.getElementById('reset-err');
-  if (!u || !p) { err.textContent = 'All fields are required.'; err.classList.add('show'); return; }
-  if (p !== p2) { err.textContent = 'Passwords do not match.'; err.classList.add('show'); return; }
-  localStorage.setItem('sd_admin_user', u);
-  localStorage.setItem('sd_admin_pass', p);
-  showToast('✅ Credentials updated! Please log in.');
-  showScreen('screen-login');
-}
-
-// ── ENTER/EXIT ADMIN ──
-function enterAdmin() {
-  document.getElementById('auth-wrap').style.display   = 'none';
-  document.getElementById('admin-shell').style.display = 'flex';
-  document.getElementById('admin-shell').classList.add('active');
-  refreshDashboard();
-  renderPostsTable();
-  renderFaqsTable();
-}
-
-function logout() {
-  document.getElementById('admin-shell').style.display = 'none';
-  document.getElementById('admin-shell').classList.remove('active');
-  document.getElementById('auth-wrap').style.display   = 'flex';
-  document.getElementById('login-user').value = '';
-  document.getElementById('login-pass').value = '';
-  showScreen('screen-login');
-}
-
-function goToSite() { window.open('index.html', '_blank'); }
-
-// ════════════════ PANELS ════════════════
-function showPanel(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('panel-' + id)?.classList.add('active');
-  document.getElementById('nav-' + id)?.classList.add('active');
-  if (id === 'dashboard') refreshDashboard();
-  if (id === 'blog') renderPostsTable();
-  if (id === 'faq')  renderFaqsTable();
-}
-
-// ════════════════ DATA HELPERS ════════════════
-function getPosts() { try { return JSON.parse(localStorage.getItem('sd_posts') || '[]'); } catch(e){ return []; } }
-function savePosts(d) { localStorage.setItem('sd_posts', JSON.stringify(d)); }
-function getFaqs()  { try { return JSON.parse(localStorage.getItem('sd_faqs')  || '[]'); } catch(e){ return []; } }
-function saveFaqs(d) { localStorage.setItem('sd_faqs', JSON.stringify(d)); }
-function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
-function formatDate(d) { if (!d) return ''; return new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }); }
-function escHtml(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-// ════════════════ DASHBOARD ════════════════
-function refreshDashboard() {
-  const posts = getPosts();
-  const faqs  = getFaqs();
-  document.getElementById('stat-posts').textContent     = posts.length;
-  document.getElementById('stat-published').textContent = posts.filter(p => p.published).length;
-  document.getElementById('stat-faqs').textContent      = faqs.filter(f => f.published).length;
-}
-
-// ════════════════ BLOG POSTS ════════════════
-let editingPostId = null;
-
-function renderPostsTable() {
-  const posts = getPosts();
-  const tbody = document.getElementById('posts-tbody');
-  if (!posts.length) {
-    tbody.innerHTML = '<tr><td colspan="5"><div class="empty-table"><div class="icon">📝</div><p>No blog posts yet. Click "New Post" to add one.</p></div></td></tr>';
-    return;
-  }
-  tbody.innerHTML = posts.map(p => `
-    <tr>
-      <td><strong>${escHtml(p.title)}</strong></td>
-      <td>${escHtml(p.category || '—')}</td>
-      <td>${formatDate(p.date)}</td>
-      <td><span class="status-pill ${p.published ? 'published' : 'draft'}">${p.published ? '✅ Published' : '📄 Draft'}</span></td>
-      <td><div class="action-btns">
-        <button class="edit-btn" onclick="openPostModal('${p.id}')">Edit</button>
-        <button class="del-btn"  onclick="askDelete('post','${p.id}')">Delete</button>
-      </div></td>
-    </tr>`).join('');
-}
-
-function openPostModal(id) {
-  editingPostId = id || null;
-  const modal = document.getElementById('post-modal');
-  if (id) {
-    const p = getPosts().find(x => x.id === id);
-    if (!p) return;
-    document.getElementById('post-modal-title').textContent = 'Edit Blog Post';
-    document.getElementById('post-title').value    = p.title || '';
-    document.getElementById('post-category').value = p.category || '';
-    document.getElementById('post-emoji').value    = p.emoji || '';
-    document.getElementById('post-author').value   = p.author || 'SprinovaDigital';
-    document.getElementById('post-content').value  = p.content || '';
-    const tog = document.getElementById('post-toggle');
-    p.published ? tog.classList.add('on') : tog.classList.remove('on');
-  } else {
-    document.getElementById('post-modal-title').textContent = 'New Blog Post';
-    document.getElementById('post-title').value    = '';
-    document.getElementById('post-category').value = '';
-    document.getElementById('post-emoji').value    = '';
-    document.getElementById('post-author').value   = 'SprinovaDigital';
-    document.getElementById('post-content').value  = '';
-    document.getElementById('post-toggle').classList.remove('on');
-  }
-  modal.classList.add('open');
-}
-
-function savePost() {
-  const title   = document.getElementById('post-title').value.trim();
-  const content = document.getElementById('post-content').value.trim();
-  if (!title || !content) { showToast('⚠️ Title and content are required.'); return; }
-  const posts = getPosts();
-  const published = document.getElementById('post-toggle').classList.contains('on');
-  if (editingPostId) {
-    const idx = posts.findIndex(p => p.id === editingPostId);
-    if (idx > -1) {
-      posts[idx] = { ...posts[idx], title, content, published,
-        category: document.getElementById('post-category').value.trim(),
-        emoji:    document.getElementById('post-emoji').value.trim(),
-        author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
-      };
-    }
-    showToast('✅ Post updated!');
-  } else {
-    posts.unshift({ id: uid(), title, content, published,
-      category: document.getElementById('post-category').value.trim(),
-      emoji:    document.getElementById('post-emoji').value.trim() || '📄',
-      author:   document.getElementById('post-author').value.trim() || 'SprinovaDigital',
-      date: new Date().toISOString(),
-    });
-    showToast('✅ Post created!');
-  }
-  savePosts(posts);
-  closeModal('post-modal');
-  renderPostsTable();
-  refreshDashboard();
-}
-
-// ════════════════ FAQs ════════════════
-let editingFaqId = null;
-
-function renderFaqsTable() {
-  const faqs  = getFaqs();
-  const tbody = document.getElementById('faqs-tbody');
-  if (!faqs.length) {
-    tbody.innerHTML = '<tr><td colspan="4"><div class="empty-table"><div class="icon">❓</div><p>No FAQs yet. Click "New FAQ" to add one.</p></div></td></tr>';
-    return;
-  }
-  tbody.innerHTML = faqs.map(f => `
-    <tr>
-      <td><strong>${escHtml(f.question)}</strong></td>
-      <td>${formatDate(f.date)}</td>
-      <td><span class="status-pill ${f.published ? 'published' : 'draft'}">${f.published ? '✅ Published' : '📄 Draft'}</span></td>
-      <td><div class="action-btns">
-        <button class="edit-btn" onclick="openFaqModal('${f.id}')">Edit</button>
-        <button class="del-btn"  onclick="askDelete('faq','${f.id}')">Delete</button>
-      </div></td>
-    </tr>`).join('');
-}
-
-function openFaqModal(id) {
-  editingFaqId = id || null;
-  if (id) {
-    const f = getFaqs().find(x => x.id === id);
-    if (!f) return;
-    document.getElementById('faq-modal-title').textContent = 'Edit FAQ';
-    document.getElementById('faq-question').value = f.question || '';
-    document.getElementById('faq-answer').value   = f.answer   || '';
-    const tog = document.getElementById('faq-toggle');
-    f.published ? tog.classList.add('on') : tog.classList.remove('on');
-  } else {
-    document.getElementById('faq-modal-title').textContent = 'New FAQ';
-    document.getElementById('faq-question').value = '';
-    document.getElementById('faq-answer').value   = '';
-    document.getElementById('faq-toggle').classList.remove('on');
-  }
-  document.getElementById('faq-modal').classList.add('open');
-}
-
-function saveFaq() {
-  const question = document.getElementById('faq-question').value.trim();
-  const answer   = document.getElementById('faq-answer').value.trim();
-  if (!question || !answer) { showToast('⚠️ Question and answer are required.'); return; }
-  const faqs = getFaqs();
-  const published = document.getElementById('faq-toggle').classList.contains('on');
-  if (editingFaqId) {
-    const idx = faqs.findIndex(f => f.id === editingFaqId);
-    if (idx > -1) faqs[idx] = { ...faqs[idx], question, answer, published };
-    showToast('✅ FAQ updated!');
-  } else {
-    faqs.push({ id: uid(), question, answer, published, date: new Date().toISOString() });
-    showToast('✅ FAQ added!');
-  }
-  saveFaqs(faqs);
-  closeModal('faq-modal');
-  renderFaqsTable();
-  refreshDashboard();
-}
-
-// ════════════════ DELETE ════════════════
-let deleteType = '', deleteId = '';
-function askDelete(type, id) {
-  deleteType = type; deleteId = id;
-  document.getElementById('confirm-modal').classList.add('open');
-}
-function closeConfirm() { document.getElementById('confirm-modal').classList.remove('open'); }
-function confirmDelete() {
-  if (deleteType === 'post') {
-    savePosts(getPosts().filter(p => p.id !== deleteId));
-    renderPostsTable();
-    showToast('🗑️ Post deleted.');
-  } else {
-    saveFaqs(getFaqs().filter(f => f.id !== deleteId));
-    renderFaqsTable();
-    showToast('🗑️ FAQ deleted.');
-  }
-  refreshDashboard();
-  closeConfirm();
-}
-
-// ════════════════ SETTINGS ════════════════
-function saveSettings() {
-  const u   = document.getElementById('settings-user').value.trim();
-  const cur = document.getElementById('settings-cur-pass').value;
-  const np  = document.getElementById('settings-new-pass').value;
-  const err = document.getElementById('settings-err');
-  const c   = getCreds();
-  if (cur !== c.pass) { err.textContent = 'Current password is incorrect.'; err.classList.add('show'); return; }
-  if (u) localStorage.setItem('sd_admin_user', u);
-  if (np) localStorage.setItem('sd_admin_pass', np);
-  err.classList.remove('show');
-  showToast('✅ Credentials saved!');
-  document.getElementById('settings-user').value = '';
-  document.getElementById('settings-cur-pass').value = '';
-  document.getElementById('settings-new-pass').value = '';
-}
-
-// ════════════════ UTILS ════════════════
-function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
-function toggleEl(id) { document.getElementById(id)?.classList.toggle('on'); }
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-// Close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o => {
-  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
-});
-</script>
 
 <script>
 
@@ -1875,9 +1553,13 @@ function enterAdmin() {
   document.getElementById('auth-wrap').style.display   = 'none';
   document.getElementById('admin-shell').style.display = 'flex';
   document.getElementById('admin-shell').classList.add('active');
+  var fab = document.getElementById('admin-fab');
+  if (fab) fab.style.display = 'none';
   refreshDashboard();
   renderPostsTable();
   renderFaqsTable();
+  if(typeof refreshPublicBlog === 'function') refreshPublicBlog();
+  if(typeof refreshPublicFaqs === 'function') refreshPublicFaqs();
 }
 
 function logout() {
@@ -1998,6 +1680,7 @@ function savePost() {
   closeModal('post-modal');
   renderPostsTable();
   refreshDashboard();
+  if(typeof refreshPublicBlog === 'function') refreshPublicBlog();
 }
 
 // ════════════════ FAQs ════════════════
@@ -2059,6 +1742,7 @@ function saveFaq() {
   closeModal('faq-modal');
   renderFaqsTable();
   refreshDashboard();
+  if(typeof refreshPublicFaqs === 'function') refreshPublicFaqs();
 }
 
 // ════════════════ DELETE ════════════════
@@ -2073,10 +1757,12 @@ function confirmDelete() {
     savePosts(getPosts().filter(p => p.id !== deleteId));
     renderPostsTable();
     showToast('🗑️ Post deleted.');
+    if(typeof refreshPublicBlog === 'function') refreshPublicBlog();
   } else {
     saveFaqs(getFaqs().filter(f => f.id !== deleteId));
     renderFaqsTable();
     showToast('🗑️ FAQ deleted.');
+    if(typeof refreshPublicFaqs === 'function') refreshPublicFaqs();
   }
   refreshDashboard();
   closeConfirm();
@@ -2119,12 +1805,22 @@ function showAdminLogin() {
   document.getElementById('public-site').style.display = 'none';
   document.getElementById('auth-wrap').style.display = 'flex';
   document.getElementById('admin-shell').style.display = 'none';
-  showScreen('screen-login');
+  var fab = document.getElementById('admin-fab'); if(fab) fab.style.display='none';
+  // Ensure login screen is visible
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  var loginScreen = document.getElementById('screen-login');
+  if (loginScreen) loginScreen.classList.add('active');
+  // Clear any previous errors
+  var err = document.getElementById('login-err');
+  if (err) err.classList.remove('show');
 }
 function hideAdminPanel() {
   document.getElementById('auth-wrap').style.display = 'none';
   document.getElementById('admin-shell').style.display = 'none';
+  document.getElementById('admin-shell').classList.remove('active');
   document.getElementById('public-site').style.display = 'block';
+  var fab = document.getElementById('admin-fab');
+  if (fab) fab.style.display = 'flex';
   window.scrollTo({top:0, behavior:'smooth'});
 }
 function goToSite() { hideAdminPanel(); }
@@ -2172,5 +1868,16 @@ function refreshPublicFaqs() {
 refreshPublicBlog();
 refreshPublicFaqs();
 </script>
+
+<!-- Floating Admin Access Button -->
+<button id="admin-fab" onclick="showAdminLogin()" title="Admin Panel" style="
+  position:fixed;bottom:2rem;left:2rem;z-index:450;
+  width:44px;height:44px;border-radius:10px;
+  background:#1A1A2E;color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);font-size:1.1rem;
+  transition:all .2s;opacity:.7;
+" onmouseenter="this.style.opacity='1';this.style.transform='translateY(-2px)'" 
+   onmouseleave="this.style.opacity='.7';this.style.transform='translateY(0)'">🔐</button>
 </body>
 </html>
